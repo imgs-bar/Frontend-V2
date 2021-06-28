@@ -25,7 +25,7 @@ const Home = () => {
             </Text>
             file hosting.{" "}
           </Heading>
-          <Text>
+          <Text color="gray.400">
             A{" "}
             <Text as="span" fontWeight="600">
               privacy {" "}
