@@ -1,10 +1,33 @@
-import {Box, Heading, Text, useColorModeValue} from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Text,
+  useColorModeValue,
+  HStack,
+  Center,
+  useDisclosure,
+  FormControl,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
 import {Stack} from '@chakra-ui/react';
 import {Button} from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react';
+import React from 'react';
+import {Formik} from 'formik';
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
   return (
     <>
@@ -32,17 +55,84 @@ const Home = () => {
             with 100+ domains and an amazing community.{' '}
           </Text>
           <br />
-          <Button
-            colorScheme="telegram"
-            variant="outline"
-            onClick={() => (window.location.href = 'https://discord.gg/img')}
-          >
-            Discord
-          </Button>
+          <Center>
+            <HStack direction="column">
+              <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
+                Get started
+              </Button>
+              <Button
+                colorScheme="telegram"
+                variant="outline"
+                onClick={() =>
+                  (window.location.href = 'https://discord.gg/img')
+                }
+              >
+                Discord
+              </Button>
+              <Button
+                colorScheme="telegram"
+                variant="solid"
+                onClick={() => (window.location.href = '/login')}
+              >
+                Login
+              </Button>
+            </HStack>
+          </Center>
         </Box>
       </Box>
 
       <Stack direction="row" spacing={1}></Stack>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Login</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Formik
+              initialValues={{email: '', password: ''}}
+              onSubmit={result => console.log(result)}
+            >
+              {({handleSubmit, isSubmitting, handleChange}) => (
+                <form onSubmit={handleSubmit} onChange={handleChange}>
+                  <FormControl id="email" isRequired>
+                    <FormLabel>Email:</FormLabel>
+                    <Input
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      variant="filled"
+                      placeholder="email@example.com"
+                      mb={5}
+                    />
+                  </FormControl>
+                  <FormControl id="password" mb={5} isRequired>
+                    <FormLabel>Password</FormLabel>
+                    <Input
+                      name="password"
+                      type="password"
+                      autoComplete="password"
+                      placeholder="**********"
+                      required
+                    />
+                  </FormControl>
+                  <Center>
+                    <Button
+                      colorScheme="telegram"
+                      type="submit"
+                      isDisabled={isSubmitting}
+                      isLoading={isSubmitting}
+                    >
+                      Login
+                    </Button>
+                  </Center>
+                </form>
+              )}
+            </Formik>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 };
