@@ -251,10 +251,10 @@ const Home = () => {
                       ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎  ‏‏‎ ‎‏‏‎ ‎‏ ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎Login‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
                     </Button>
                   </Center>
-                  <br />
                   <Center>
                     <Button
                       bg="#5865F2"
+                      mt={3}
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
                       leftIcon={<FaDiscord />}
