@@ -3,7 +3,6 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  HStack,
   Center,
   useDisclosure,
   FormControl,
@@ -13,8 +12,9 @@ import {
   Flex,
   IconButton,
 } from '@chakra-ui/react';
-import {Stack} from '@chakra-ui/react';
-import {Button} from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
+import { FaDiscord } from "react-icons/fa"
+import { Button } from '@chakra-ui/react';
 import {
   Modal,
   ModalOverlay,
@@ -24,16 +24,16 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react';
 import React from 'react';
-import {Formik} from 'formik';
-import {useColorMode} from '@chakra-ui/react';
-import {useState} from 'react';
-import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
+import { Formik } from 'formik';
+import { useColorMode } from '@chakra-ui/react';
+import { useState } from 'react';
+import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
-  const {isOpen, onOpen, onClose} = useDisclosure();
-  const {colorMode, toggleColorMode} = useColorMode();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
   const [display, changeDisplay] = useState('none');
 
   return (
@@ -174,25 +174,27 @@ const Home = () => {
             with 100+ domains and an amazing community.{' '}
           </Text>
           <br />
-          <Center>
-            <HStack direction="column">
-              <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
+          {/* <Center> */}
+          {/* <HStack direction="column"> */}
+          {/* <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
                 Get started
-              </Button>
-              <Button
-                colorScheme="telegram"
-                variant="outline"
-                onClick={() =>
-                  (window.location.href = 'https://discord.gg/img')
-                }
-              >
-                Discord
-              </Button>
-              <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
-                Login
-              </Button>
-            </HStack>
-          </Center>
+              </Button> */}
+          <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
+            ‏‏‎‏‏‎‏‏‎ ‎ ‎Login‏‏‎ ‎‏‏‎ ‎
+          </Button>
+          <br></br><br></br>
+          <Button
+            colorScheme="telegram"
+            leftIcon={<FaDiscord />}
+            variant="outline"
+            onClick={() =>
+              (window.location.href = 'https://discord.gg/img')
+            }
+          >
+            Discord
+          </Button>
+          {/* </HStack> */}
+          {/* </Center> */}
         </Box>
       </Box>
 
@@ -205,10 +207,10 @@ const Home = () => {
           <ModalCloseButton />
           <ModalBody>
             <Formik
-              initialValues={{email: '', password: ''}}
+              initialValues={{ email: '', password: '' }}
               onSubmit={result => console.log(result)}
             >
-              {({handleSubmit, isSubmitting, handleChange}) => (
+              {({ handleSubmit, isSubmitting, handleChange }) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <FormControl id="email" isRequired>
                     <FormLabel>Email:</FormLabel>
