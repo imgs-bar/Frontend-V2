@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
 import NextLink from 'next/link';
 
-const DarkModeSwitch = () => {
+const Navbar = () => {
   const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
   return (
@@ -118,4 +118,4 @@ const DarkModeSwitch = () => {
   );
 };
 
-export default DarkModeSwitch;
+export default Navbar;
