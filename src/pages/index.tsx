@@ -215,6 +215,10 @@ const Home = () => {
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <FormControl id="username" isRequired>
                     <FormLabel>Email/Username:</FormLabel>
+                    {/* <InputGroup> */}
+                    {/* <InputLeftElement children={
+                        <RiLockPasswordLine />
+                      } /> */}
                     <Input
                       name="username"
                       required
@@ -222,6 +226,7 @@ const Home = () => {
                       placeholder="email@example.com"
                       mb={5}
                     />
+                    {/* </InputGroup> */}
                   </FormControl>
                   <FormControl id="password" mb={5} isRequired>
                     <FormLabel>Password</FormLabel>
@@ -234,15 +239,28 @@ const Home = () => {
                       required
                     />
                   </FormControl>
-                  <Link color="blue.300">Forgot your password?</Link>
+                  <Link color="blue.300">Forgot Password?</Link>
                   <Center>
                     <Button
+                      mt={5}
                       colorScheme="telegram"
                       type="submit"
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
                     >
-                      Login
+                      ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎  ‏‏‎ ‎‏‏‎ ‎‏ ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎Login‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
+                    </Button>
+                  </Center>
+                  <br />
+                  <Center>
+                    <Button
+                      bg="#5865F2"
+                      isDisabled={isSubmitting}
+                      isLoading={isSubmitting}
+                      leftIcon={<FaDiscord />}
+                      mb={5}
+                    >
+                      Login with Discord
                     </Button>
                   </Center>
                 </form>
