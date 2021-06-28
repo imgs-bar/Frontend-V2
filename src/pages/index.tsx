@@ -270,6 +270,86 @@ const Home = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
+
+      <Center>
+        <Heading
+          m={12}
+        >
+          Statistics
+          {/* <Divider /> */}
+        </Heading>
+      </Center>
+      <Center>
+        <Box textAlign="center" maxWidth="max-content">
+          <Box
+            bg="gray.700"
+            py="8"
+            mr={50}
+            px={{ base: '4', md: '10' }}
+            shadow="base"
+            w={260}
+            rounded={{ sm: 'lg' }}
+          >
+            {/* <Heading>
+              Statistics
+            </Heading> */}
+
+            <Heading m={3}>Domains</Heading>
+            <Divider />
+            <Text mt={5} fontSize="25" >1000</Text>
+          </Box>
+
+
+        </Box>
+
+        <Box textAlign="center" maxWidth="max-content">
+          <Box
+            bg="gray.700"
+            py="8"
+            ml={50}
+            w={260}
+            px={{ base: '4', md: '10' }}
+            shadow="base"
+            rounded={{ sm: 'lg' }}
+          >
+            {/* <Heading>
+              Statistics
+            </Heading> */}
+
+            <Heading m={3}>Users</Heading>
+            <Divider />
+            <Text mt={5} fontSize="25">1000</Text>
+          </Box>
+
+
+        </Box>
+
+        <Box textAlign="center" maxWidth="max-content">
+          <Box
+            bg="gray.700"
+            py="8"
+            ml={100}
+            w={260}
+            px={{ base: '4', md: '10' }}
+            shadow="base"
+            // mt={5}
+            // m={50}
+            rounded={{ sm: 'lg' }}
+          >
+            {/* <Heading>
+              Statistics
+            </Heading> */}
+
+            <Heading m={3}>Files</Heading>
+            <Divider />
+            <Text mt={5} fontSize="25">1000</Text>
+          </Box>
+
+
+        </Box>
+      </Center>
+
+      <br></br>
     </>
   );
 };
