@@ -11,6 +11,7 @@ import {
   Link,
   Flex,
   IconButton,
+  Divider,
 } from '@chakra-ui/react';
 import { Stack } from '@chakra-ui/react';
 import { FaDiscord } from "react-icons/fa"
@@ -199,11 +200,11 @@ const Home = () => {
       </Box>
 
       <Stack direction="row" spacing={1}></Stack>
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Login</ModalHeader>
+          <Divider />
           <ModalCloseButton />
           <ModalBody>
             <Formik
@@ -213,7 +214,7 @@ const Home = () => {
               {({ handleSubmit, isSubmitting, handleChange }) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <FormControl id="email" isRequired>
-                    <FormLabel>Email:</FormLabel>
+                    <FormLabel>Email/Username:</FormLabel>
                     <Input
                       name="email"
                       type="email"
