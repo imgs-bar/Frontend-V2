@@ -219,7 +219,7 @@ const Home = () => {
                       name="username"
                       required
                       variant="filled"
-                      placeholder="flame@isverysexy.com"
+                      placeholder="email@example.com"
                       mb={5}
                     />
                   </FormControl>
