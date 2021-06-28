@@ -1,7 +1,4 @@
 import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react"
-import { Button } from "@chakra-ui/react"
-import { Container } from "@chakra-ui/react"
-import { Center } from "@chakra-ui/react"
 import { Stack } from "@chakra-ui/react"
 import DarkModeSwitch from '../components/DarkModeSwitch'
 
@@ -14,14 +11,9 @@ const Home = () => {
 
       <DarkModeSwitch />
       <Box
-        // as="section"
-        // d="flex"
-        // alignItems="center"
-        // flexDir="column"
         textAlign="center"
         m={350}
       >
-        {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
         <Box>
           <Heading fontWeight="700" py="2">
             imgs.bar
