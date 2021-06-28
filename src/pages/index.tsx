@@ -213,15 +213,13 @@ const Home = () => {
             >
               {({ handleSubmit, isSubmitting, handleChange }) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>
-                  <FormControl id="email" isRequired>
+                  <FormControl id="username" isRequired>
                     <FormLabel>Email/Username:</FormLabel>
                     <Input
-                      name="email"
-                      type="email"
-                      autoComplete="email"
+                      name="username"
                       required
                       variant="filled"
-                      placeholder="email@example.com"
+                      placeholder="flame@isverysexy.com"
                       mb={5}
                     />
                   </FormControl>
