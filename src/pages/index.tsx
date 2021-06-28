@@ -13,9 +13,9 @@ import {
   IconButton,
   Divider,
 } from '@chakra-ui/react';
-import { Stack } from '@chakra-ui/react';
-import { FaDiscord } from "react-icons/fa"
-import { Button } from '@chakra-ui/react';
+import {Stack} from '@chakra-ui/react';
+import {FaDiscord} from 'react-icons/fa';
+import {Button} from '@chakra-ui/react';
 import {
   Modal,
   ModalOverlay,
@@ -25,16 +25,16 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react';
 import React from 'react';
-import { Formik } from 'formik';
-import { useColorMode } from '@chakra-ui/react';
-import { useState } from 'react';
-import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import {Formik} from 'formik';
+import {useColorMode} from '@chakra-ui/react';
+import {useState} from 'react';
+import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
 import NextLink from 'next/link';
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const {isOpen, onOpen, onClose} = useDisclosure();
+  const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
 
   return (
@@ -153,7 +153,7 @@ const Home = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Box textAlign="center" m={350}>
+      <Box textAlign="center" m={350} minWidth={250}>
         <Box>
           <Heading fontWeight="700" py="2">
             imgs.bar
@@ -184,14 +184,13 @@ const Home = () => {
           <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
             ‏‏‎‏‏‎‏‏‎ ‎ ‎Login‏‏‎ ‎‏‏‎ ‎
           </Button>
-          <br></br><br></br>
+          <br></br>
+          <br></br>
           <Button
             colorScheme="telegram"
             leftIcon={<FaDiscord />}
             variant="outline"
-            onClick={() =>
-              (window.location.href = 'https://discord.gg/img')
-            }
+            onClick={() => (window.location.href = 'https://discord.gg/img')}
           >
             Discord
           </Button>
@@ -209,10 +208,10 @@ const Home = () => {
           <ModalCloseButton />
           <ModalBody>
             <Formik
-              initialValues={{ email: '', password: '' }}
+              initialValues={{email: '', password: ''}}
               onSubmit={result => console.log(result)}
             >
-              {({ handleSubmit, isSubmitting, handleChange }) => (
+              {({handleSubmit, isSubmitting, handleChange}) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <FormControl id="username" isRequired>
                     <FormLabel>Email/Username:</FormLabel>
@@ -250,7 +249,9 @@ const Home = () => {
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
                     >
-                      ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎  ‏‏‎ ‎‏‏‎ ‎‏ ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎Login‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
+                      ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏
+                      ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎Login‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
+                      ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
                     </Button>
                   </Center>
                   <Center>
@@ -273,9 +274,7 @@ const Home = () => {
       </Modal>
 
       <Center>
-        <Heading
-          m={12}
-        >
+        <Heading m={12}>
           Statistics
           {/* <Divider /> */}
         </Heading>
@@ -286,10 +285,10 @@ const Home = () => {
             bg="gray.700"
             py="8"
             mr={50}
-            px={{ base: '4', md: '10' }}
+            px={{base: '4', md: '10'}}
             shadow="base"
             w={260}
-            rounded={{ sm: 'lg' }}
+            rounded={{sm: 'lg'}}
           >
             {/* <Heading>
               Statistics
@@ -297,10 +296,10 @@ const Home = () => {
 
             <Heading m={3}>Domains</Heading>
             <Divider />
-            <Text mt={5} fontSize="25" >1000</Text>
+            <Text mt={5} fontSize="25">
+              1000
+            </Text>
           </Box>
-
-
         </Box>
 
         <Box textAlign="center" maxWidth="max-content">
@@ -309,9 +308,9 @@ const Home = () => {
             py="8"
             ml={50}
             w={260}
-            px={{ base: '4', md: '10' }}
+            px={{base: '4', md: '10'}}
             shadow="base"
-            rounded={{ sm: 'lg' }}
+            rounded={{sm: 'lg'}}
           >
             {/* <Heading>
               Statistics
@@ -319,10 +318,10 @@ const Home = () => {
 
             <Heading m={3}>Users</Heading>
             <Divider />
-            <Text mt={5} fontSize="25">1000</Text>
+            <Text mt={5} fontSize="25">
+              1000
+            </Text>
           </Box>
-
-
         </Box>
 
         <Box textAlign="center" maxWidth="max-content">
@@ -331,11 +330,11 @@ const Home = () => {
             py="8"
             ml={100}
             w={260}
-            px={{ base: '4', md: '10' }}
+            px={{base: '4', md: '10'}}
             shadow="base"
             // mt={5}
             // m={50}
-            rounded={{ sm: 'lg' }}
+            rounded={{sm: 'lg'}}
           >
             {/* <Heading>
               Statistics
@@ -343,10 +342,10 @@ const Home = () => {
 
             <Heading m={3}>Files</Heading>
             <Divider />
-            <Text mt={5} fontSize="25">1000</Text>
+            <Text mt={5} fontSize="25">
+              1000
+            </Text>
           </Box>
-
-
         </Box>
       </Center>
 
