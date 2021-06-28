@@ -111,10 +111,11 @@ const Home = () => {
           >
             <Flex justify="flex-end">
               <IconButton
-                mt={2}
-                mr={2}
+                mt={4}
+                mr={8}
                 aria-label="Close Menu"
                 size="md"
+                variant="solid"
                 borderRadius="md"
                 icon={<CloseIcon />}
                 onClick={() => changeDisplay('none')}

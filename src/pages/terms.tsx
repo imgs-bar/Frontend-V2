@@ -15,7 +15,7 @@ const ok = () => {
       </Text>
       <br></br>
       <Text>
-        We, <Link color="blue.300" href="/">imgs.bar</Link>, reserve the right to review and amend any of these Terms of Service at our sole discretion.Upon doing so, we will update this page.Any changes to these Terms of Service will take effect immediately from the date of publication.
+        We, <Link color="blue.300" href="/">imgs.bar</Link>, reserve the right to review and amend any of these Terms of Service at our sole discretion. Upon doing so, we will update this page. Any changes to these Terms of Service will take effect immediately from the date of publication.
       </Text>
       <br></br>
       <Text>
