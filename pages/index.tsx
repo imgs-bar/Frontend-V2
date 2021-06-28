@@ -1,5 +1,6 @@
 import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react"
 import { Stack } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
 import DarkModeSwitch from '../components/DarkModeSwitch'
 
 const Home = () => {
@@ -35,6 +36,14 @@ const Home = () => {
             </Text>
             with 100+ domains and an amazing community.{" "}
           </Text>
+          <br />
+          <Button
+            colorScheme="telegram"
+            variant="outline"
+            onClick={() => (window.location.href = 'https://discord.gg/img')}
+          >
+            Discord
+          </Button>
 
         </Box>
       </Box>
