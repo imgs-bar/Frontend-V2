@@ -200,7 +200,7 @@ const Home = () => {
       </Box>
 
       <Stack direction="row" spacing={1}></Stack>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Login</ModalHeader>
@@ -243,7 +243,8 @@ const Home = () => {
                   <Center>
                     <Button
                       mt={5}
-                      colorScheme="telegram"
+                      colorScheme="gray"
+                      variant="outline"
                       type="submit"
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
