@@ -234,6 +234,7 @@ const Home = () => {
                       required
                     />
                   </FormControl>
+                  <Link color="blue.300">Forgot your password?</Link>
                   <Center>
                     <Button
                       colorScheme="telegram"
