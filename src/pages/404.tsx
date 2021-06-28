@@ -1,9 +1,9 @@
-import {Box, Heading, Text} from '@chakra-ui/react';
-import {Button} from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 
 const ok = () => {
   return (
-    <Box textAlign="center" m={400}>
+    <Box textAlign="center" m={400} minWidth={250}>
       <Heading>404</Heading>
 
       <Text fontWeight="500" as="span" color="gray.500">
