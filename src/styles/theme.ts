@@ -14,6 +14,10 @@ const fontWeights = {
     bold: 700
 }
 
-const theme = extendTheme({ fontWeights })
+const theme = extendTheme({ fontWeights,
+    config: {
+        initialColorMode: "dark",
+        useSystemColorMode: false,
+      }, })
 
 export default theme

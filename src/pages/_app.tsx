@@ -1,12 +1,14 @@
 import '../styles/globals.css'
-import { ChakraProvider } from "@chakra-ui/react"
+import { ChakraProvider, Flex, Box } from "@chakra-ui/react"
 import type { AppProps } from 'next/app'
 import theme from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <>
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+    <Flex minH="100vh" w="full" flexDir="column">
+            <Component {...pageProps} />
+        </Flex>
     </ChakraProvider>
   </>
 }
