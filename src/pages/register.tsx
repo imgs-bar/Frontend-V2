@@ -11,7 +11,7 @@ import {
 import {Formik} from 'formik';
 import Navbar from '../components/Navbar';
 
-const Home = () => {
+const Register = () => {
   const formColor = useColorModeValue('gray.200', 'gray.700');
 
   return (
@@ -98,4 +98,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Register;
