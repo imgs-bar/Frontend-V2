@@ -228,6 +228,7 @@ const Home = () => {
                     <Input
                       name="password"
                       type="password"
+                      variant="filled"
                       autoComplete="password"
                       placeholder="**********"
                       required
