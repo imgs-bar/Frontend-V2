@@ -7,9 +7,7 @@ function MyApp({Component, pageProps}: AppProps) {
   return (
     <>
       <ChakraProvider theme={theme}>
-        <Flex minH="100vh" w="full" flexDir="column">
-          <Component {...pageProps} />
-        </Flex>
+        <Component {...pageProps} />
       </ChakraProvider>
     </>
   );
