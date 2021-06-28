@@ -96,35 +96,6 @@ const Navbar = () => {
               onClick={() => changeDisplay('none')}
             />
           </Flex>
-
-          <Flex flexDir="column" align="center">
-            <NextLink href="/login" passHref>
-              <Button
-                as="a"
-                colorScheme="telegram"
-                variant="outline"
-                aria-label="Login"
-                my={5}
-                w="100%"
-              >
-                Login
-              </Button>
-            </NextLink>
-
-            <NextLink href="/register" passHref>
-              <Button
-                as="a"
-                colorScheme="telegram"
-                variant="solid"
-                aria-label="Register"
-                my={5}
-                ml={2}
-                w="100%"
-              >
-                Register
-              </Button>
-            </NextLink>
-          </Flex>
         </Flex>
       </Flex>
     </Flex>
