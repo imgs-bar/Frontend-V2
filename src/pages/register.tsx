@@ -28,7 +28,7 @@ const Home = () => {
               rounded={{sm: 'lg'}}
             >
               <Heading fontWeight="bold" fontSize="30" py="2">
-                Login
+                Register
               </Heading>
               <Formik
                 initialValues={{email: '', password: ''}}
@@ -48,6 +48,17 @@ const Home = () => {
                         mb={5}
                       />
                     </FormControl>
+                    <FormControl id="username" isRequired>
+                      <FormLabel>Username:</FormLabel>
+                      <Input
+                        name="username"
+                        autoComplete="username"
+                        required
+                        variant="filled"
+                        placeholder="Example"
+                        mb={5}
+                      />
+                    </FormControl>
                     <FormControl id="password" mb={5} isRequired>
                       <FormLabel>Password</FormLabel>
                       <Input
@@ -55,6 +66,16 @@ const Home = () => {
                         type="password"
                         autoComplete="password"
                         placeholder="**********"
+                        variant="filled"
+                        required
+                      />
+                    </FormControl>
+                    <FormControl id="invite" mb={5} isRequired>
+                      <FormLabel>Invite</FormLabel>
+                      <Input
+                        name="invite"
+                        placeholder="AAAAAAAAAAAAA"
+                        variant="filled"
                         required
                       />
                     </FormControl>
@@ -64,7 +85,7 @@ const Home = () => {
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
                     >
-                      Login
+                      Register
                     </Button>
                   </form>
                 )}
