@@ -13,9 +13,9 @@ import {
   IconButton,
   Divider,
 } from '@chakra-ui/react';
-import {Stack} from '@chakra-ui/react';
-import {FaDiscord} from 'react-icons/fa';
-import {Button} from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
+import { FaDiscord } from 'react-icons/fa';
+import { Button } from '@chakra-ui/react';
 import {
   Modal,
   ModalOverlay,
@@ -25,16 +25,16 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react';
 import React from 'react';
-import {Formik} from 'formik';
-import {useColorMode} from '@chakra-ui/react';
-import {useState} from 'react';
-import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
+import { Formik } from 'formik';
+import { useColorMode } from '@chakra-ui/react';
+import { useState } from 'react';
+import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
-  const {isOpen, onOpen, onClose} = useDisclosure();
-  const {colorMode, toggleColorMode} = useColorMode();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
   const [display, changeDisplay] = useState('none');
 
   return (
@@ -208,10 +208,10 @@ const Home = () => {
           <ModalCloseButton />
           <ModalBody>
             <Formik
-              initialValues={{email: '', password: ''}}
+              initialValues={{ email: '', password: '' }}
               onSubmit={result => console.log(result)}
             >
-              {({handleSubmit, isSubmitting, handleChange}) => (
+              {({ handleSubmit, isSubmitting, handleChange }) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <FormControl id="username" isRequired>
                     <FormLabel>Email/Username:</FormLabel>
@@ -257,6 +257,7 @@ const Home = () => {
                   <Center>
                     <Button
                       bg="#5865F2"
+                      _hover={{ background: '#7289DA' }}
                       mt={3}
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
@@ -285,10 +286,10 @@ const Home = () => {
             bg="gray.700"
             py="8"
             mr={50}
-            px={{base: '4', md: '10'}}
+            px={{ base: '4', md: '10' }}
             shadow="base"
             w={260}
-            rounded={{sm: 'lg'}}
+            rounded={{ sm: 'lg' }}
           >
             {/* <Heading>
               Statistics
@@ -308,9 +309,9 @@ const Home = () => {
             py="8"
             ml={50}
             w={260}
-            px={{base: '4', md: '10'}}
+            px={{ base: '4', md: '10' }}
             shadow="base"
-            rounded={{sm: 'lg'}}
+            rounded={{ sm: 'lg' }}
           >
             {/* <Heading>
               Statistics
@@ -330,11 +331,11 @@ const Home = () => {
             py="8"
             ml={100}
             w={260}
-            px={{base: '4', md: '10'}}
+            px={{ base: '4', md: '10' }}
             shadow="base"
             // mt={5}
             // m={50}
-            rounded={{sm: 'lg'}}
+            rounded={{ sm: 'lg' }}
           >
             {/* <Heading>
               Statistics
