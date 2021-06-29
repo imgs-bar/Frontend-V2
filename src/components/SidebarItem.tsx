@@ -18,10 +18,10 @@ export default function NavItem({ navSize, title, icon, active }) {
         >
             <Menu placement="right">
                 <Link
-                    backgroundColor={active && "#4299E1"}
+                    backgroundColor={active && "telegram.400"}
                     p={3}
                     borderRadius={8} // too round maybe?
-                    _hover={{ textDecor: 'none', backgroundColor: '#4299E1' }}
+                    _hover={{ textDecor: 'none', backgroundColor: 'telegram.400' }}
                     w={navSize == "large" && "100%"}
                 >
                     <MenuButton w="100%">

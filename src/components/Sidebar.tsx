@@ -12,7 +12,8 @@ import NavItem from './SidebarItem'
 import {
     FiHome,
     FiSettings,
-    FiImage
+    FiImage,
+    FiMail
 } from 'react-icons/fi';
 import { VscTools } from 'react-icons/vsc';
 import { RiVipDiamondLine } from 'react-icons/ri';
@@ -30,6 +31,7 @@ export default function Sidebar() {
             borderRadius={navSize == "small" ? "8px" : "10px"}
             w={navSize == "small" ? "75px" : "200px"}
             flexDir="column"
+            backgroundColor="#212938"
             justifyContent="space-between"
         >
             <Flex
@@ -55,6 +57,10 @@ export default function Sidebar() {
                 <NavItem navSize={navSize} icon={FiImage} title="Gallery" />
                 <NavItem navSize={navSize} icon={VscTools} title="Tools" />
                 <NavItem navSize={navSize} icon={RiVipDiamondLine} title="Premium" />
+                <br />
+                <Divider />
+                <NavItem navSize={navSize} icon={FiMail} title="Mail" />
+
             </Flex>
 
             <Flex
