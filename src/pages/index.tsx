@@ -10,6 +10,7 @@ import {
   Input,
   Link,
   Flex,
+  useToast,
   IconButton,
   Divider,
 } from '@chakra-ui/react';
@@ -36,6 +37,7 @@ const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const [display, changeDisplay] = useState('none');
+  const toast = useToast()
 
   return (
     <>
@@ -244,10 +246,20 @@ const Home = () => {
                     <Button
                       mt={5}
                       colorScheme="gray"
-                      variant="outline"
                       type="submit"
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
+                      onClick={() =>
+                        toast({
+                          title: "This is a preview",
+                          description: "nothing good will work ok retard",
+                          status: "info",
+                          duration: 7000,
+                          isClosable: false,
+                          variant: "left-accent",
+                          position: "top",
+                        })
+                      }
                     >
                       ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏
                       ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎Login‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
