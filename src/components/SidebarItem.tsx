@@ -20,7 +20,7 @@ export default function NavItem({ navSize, title, icon, active }) {
                 <Link
                     backgroundColor={active && "#4299E1"}
                     p={3}
-                    borderRadius={8} // to round maybe?
+                    borderRadius={8} // too round maybe?
                     _hover={{ textDecor: 'none', backgroundColor: '#4299E1' }}
                     w={navSize == "large" && "100%"}
                 >
