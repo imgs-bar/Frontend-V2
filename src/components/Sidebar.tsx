@@ -12,8 +12,7 @@ import NavItem from './SidebarItem'
 import {
     FiHome,
     FiSettings,
-    FiImage,
-    FiTools
+    FiImage
 } from 'react-icons/fi';
 import { VscTools } from 'react-icons/vsc';
 import { RiVipDiamondLine } from 'react-icons/ri';
@@ -24,11 +23,11 @@ export default function Sidebar() {
     return (
         <Flex
             pos="sticky"
-            left="5"
-            h="95vh"
-            marginTop="2.5vh"
-            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
-            borderRadius={navSize == "small" ? "15px" : "30px"}
+            left="0"
+            h="100.5vh"
+            marginTop="0vh"
+            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.6)"
+            borderRadius={navSize == "small" ? "8px" : "10px"}
             w={navSize == "small" ? "75px" : "200px"}
             flexDir="column"
             justifyContent="space-between"
