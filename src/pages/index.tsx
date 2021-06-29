@@ -260,7 +260,7 @@ const Home = () => {
                       _hover={{ background: '#7289DA' }}
                       mt={3}
                       isDisabled={isSubmitting}
-                      isLoading={isSubmitting}
+                      // isLoading={isSubmitting}
                       leftIcon={<FaDiscord />}
                       mb={5}
                     >
