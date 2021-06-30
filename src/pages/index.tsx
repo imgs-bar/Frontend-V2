@@ -247,6 +247,7 @@ const Home = () => {
                       mt={5}
                       colorScheme="gray"
                       type="submit"
+                      variant="outline"
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
                       onClick={() =>
