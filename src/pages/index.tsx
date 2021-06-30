@@ -11,6 +11,8 @@ import {
   Link,
   Flex,
   useToast,
+  InputGroup,
+  InputLeftElement,
   IconButton,
   Divider,
 } from '@chakra-ui/react';
@@ -30,6 +32,8 @@ import { Formik } from 'formik';
 import { useColorMode } from '@chakra-ui/react';
 import { useState } from 'react';
 import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { RiLockPasswordLine } from 'react-icons/ri';
+import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import NextLink from 'next/link';
 
 const Home = () => {
@@ -218,7 +222,7 @@ const Home = () => {
                   <FormControl id="username" isRequired>
                     <FormLabel>Email/Username:</FormLabel>
                     <InputGroup>
-                      <InputLeftElement children={<RiLockPasswordLine />} />
+                      <InputLeftElement children={<AiOutlineUser />} />
                       <Input
                         name="username"
                         required
@@ -230,14 +234,17 @@ const Home = () => {
                   </FormControl>
                   <FormControl id="password" mb={5} isRequired>
                     <FormLabel>Password</FormLabel>
-                    <Input
-                      name="password"
-                      type="password"
-                      variant="filled"
-                      autoComplete="password"
-                      placeholder="**********"
-                      required
-                    />
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineLock />} />
+                      <Input
+                        name="password"
+                        type="password"
+                        variant="filled"
+                        autoComplete="password"
+                        placeholder="**********"
+                        required
+                      />
+                    </InputGroup>
                   </FormControl>
                   <Link color="blue.300">Forgot Password?</Link>
                   <Center>
