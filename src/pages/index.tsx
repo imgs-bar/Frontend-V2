@@ -217,18 +217,16 @@ const Home = () => {
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <FormControl id="username" isRequired>
                     <FormLabel>Email/Username:</FormLabel>
-                    {/* <InputGroup> */}
-                    {/* <InputLeftElement children={
-                        <RiLockPasswordLine />
-                      } /> */}
-                    <Input
-                      name="username"
-                      required
-                      variant="filled"
-                      placeholder="email@example.com"
-                      mb={5}
-                    />
-                    {/* </InputGroup> */}
+                    <InputGroup>
+                      <InputLeftElement children={<RiLockPasswordLine />} />
+                      <Input
+                        name="username"
+                        required
+                        variant="filled"
+                        placeholder="email@example.com"
+                        mb={5}
+                      />
+                    </InputGroup>
                   </FormControl>
                   <FormControl id="password" mb={5} isRequired>
                     <FormLabel>Password</FormLabel>

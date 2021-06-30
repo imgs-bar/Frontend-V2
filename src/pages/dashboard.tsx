@@ -117,7 +117,7 @@ const Dashboard = () => {
                         color="#808191"
                     >
                         Invites:</Text>
-                    <Button mt={5}>Manage Invites</Button>
+                    <Button mt={3.5} borderRadius="full" variant="outline">Manage Invites</Button>
                 </Box>
             </Flex>
 
