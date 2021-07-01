@@ -23,7 +23,6 @@ const Dashboard = () => {
 
             <Box pos="fixed" top="5rem" left="20rem" align="center">
                 <Heading>Welcome, Flame!</Heading>
-                <Divider />
             </Box>
 
 
@@ -44,6 +43,7 @@ const Dashboard = () => {
                             mt={-12}
                         >
                             MOTD:</Text>
+                            <Divider mt="4" />
                         <Text
                             mt={5}
                             fontSize={22}
@@ -68,6 +68,7 @@ const Dashboard = () => {
                             color="#808191"
                         >
                             Storage Used:</Text>
+                            <Divider mt="4" />
                         <Text
                             mt={5}
                             fontSize={22}
@@ -93,6 +94,7 @@ const Dashboard = () => {
                             color="#808191"
                         >
                             Uploads:</Text>
+                            <Divider mt="4" />
                         <Text
                             mt={5}
                             fontSize={22}
@@ -118,6 +120,7 @@ const Dashboard = () => {
                             color="#808191"
                         >
                             Invites:</Text>
+                            <Divider mt="4" />
                         <Button mt={3.5} borderRadius="full" variant="outline">Manage Invites</Button>
                     </Box>
                 </Flex>
@@ -125,7 +128,6 @@ const Dashboard = () => {
 
             <Box pos="fixed" top="35rem" left="20rem" align="center">
                 <Heading>Gallery</Heading>
-                <Divider />
             </Box>
 
         </>
