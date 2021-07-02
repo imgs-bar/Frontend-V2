@@ -48,7 +48,7 @@ const Dashboard = () => {
                     <Box
                         flexShrink={0}
                         bg="gray.700"
-                        py={{ base: '10', md: '20' }}
+                        py="20"
                         ml={80}
                         mt={63.6}
                         // w={300}
@@ -58,15 +58,15 @@ const Dashboard = () => {
                         shadow="dark-lg"
                     >
                         <Text
-                            fontSize={{ base: '18', md: '25' }}
+                            fontSize={25}
                             color="#808191"
-                            mt={{ base: '-13', md: '-12' }}
+                            mt={-12}
                         >
                             MOTD:</Text>
                             <Divider mt="4" />
                         <Text
                             mt={5}
-                            fontSize={{ base: '13', md: '20' }}
+                            fontSize={22}
                         >
                             stuff</Text>
                             </Box>
@@ -75,24 +75,24 @@ const Dashboard = () => {
                     <Box
                     flexShrink={0}
                         bg="gray.700"
-                        py={{ sm: '12', md: '20' }}
+                        py="20"
                         ml={690}
-                        mt={{ sm: '-153', md: '-218'}}
+                        mt={-218}
                         w={[80, 180, 300]}
                         shadow="dark-lg"
                         borderRadius="xl"
                         textAlign="center"
                     >
                         <Text
-                            fontSize={{ base: '18', md: '25' }}
-                            mt={{ sm: '-7'}}
+                            fontSize={25}
+                            mt={-12}
                             color="#808191"
                         >
                             Storage Used:</Text>
-                            <Divider mt="6" />
+                            <Divider mt="4" />
                         <Text
                             mt={5}
-                            fontSize={{ base: '13', md: '20' }}
+                            fontSize={22}
                         >
                             100MB</Text>
                     </Box>
@@ -112,7 +112,7 @@ const Dashboard = () => {
                         shadow="dark-lg"
                     >
                         <Text
-                            fontSize={{ base: '18', md: '25' }}
+                            fontSize={25}
                             mt={-12}
                             color="#808191"
                         >
@@ -140,7 +140,7 @@ const Dashboard = () => {
                         shadow="dark-lg"
                     >
                         <Text
-                            fontSize={{ base: '18', md: '25' }}
+                            fontSize={25}
                             mt={-12}
                             color="#808191"
                         >
