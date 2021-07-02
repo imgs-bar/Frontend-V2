@@ -40,7 +40,7 @@ const Dashboard = () => {
 
             {/* <Box pos="fixed" top="5rem" left="20rem" align="center"> */}
             <Box ml={72} mt={85} >
-                <Heading>Welcome, Flame!</Heading>
+                <Heading fontSize={{ base: '20', md: '35', sm: '15' }} >Welcome, Flame!</Heading>
             </Box>
 
 

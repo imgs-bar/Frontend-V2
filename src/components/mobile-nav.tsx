@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useRef } from 'react';
 import {
   IconButton,
   Drawer,
@@ -33,8 +34,8 @@ export default function MobileNav() {
       >
         <DrawerOverlay zIndex="overlay" />
         <DrawerContent zIndex="drawer">
-          <DrawerBody p={0}>
-            <Sidebar w="full" />
+          <DrawerBody p={0} bg="#1D2432">
+            <Sidebar w="100%" />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

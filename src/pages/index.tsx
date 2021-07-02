@@ -302,20 +302,17 @@ const Home = () => {
         <Box textAlign="center" maxWidth="max-content">
           <Box
             bg="gray.700"
-            py="8"
+            py="10"
             mr={50}
             px={{ base: '4', md: '10' }}
-            shadow="base"
-            w={260}
-            rounded={{ sm: 'lg' }}
+            shadow="dark-lg"
+            w={[80, 180, 250]}
+            rounded={{ sm: 'lg', md: 'md', lg: 'lg' }}
           >
-            {/* <Heading>
-              Statistics
-            </Heading> */}
 
-            <Heading m={3}>Domains</Heading>
+            <Heading fontSize={{ base: '20', md: '30' }}  m={3}>Domains</Heading>
             <Divider />
-            <Text mt={5} fontSize="25">
+            <Text mt={5} fontSize={{ base: '15', md: '20' }} >
               1000
             </Text>
           </Box>
@@ -324,20 +321,20 @@ const Home = () => {
         <Box textAlign="center" maxWidth="max-content">
           <Box
             bg="gray.700"
-            py="8"
+            py="10"
             ml={50}
-            w={260}
+            w={[80, 180, 250]}
             px={{ base: '4', md: '10' }}
-            shadow="base"
+            shadow="dark-lg"
             rounded={{ sm: 'lg' }}
           >
             {/* <Heading>
               Statistics
             </Heading> */}
 
-            <Heading m={3}>Users</Heading>
+            <Heading m={3} fontSize={{ base: '20', md: '30' }}>Users</Heading>
             <Divider />
-            <Text mt={5} fontSize="25">
+            <Text mt={5} fontSize={{ base: '15', md: '20' }}>
               1000
             </Text>
           </Box>
@@ -346,11 +343,11 @@ const Home = () => {
         <Box textAlign="center" maxWidth="max-content">
           <Box
             bg="gray.700"
-            py="8"
-            ml={100}
-            w={260}
+            py="10"
+            ml={101}
+            w={[80, 180, 250]}
             px={{ base: '4', md: '10' }}
-            shadow="base"
+            shadow="dark-lg"
             // mt={5}
             // m={50}
             rounded={{ sm: 'lg' }}
@@ -359,9 +356,9 @@ const Home = () => {
               Statistics
             </Heading> */}
 
-            <Heading m={3}>Files</Heading>
+            <Heading m={3} fontSize={{ base: '20', md: '30' }}>Files</Heading>
             <Divider />
-            <Text mt={5} fontSize="25">
+            <Text mt={5} fontSize={{ base: '15', md: '20' }}>
               1000
             </Text>
           </Box>
