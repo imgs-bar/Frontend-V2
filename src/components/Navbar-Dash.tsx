@@ -1,13 +1,15 @@
 import NextLink from 'next/link';
-import { Button, Flex, useColorModeValue } from '@chakra-ui/react';
+import { Button, Flex, useColorModeValue, IconButton } from '@chakra-ui/react';
 // import ThemeToggle from '../theme-toggle';
 import MobileNav from './mobile-nav';
+import ThemeToggle from './theme-toggle';
 import { TITLE } from '../../utils/stuff';
 
 export default function Header() {
   const bgColor = useColorModeValue('white', 'gray.800');
 
   return (
+    <>
     <Flex
       as="header"
       position="fixed"
@@ -30,11 +32,12 @@ export default function Header() {
             </NextLink>
           </Flex>
           <Flex>
-            {/* <ThemeToggle mr={`-${3}`} /> */}
+            <ThemeToggle mr={`-${3}`} />
             <MobileNav />
           </Flex>
         </Flex>
       </Flex>
     </Flex>
+</>
   );
 }

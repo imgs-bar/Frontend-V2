@@ -6,9 +6,11 @@ import {
     Flex,
     Heading,
     useColorModeValue,
+    useColorMode,
     Center,
     Link,
     Text,
+    IconButton,
     Divider,
     Button,
     Box,
@@ -18,6 +20,7 @@ import React from 'react';
 import { createBreakpoints } from "@chakra-ui/theme-tools"
 
 const Dashboard = () => {
+    const { colorMode, toggleColorMode } = useColorMode();
     const color = useColorModeValue('telegram.500', 'telegram.400');
     const breakpoints = createBreakpoints({
     sm: "30em",
@@ -39,7 +42,6 @@ const Dashboard = () => {
             <Box ml={72} mt={85} >
                 <Heading>Welcome, Flame!</Heading>
             </Box>
-
 
 
                 {/* <Flex pos="fixed" top="12rem" left="17rem" align="center"> */}
@@ -104,7 +106,7 @@ const Dashboard = () => {
                         py="20"
                         ml={1060}
                         mt={-218}
-                        w={[100, 200, 300]}
+                        w={[80, 180, 300]}
                         borderRadius="xl"
                         textAlign="center"
                         shadow="dark-lg"
@@ -132,7 +134,7 @@ const Dashboard = () => {
                         py="20"
                         ml={1435}
                         mt={-218}
-                        w={[100, 200, 300]}
+                        w={[80, 180, 300]}
                         borderRadius="xl"
                         textAlign="center"
                         shadow="dark-lg"
