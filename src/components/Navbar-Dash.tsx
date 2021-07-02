@@ -1,9 +1,13 @@
 import NextLink from 'next/link';
-import { Button, Flex, useColorModeValue, IconButton } from '@chakra-ui/react';
+import { Button, Flex, useColorModeValue, IconButton, Avatar, WrapItem, Menu, MenuButton, MenuList, MenuItem, RLink
+} from '@chakra-ui/react';
 // import ThemeToggle from '../theme-toggle';
 import MobileNav from './mobile-nav';
 import ThemeToggle from './theme-toggle';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import { TITLE } from '../../utils/stuff';
+import { BiLogOut } from 'react-icons/bi'
+import { AiOutlineUser, AiOutlineProfile } from 'react-icons/ai'
 
 export default function Header() {
   const bgColor = useColorModeValue('white', 'gray.800');
@@ -32,8 +36,17 @@ export default function Header() {
             </NextLink>
           </Flex>
           <Flex>
-            <ThemeToggle mr={`-${3}`} />
-            <MobileNav />
+<Menu>
+  <MenuButton variant="solid" as={Button} rightIcon={<ChevronDownIcon />}>
+  <Avatar mt={0} size="sm" src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif" />
+
+  </MenuButton>
+  <MenuList>
+    <MenuItem icon={<AiOutlineUser />}>Account</MenuItem>
+    <MenuItem icon={<AiOutlineProfile />}>Profile</MenuItem>
+    <MenuItem icon={<BiLogOut />}>Logout</MenuItem>
+  </MenuList>
+</Menu>
           </Flex>
         </Flex>
       </Flex>
