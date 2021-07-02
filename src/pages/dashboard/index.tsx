@@ -97,12 +97,13 @@ const Dashboard = () => {
                 {/* </Flex> */}
 
 
-                <Flex pos="fixed" top="12rem" left="63rem" align="center">
+                {/* <Flex pos="fixed" top="12rem" left="63rem" align="center"> */}
                     <Box
                     flexShrink={0}
                         bg="gray.700"
                         py="20"
-                        ml={50}
+                        ml={1060}
+                        mt={-218}
                         w={[100, 200, 300]}
                         borderRadius="xl"
                         textAlign="center"
@@ -121,7 +122,7 @@ const Dashboard = () => {
                         >
                             100</Text>
                     </Box>
-                </Flex>
+                {/* </Flex> */}
 
 
                 <Flex pos="fixed" top="12rem" left="86rem" align="center">
