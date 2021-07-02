@@ -11,6 +11,7 @@ import {
     useColorModeValue
 } from '@chakra-ui/react';
 import { NavLink } from './nav-link';
+import { HiHome } from 'react-icons/hi';
 
 import { HamburgerIcon, SettingsIcon } from '@chakra-ui/icons'
   
@@ -28,8 +29,8 @@ import { HamburgerIcon, SettingsIcon } from '@chakra-ui/icons'
   function PageLinks() {
     return (
       <VStack w="full" spacing={1}>
-        <SidebarLink href="/dashboard" icon={HamburgerIcon}>
-          Dashboard
+        <SidebarLink href="/dashboard" icon={HiHome}>
+          Home
         </SidebarLink>
         <SidebarLink href="/dashboard/settings" icon={SettingsIcon}>
           Settings
@@ -57,7 +58,7 @@ import { HamburgerIcon, SettingsIcon } from '@chakra-ui/icons'
   
     return (
       <SidebarContainer bg={bgColor}>
-        <Flex w="full" align="center" h={16} p={3}>
+        <Flex w="full" align="center" h={16} p={3} as='nav'>
           <Flex boxSize="full" align="center" px={3}>
             <Flex boxSize="full" align="center">
               <Box
