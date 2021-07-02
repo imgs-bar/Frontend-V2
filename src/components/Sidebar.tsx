@@ -1,85 +1,93 @@
-import React, { useState } from 'react'
 import {
+    Box,
     Flex,
     Text,
-    IconButton,
-    Divider,
-    Avatar,
-    Heading
-} from '@chakra-ui/react'
-import { HamburgerIcon } from '@chakra-ui/icons'
-import NavItem from './SidebarItem'
-import {
-    FiHome,
-    FiSettings,
-    FiImage,
-    FiMail
-} from 'react-icons/fi';
-import { VscTools } from 'react-icons/vsc';
-import { RiVipDiamondLine } from 'react-icons/ri';
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
+    VStack,
+    useColorModeValue
+} from '@chakra-ui/react';
+import { NavLink } from './nav-link';
 
-
-export default function Sidebar() {
-    const [navSize, changeNavsize] = useState("large")
+import { HamburgerIcon, SettingsIcon } from '@chakra-ui/icons'
+  
+  const SidebarLink = ({ href, children, icon }) => (
+    <NavLink href={href}>
+      <Flex align="center">
+        <Box as={icon} mr={3} w={6} />
+        <Text fontSize="sm" fontWeight="medium">
+          {children}
+        </Text>
+      </Flex>
+    </NavLink>
+  );
+  
+  function PageLinks() {
     return (
-        <Flex
-            pos="sticky"
-            left="0"
-            h="100vh"
-            marginTop="0vh"
-            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.6)"
-            borderRadius={navSize == "small" ? "8px" : "10px"}
-            w={navSize == "small" ? "75px" : "200px"}
-            flexDir="column"
-            backgroundColor="#212938"
-            justifyContent="space-between"
+      <VStack w="full" spacing={1}>
+        <SidebarLink href="/dashboard" icon={HamburgerIcon}>
+          Dashboard
+        </SidebarLink>
+        <SidebarLink href="/dashboard/settings" icon={SettingsIcon}>
+          Settings
+        </SidebarLink>
+      </VStack>
+    );
+  }
+  
+  function SidebarContainer(props) {
+    return (
+      <Box
+        as="aside"
+        position="fixed"
+        top={0}
+        w={64}
+        insexX={0}
+        h="full"
+        {...props}
+      />
+    );
+  }
+  
+  export default function Sidebar(props) {
+    const bgColor = useColorModeValue('white', 'gray.800');
+  
+    return (
+      <SidebarContainer bg={bgColor}>
+        <Flex w="full" align="center" h={16} p={3}>
+          <Flex boxSize="full" align="center" px={3}>
+            <Flex boxSize="full" align="center">
+              <Box
+                // as={LogoMark}
+                h={8}
+                w="auto"
+                display={{ base: 'block', lg: 'none' }}
+              />
+  
+              <Box
+                // as={LogoOnDark}
+                h={8}
+                w="auto"
+                display={{ base: 'none', lg: 'block' }}
+              />
+            </Flex>
+          </Flex>
+        </Flex>
+        <VStack
+          as="nav"
+          aria-label="Main navigation"
+          position="relative"
+          h="calc(100vh - 4rem)"
+          p={3}
+          bg="#1D2432"
+          overflowY="auto"
+          {...props}
         >
-            <Flex
-                p="5%"
-                flexDir="column"
-                alignItems={navSize == "small" ? "center" : "flex-start"}
-                as="nav"
-            >
-                <IconButton
-                    background="none"
-                    mt={5}
-                    _hover={{ background: 'none' }}
-                    icon={<HamburgerIcon />}
-                    onClick={() => {
-                        if (navSize == "small")
-                            changeNavsize("large")
-                        else
-                            changeNavsize("small")
-                    }}
-                />
-                <NavItem navSize={navSize} icon={FiHome} title="Home" active />
-                <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
-                <NavItem navSize={navSize} icon={FiImage} title="Gallery" />
-                <NavItem navSize={navSize} icon={VscTools} title="Tools" />
-                <NavItem navSize={navSize} icon={RiVipDiamondLine} title="Premium" />
-                <br />
-                <Divider />
-                <NavItem navSize={navSize} icon={FiMail} title="Mail" />
-
-            </Flex>
-
-            <Flex
-                p="5%"
-                flexDir="column"
-                w="100%"
-                alignItems={navSize == "small" ? "center" : "flex-start"}
-                mb={4}
-            >
-                <Divider display={navSize == "small" ? "none" : "flex"} />
-                <Flex mt={4} align="center">
-                    <Avatar size="sm" src="https://images-ext-2.discordapp.net/external/1kqXcljgzshKaeJq-G40sur-TRBpnzSmlRIsAtSWW78/%3Fsize%3D256%26f%3D.gif/https/cdn.discordapp.com/avatars/417330353917657100/a_2e205a9df43893c196e73fcbe027d987.gif" />
-                    <Flex flexDir="column" ml={4} display={navSize == "small" ? "none" : "flex"}>
-                        <Heading as="h3" size="sm">Flame</Heading>
-                        <Text>Admin</Text>
-                    </Flex>
-                </Flex>
-
-            </Flex>
-        </Flex >
-    )
-}
+          <PageLinks />
+        </VStack>
+      </SidebarContainer>
+    );
+  }
