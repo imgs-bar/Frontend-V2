@@ -146,7 +146,7 @@ const Dashboard = () => {
                         >
                             Invites:</Text>
                             <Divider mt="4" />
-                        <Button mt={3.5} borderRadius="full" variant="outline">Manage Invites</Button>
+                        <Button mt={3} borderRadius="full" variant="outline">Manage Invites</Button>
                     </Box>
                 {/* </Flex> */}
             {/* </Box> */}
