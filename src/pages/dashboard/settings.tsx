@@ -104,7 +104,7 @@ const ok = () => {
           <br></br><br></br>
           
           {/* <Stack ml={10} align="stretch"> */}
-          <Box ml={10}>
+          {/* <Box ml={10}>
               <Text as="sub" color="gray.400" fontSize="20">URL Settings</Text>
               <br></br><br></br>
           <Tooltip bg="gray.600" color="gray.200" placement="left-start" label="Fake URL allows you to use any domain/text as your URL on discord.">Fake URL</Tooltip>
@@ -117,7 +117,7 @@ const ok = () => {
 
   <Tooltip bg="gray.600" color="gray.200" placement="left-start" label="Invisible File will hide the filename at the end of the link of an image.">Invisible File</Tooltip>
   <Switch ml={15} size="md" colorScheme="telegram" />
-  </Box>
+  </Box> */}
  
 {/* </Stack> */}
 

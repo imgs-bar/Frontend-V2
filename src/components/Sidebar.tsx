@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { NavLink } from './nav-link';
 import { HiHome } from 'react-icons/hi';
+import { AiFillPicture } from 'react-icons/ai';
 
 import { HamburgerIcon, SettingsIcon } from '@chakra-ui/icons'
   
@@ -34,6 +35,9 @@ import { HamburgerIcon, SettingsIcon } from '@chakra-ui/icons'
         </SidebarLink>
         <SidebarLink href="/dashboard/settings" icon={SettingsIcon}>
           Settings
+        </SidebarLink>
+        <SidebarLink href="/dashboard/gallery" icon={AiFillPicture}>
+          Gallery
         </SidebarLink>
       </VStack>
     );
