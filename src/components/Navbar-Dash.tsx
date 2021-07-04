@@ -42,7 +42,7 @@ export default function Header() {
 
   </MenuButton>
   <MenuList>
-    <MenuItem icon={<AiOutlineUser />}>Account</MenuItem>
+    <MenuItem onClick={() => location.href = "/dashboard/account" } icon={<AiOutlineUser />}>Account</MenuItem>
     <MenuItem icon={<AiOutlineProfile />}>Profile</MenuItem>
     <MenuItem icon={<BiLogOut />}>Logout</MenuItem>
   </MenuList>
