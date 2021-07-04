@@ -22,11 +22,21 @@ import {
     Stack,
     Switch,
     Tooltip,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
 }
     from '@chakra-ui/react';
     import { DownloadIcon } from '@chakra-ui/icons';
+    import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
 
 const ok = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   return (
       <>
       <Flex>
@@ -49,8 +59,6 @@ const ok = () => {
    borderRadius="md"
    h="35rem"
    mt={100}
-//    m="130"
-//    ml="-550"
    >
              <Heading fontSize={25} mt={30} ml={15}>Config</Heading>
       <Text fontSize={15} color="gray.400" mt={0} ml={15}>Download your configs</Text>
@@ -61,6 +69,7 @@ const ok = () => {
       borderRadius="lg"
       leftIcon={<DownloadIcon />}
       aria-label="Download a config"
+      onClick={onOpen}
       >
           Download
           </Button>
@@ -96,11 +105,45 @@ const ok = () => {
 
         <Button
         // mt={-69}
-        ml={165}
+        ml={266}
         mt={5}
+        w={150}
         >
             Embed Profile
         </Button>
+
+        <Button
+        // mt={-69}
+        ml={55}
+        mt={-70}
+        variant="solid"
+        // maxW={150}
+        w={150}
+        >
+            Regen Upload Key
+        </Button> 
+
+        <Button
+        // mt={-69}
+        ml={165}
+        mt={5}
+        variant="outline"
+        // maxW={150}
+        w={150}
+        >
+            Save
+        </Button>
+        <br></br>
+        {/* <Button
+        // mt={-69}
+        ml={50}
+        mt={5}
+        variant="solid"
+        // maxW={150}
+        w={150}
+        >
+            Regen Upload Key
+        </Button> */}
           <br></br><br></br>
           
           {/* <Stack ml={10} align="stretch"> */}
@@ -137,6 +180,105 @@ const ok = () => {
     </Container>
     </SimpleGrid>
    </VStack>
+
+
+<Flex>
+<Modal motionPreset="slideInBottom" onClose={onClose} isOpen={isOpen} isCentered>
+  <ModalOverlay />
+  <ModalContent>
+    <ModalHeader>Configs</ModalHeader>
+    <Divider />
+    <ModalCloseButton />
+    <ModalBody>
+    <Tabs isFitted>
+  <TabList>
+    <Tab>Image</Tab>
+    <Tab>Shortener</Tab>
+    <Tab>Pastes</Tab>
+  </TabList>
+
+  <TabPanels>
+    <TabPanel>
+    {/* <Container
+   bg="#374358"
+   borderRadius="md"
+   h="20rem"
+  //  mt={100}
+   > */}
+        <Button
+        // mt={-69}
+        ml={100}
+        mt={5}
+        variant="outline"
+        // maxW={150}
+        w={150}
+        >
+            ShareX
+        </Button>
+
+        <Button
+        // mt={-69}
+        ml={100}
+        mt={5}
+        variant="outline"
+        // maxW={150}
+        w={150}
+        >
+            ShareNix Raw
+        </Button>
+
+        <Button
+        // mt={-69}
+        ml={100}
+        mt={5}
+        variant="outline"
+        // maxW={150}
+        w={150}
+        >
+            ShareNix Inject
+        </Button>
+
+        <Button
+        // mt={-69}
+        ml={100}
+        mt={5}
+        variant="outline"
+        // maxW={150}
+        w={150}
+        >
+            KShare
+        </Button>
+
+        <Button
+        // mt={-69}
+        ml={100}
+        mt={5}
+        variant="outline"
+        // maxW={150}
+        w={150}
+        >
+            iOS Shortcut
+        </Button>
+        {/* </Container> */}
+    </TabPanel>
+    <TabPanel>
+      <p>two!</p>
+    </TabPanel>
+    <TabPanel>
+      <p>three!</p>
+    </TabPanel>
+  </TabPanels>
+
+  </Tabs>
+  <br />
+
+    </ModalBody>
+    <ModalFooter>
+      {/* <Button onClick={onClose}>Close</Button> */}
+    </ModalFooter>
+  </ModalContent>
+</Modal>
+</Flex>
 
 </>
   );
