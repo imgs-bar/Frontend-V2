@@ -35,13 +35,23 @@ import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import NextLink from 'next/link';
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from "@chakra-ui/react"
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const [display, changeDisplay] = useState('none');
   const toast = useToast()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const firstField = React.useRef()
 
   return (
     <>
@@ -205,15 +215,21 @@ const Home = () => {
         </Box>
       </Box>
 
-      <Stack direction="row" spacing={1}></Stack>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Login</ModalHeader>
-          <Divider />
-          <ModalCloseButton />
-          <ModalBody>
-            <Formik
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        initialFocusRef={firstField}
+        onClose={onClose}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader borderBottomWidth="1px">
+            Login
+          </DrawerHeader>
+
+          <DrawerBody>
+          <Formik
               initialValues={{ email: '', password: '' }}
               onSubmit={result => console.log(result)}
             >
@@ -249,10 +265,12 @@ const Home = () => {
                   <Link color="blue.300">Forgot Password?</Link>
                   <Center>
                     <Button
-                      mt={5}
+                      mb={10}
+                      mt={545}
                       colorScheme="gray"
                       type="submit"
                       variant="outline"
+                      w={500}
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
                       onClick={() =>
@@ -274,9 +292,9 @@ const Home = () => {
                   </Center>
                   <Center>
                     <Button
+                      w={500}
                       bg="#5865F2"
                       _hover={{ background: '#7289DA' }}
-                      mt={3}
                       isDisabled={isSubmitting}
                       // isLoading={isSubmitting}
                       leftIcon={<FaDiscord />}
@@ -288,9 +306,17 @@ const Home = () => {
                 </form>
               )}
             </Formik>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+          </DrawerBody>
+            <DrawerFooter borderTopWidth="1px">
+              </DrawerFooter>
+
+          {/* <DrawerFooter borderTopWidth="1px">
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </DrawerFooter> */}
+        </DrawerContent>
+      </Drawer>
 
       <Center>
         <Heading m={12}>
