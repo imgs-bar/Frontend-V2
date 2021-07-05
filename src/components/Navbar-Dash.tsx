@@ -3,7 +3,6 @@ import { Button, Flex, useColorModeValue, IconButton, Avatar, WrapItem, Menu, Me
 } from '@chakra-ui/react';
 // import ThemeToggle from '../theme-toggle';
 import MobileNav from './mobile-nav';
-import ThemeToggle from './theme-toggle';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { TITLE } from '../../utils/stuff';
 import { BiLogOut } from 'react-icons/bi'
@@ -37,6 +36,7 @@ export default function Header() {
           </Flex>
           <Flex>
 <Menu>
+  <MobileNav />
   <MenuButton variant="solid" as={Button} rightIcon={<ChevronDownIcon />}>
   <Avatar mt={0} size="sm" src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif" />
 

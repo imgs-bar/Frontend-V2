@@ -5,23 +5,12 @@ import Nav from '../../components/mobile-nav'
 import {
     Flex,
     Button,
-    Box,
+    Box, 
     VStack,
     Container,
     Heading,
     Text,
     Divider,
-    IconButton,
-    Select,
-    Input,
-    Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
 }
     from '@chakra-ui/react';
     import { DownloadIcon } from '@chakra-ui/icons';

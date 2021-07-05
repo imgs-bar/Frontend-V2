@@ -17,23 +17,13 @@ import {
   Divider,
   InputRightElement,
 } from '@chakra-ui/react';
-import { Stack } from '@chakra-ui/react';
 import { FaDiscord } from 'react-icons/fa';
 import { Button } from '@chakra-ui/react';
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-} from '@chakra-ui/react';
 import React from 'react';
 import { Formik } from 'formik';
 import { useColorMode } from '@chakra-ui/react';
 import { useState } from 'react';
 import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import { RiLockPasswordLine } from 'react-icons/ri';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import NextLink from 'next/link';
 import {
