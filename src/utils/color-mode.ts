@@ -1,7 +1,7 @@
-import { useColorMode as useChakraColorMode } from '@chakra-ui/react';
+import {useColorMode as useChakraColorMode} from '@chakra-ui/react';
 
 export default function useColorMode() {
-  const { colorMode, toggleColorMode } = useChakraColorMode();
+  const {colorMode, toggleColorMode} = useChakraColorMode();
 
   const isDarkMode = colorMode === 'dark';
   const isLightMode = colorMode === 'light';
@@ -9,7 +9,7 @@ export default function useColorMode() {
 
   const toggle = () => {
     toggleColorMode();
-    document.cookie = `colorMode=${newColorMode}`;
+    //document.cookie = `colorMode=${newColorMode}`;
   };
 
   return {
@@ -17,6 +17,6 @@ export default function useColorMode() {
     toggleColorMode: toggle,
     isDarkMode,
     isLightMode,
-    newColorMode
+    newColorMode,
   };
 }

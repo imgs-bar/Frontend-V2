@@ -64,7 +64,7 @@ const Register = () => {
                       <Input
                         name="password"
                         type="password"
-                        autoComplete="password"
+                        autoComplete="new-password"
                         placeholder="**********"
                         variant="filled"
                         required
@@ -76,6 +76,7 @@ const Register = () => {
                         name="invite"
                         placeholder="AAAAAAAAAAAAA"
                         variant="filled"
+                        autoComplete="off"
                         required
                       />
                     </FormControl>

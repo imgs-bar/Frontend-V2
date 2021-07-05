@@ -17,14 +17,14 @@ import {
   Divider,
   InputRightElement,
 } from '@chakra-ui/react';
-import { FaDiscord } from 'react-icons/fa';
-import { Button } from '@chakra-ui/react';
+import {FaDiscord} from 'react-icons/fa';
+import {Button} from '@chakra-ui/react';
 import React from 'react';
-import { Formik } from 'formik';
-import { useColorMode } from '@chakra-ui/react';
-import { useState } from 'react';
-import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
+import {Formik} from 'formik';
+import {useColorMode} from '@chakra-ui/react';
+import {useState} from 'react';
+import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
+import {AiOutlineUser, AiOutlineLock} from 'react-icons/ai';
 import NextLink from 'next/link';
 import {
   Drawer,
@@ -34,18 +34,50 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from "@chakra-ui/react"
+} from '@chakra-ui/react';
+import {getStats, login} from '../api/api';
+import {Stats, User} from '../../typings';
+import {useUser} from '../components/user';
+import {useRouter} from 'next/dist/client/router';
+import {NextPage} from 'next';
 
-const Home = () => {
+interface Props {
+  stats?: Stats;
+}
+
+const Home: NextPage<Props> = ({stats}) => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
-  const { colorMode, toggleColorMode } = useColorMode();
+  const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
-  const toast = useToast()
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const firstField = React.useRef()
-  const [show, setShow] = React.useState(false)
-  const handleClick = () => setShow(!show)
+  const toast = useToast();
+  const {isOpen, onOpen, onClose} = useDisclosure();
+  const firstField = React.useRef();
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+  const router = useRouter();
 
+  const {user, setUser} = useUser();
+
+  const loginLocal = async (username: string, password: string) => {
+    try {
+      const user = await login(username, password);
+      setUser(user);
+
+      router.push('/dashboard');
+    } catch (err) {
+      if (err.response.data.message === 'Unauthorized') {
+        toast({
+          description: 'Invalid username / password',
+          status: 'error',
+        });
+      } else {
+        toast({
+          description: err.response.data.message,
+          status: 'error',
+        });
+      }
+    }
+  };
 
   return (
     <>
@@ -218,18 +250,18 @@ const Home = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="1px">
-            Login
-          </DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">Login</DrawerHeader>
 
           <DrawerBody>
-          <Formik
-              initialValues={{ email: '', password: '' }}
-              onSubmit={result => console.log(result)}
+            <Formik
+              initialValues={{username: '', password: ''}}
+              onSubmit={async result =>
+                loginLocal(result.username, result.password)
+              }
             >
-              {({ handleSubmit, isSubmitting, handleChange }) => (
+              {({handleSubmit, isSubmitting, handleChange}) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>
-                  <FormControl id="username" isRequired>
+                  <FormControl id="username" isRequired mt={5}>
                     <FormLabel>Email/Username:</FormLabel>
                     <InputGroup>
                       <InputLeftElement children={<AiOutlineUser />} />
@@ -239,6 +271,7 @@ const Home = () => {
                         min={3}
                         variant="filled"
                         placeholder="email@example.com"
+                        autoComplete="username"
                         mb={5}
                       />
                     </InputGroup>
@@ -249,42 +282,31 @@ const Home = () => {
                       <InputLeftElement children={<AiOutlineLock />} />
                       <Input
                         name="password"
-                        type={show ? "text" : "password"}
+                        type={show ? 'text' : 'password'}
                         variant="filled"
                         min={5}
                         autoComplete="password"
                         placeholder="**********"
                         required
                       />
-                            <InputRightElement width="4.5rem">
-        <Button h="1.75rem" size="sm" onClick={handleClick}>
-          {show ? "Hide" : "Show"}
-        </Button>
-      </InputRightElement>
+                      <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                          {show ? 'Hide' : 'Show'}
+                        </Button>
+                      </InputRightElement>
                     </InputGroup>
                   </FormControl>
                   <Link color="blue.300">Forgot Password?</Link>
                   <Center>
                     <Button
-                      mb={10}
-                      mt={545}
+                      mb={5}
+                      mt={400}
                       colorScheme="gray"
                       type="submit"
                       variant="outline"
                       w={500}
                       isDisabled={isSubmitting}
                       isLoading={isSubmitting}
-                      onClick={() =>
-                        toast({
-                          title: "This is a preview",
-                          description: "nothing good will work ok retard",
-                          status: "info",
-                          duration: 7000,
-                          isClosable: false,
-                          variant: "left-accent",
-                          position: "top",
-                        })
-                      }
                     >
                       ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏
                       ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎Login‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
@@ -295,11 +317,22 @@ const Home = () => {
                     <Button
                       w={500}
                       bg="#5865F2"
-                      _hover={{ background: '#7289DA' }}
+                      _hover={{background: '#7289DA'}}
                       isDisabled={isSubmitting}
                       // isLoading={isSubmitting}
                       leftIcon={<FaDiscord />}
                       mb={5}
+                      onClick={() =>
+                        toast({
+                          title: 'Discord sux',
+                          description: 'I cba coding this lol',
+                          status: 'info',
+                          duration: 7000,
+                          isClosable: false,
+                          variant: 'left-accent',
+                          position: 'top',
+                        })
+                      }
                     >
                       Login with Discord
                     </Button>
@@ -308,8 +341,7 @@ const Home = () => {
               )}
             </Formik>
           </DrawerBody>
-            <DrawerFooter borderTopWidth="1px">
-              </DrawerFooter>
+          <DrawerFooter borderTopWidth="1px"></DrawerFooter>
 
           {/* <DrawerFooter borderTopWidth="1px">
             <Button variant="outline" mr={3} onClick={onClose}>
@@ -331,16 +363,17 @@ const Home = () => {
             bg="gray.700"
             py="10"
             mr={50}
-            px={{ base: '4', md: '10' }}
+            px={{base: '4', md: '10'}}
             shadow="dark-lg"
             w={[80, 180, 250]}
-            rounded={{ sm: 'lg', md: 'md', lg: 'lg' }}
+            rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
           >
-
-            <Heading fontSize={{ base: '20', md: '30' }}  m={3}>Domains</Heading>
+            <Heading fontSize={{base: '20', md: '30'}} m={3}>
+              Domains
+            </Heading>
             <Divider />
-            <Text mt={5} fontSize={{ base: '15', md: '20' }} >
-              1000
+            <Text mt={5} fontSize={{base: '15', md: '20'}}>
+              TODO
             </Text>
           </Box>
         </Box>
@@ -351,18 +384,20 @@ const Home = () => {
             py="10"
             ml={50}
             w={[80, 180, 250]}
-            px={{ base: '4', md: '10' }}
+            px={{base: '4', md: '10'}}
             shadow="dark-lg"
-            rounded={{ sm: 'lg' }}
+            rounded={{sm: 'lg'}}
           >
             {/* <Heading>
               Statistics
             </Heading> */}
 
-            <Heading m={3} fontSize={{ base: '20', md: '30' }}>Users</Heading>
+            <Heading m={3} fontSize={{base: '20', md: '30'}}>
+              Users
+            </Heading>
             <Divider />
-            <Text mt={5} fontSize={{ base: '15', md: '20' }}>
-              1000
+            <Text mt={5} fontSize={{base: '15', md: '20'}}>
+              {stats ? stats.users : "Couldn't fetch statistics"}
             </Text>
           </Box>
         </Box>
@@ -373,20 +408,22 @@ const Home = () => {
             py="10"
             ml={101}
             w={[80, 180, 250]}
-            px={{ base: '4', md: '10' }}
+            px={{base: '4', md: '10'}}
             shadow="dark-lg"
             // mt={5}
             // m={50}
-            rounded={{ sm: 'lg' }}
+            rounded={{sm: 'lg'}}
           >
             {/* <Heading>
               Statistics
             </Heading> */}
 
-            <Heading m={3} fontSize={{ base: '20', md: '30' }}>Files</Heading>
+            <Heading m={3} fontSize={{base: '20', md: '30'}}>
+              Files
+            </Heading>
             <Divider />
-            <Text mt={5} fontSize={{ base: '15', md: '20' }}>
-              1000
+            <Text mt={5} fontSize={{base: '15', md: '20'}}>
+              {stats ? stats.files : "Couldn't fetch statistics"}
             </Text>
           </Box>
         </Box>
@@ -397,7 +434,9 @@ const Home = () => {
   );
 };
 
+Home.getInitialProps = async ({req}) => {
+  const stats = await getStats();
+  return {stats};
+};
+
 export default Home;
-function changeDisplay(arg0: string): void {
-  throw new Error('Function not implemented.');
-}
