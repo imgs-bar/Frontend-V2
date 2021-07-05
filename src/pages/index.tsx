@@ -15,6 +15,7 @@ import {
   InputLeftElement,
   IconButton,
   Divider,
+  InputRightElement,
 } from '@chakra-ui/react';
 import { Stack } from '@chakra-ui/react';
 import { FaDiscord } from 'react-icons/fa';
@@ -52,6 +53,9 @@ const Home = () => {
   const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const firstField = React.useRef()
+  const [show, setShow] = React.useState(false)
+  const handleClick = () => setShow(!show)
+
 
   return (
     <>
@@ -242,6 +246,7 @@ const Home = () => {
                       <Input
                         name="username"
                         required
+                        min={3}
                         variant="filled"
                         placeholder="email@example.com"
                         mb={5}
@@ -254,12 +259,18 @@ const Home = () => {
                       <InputLeftElement children={<AiOutlineLock />} />
                       <Input
                         name="password"
-                        type="password"
+                        type={show ? "text" : "password"}
                         variant="filled"
+                        min={5}
                         autoComplete="password"
                         placeholder="**********"
                         required
                       />
+                            <InputRightElement width="4.5rem">
+        <Button h="1.75rem" size="sm" onClick={handleClick}>
+          {show ? "Hide" : "Show"}
+        </Button>
+      </InputRightElement>
                     </InputGroup>
                   </FormControl>
                   <Link color="blue.300">Forgot Password?</Link>
