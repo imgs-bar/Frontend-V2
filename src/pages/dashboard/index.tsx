@@ -14,9 +14,14 @@ import {
   SimpleGrid,
 } from '@chakra-ui/react';
 import {DownloadIcon} from '@chakra-ui/icons';
+import {useUser} from '../../components/user';
+import {useRouter} from 'next/router';
 
-const ok = () => {
-  return (
+const Dashboard = () => {
+  const {user} = useUser();
+  const router = useRouter();
+
+  return user ? (
     <>
       <Flex>
         <Sidebar />
@@ -145,7 +150,9 @@ const ok = () => {
         </Container>
       </VStack>
     </>
+  ) : (
+    router.push('/')
   );
 };
 
-export default ok;
+export default Dashboard;
