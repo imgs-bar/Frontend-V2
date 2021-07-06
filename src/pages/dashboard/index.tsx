@@ -30,6 +30,12 @@ const Dashboard = () => {
     '2xl': '96em',
   });
 
+  useEffect(() => {
+    if (!user) {
+      router.push('/');
+    }
+  }, []);
+
   return user ? (
     <>
       <Flex>
@@ -138,8 +144,6 @@ const Dashboard = () => {
         <Heading>Gallery</Heading>
       </Box>
     </>
-  ) : (
-    router.push('/')
-  );
+  ) : null;
 };
 export default Dashboard;
