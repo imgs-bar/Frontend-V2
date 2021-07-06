@@ -1,18 +1,17 @@
-
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 import {
   IconButton,
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react';
 import Sidebar from './Sidebar';
-import { HamburgerIcon } from '@chakra-ui/icons'
+import {HamburgerIcon} from '@chakra-ui/icons';
 
 export default function MobileNav() {
-  const { isOpen, onToggle, onClose } = useDisclosure();
+  const {isOpen, onToggle, onClose} = useDisclosure();
   const btnRef = React.useRef();
 
   return (

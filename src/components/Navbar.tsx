@@ -5,13 +5,13 @@ import {
   Button,
   Heading,
 } from '@chakra-ui/react';
-import { useState } from 'react';
-import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import {useState} from 'react';
+import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
 import NextLink from 'next/link';
 import Link from 'next/link';
 
 const Navbar = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
   return (
     <Flex>
