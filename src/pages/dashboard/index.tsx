@@ -20,7 +20,7 @@ const ok = () => {
   return (
       <>
       <Flex>
-          {/* <Sidebar /> */}
+          <Sidebar />
           <Navbar />
           <Nav />
       </Flex>
