@@ -435,8 +435,12 @@ const Home: NextPage<Props> = ({stats}) => {
 };
 
 Home.getInitialProps = async ({req}) => {
-  const stats = await getStats();
-  return {stats};
+  try {
+    const stats = await getStats();
+    return {stats};
+  } catch (err) {
+    return {stats: null};
+  }
 };
 
 export default Home;

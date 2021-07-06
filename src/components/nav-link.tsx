@@ -1,9 +1,9 @@
-import React, { cloneElement, forwardRef } from 'react';
-import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
+import React, {cloneElement, forwardRef} from 'react';
+import {Box, Flex, useColorModeValue} from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 
-const InternalLink = ({ children, ...props }) => {
+const InternalLink = ({children, ...props}) => {
   const router = useRouter();
   let isActive = false;
 
@@ -18,7 +18,7 @@ const InternalLink = ({ children, ...props }) => {
   );
 };
 
-export const A = forwardRef(({ children, icon, ...props }, ref) => {
+export const A = forwardRef(({children, icon, ...props}, ref) => {
   const color = useColorModeValue('gray.500', 'gray.400');
 
   return (
@@ -34,17 +34,17 @@ export const A = forwardRef(({ children, icon, ...props }, ref) => {
       color={color}
       borderRadius="md"
       outline="none"
-      _focus={{ shadow: 'outline' }}
-      _notFirst={{ mt: 1 }}
+      _focus={{shadow: 'outline'}}
+      _notFirst={{mt: 1}}
       {...props}
     >
-      {icon && cloneElement(icon, { mr: 3 })}
+      {icon && cloneElement(icon, {mr: 3})}
       <Box w="full">{children}</Box>
     </Flex>
   );
 });
 
-export const NavLink = forwardRef(({ href, ...props }, ref) => {
+export const NavLink = forwardRef(({href, ...props}, ref) => {
   const hoverColor = useColorModeValue('gray.900', 'white');
   const hoverBg = useColorModeValue('gray.100', 'gray.700');
   const activeColor = useColorModeValue('gray.500', 'white');
@@ -52,18 +52,18 @@ export const NavLink = forwardRef(({ href, ...props }, ref) => {
 
   return (
     <InternalLink href={href}>
-      {(isActive) => (
+      {isActive => (
         <A
           ref={ref}
           aria-current={isActive ? 'page' : undefined}
           _hover={{
             color: hoverColor,
-            bg: hoverBg
+            bg: hoverBg,
           }}
           {...(isActive && {
             bg: activeBg,
             color: activeColor,
-            _hover: {}
+            _hover: {},
           })}
           {...props}
         />

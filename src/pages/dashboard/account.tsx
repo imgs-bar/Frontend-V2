@@ -53,7 +53,7 @@ const ok = () => {
     {/* <Heading fontSize={25} mt={30} ml={15}>Profile</Heading> */}
       {/* <Text fontSize={15} color="gray.400" mt={0} ml={15}>Manage your profile settings</Text> */}
     <br></br>
-    <Avatar name="Flame" ml={655} mt={0} bg="black" shadow="dark-lg" size="2xl" src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif" />
+    <Avatar name="Flame" ml={655} mt={0} bg="black" shadow="dark-lg" bg="none" size="2xl" src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif" />
     <Text fontSize={20} ml={690} mt={5}>Flame (1)</Text>
     <Text fontSize={15} ml={650} color="gray.400" mt={5}>Your plan: Premium</Text>
     <Stack mt={10} spacing={8}>
