@@ -149,10 +149,11 @@ const Dashboard = () => {
           {/* </SimpleGrid> */}
         </Container>
       </VStack>
+      
     </>
-  ) : (
-    router.push('/')
-  );
-};
+      ) : (
+        router.push('/')
+      );
+    };
 
 export default Dashboard;
