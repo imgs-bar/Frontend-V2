@@ -18,7 +18,7 @@ const ok = () => {
   return (
     <>
       <Flex>
-        <Sidebar />
+      <Sidebar display={['none', null, 'flex']} w={64} />
         <Navbar />
         <Nav />
       </Flex>
