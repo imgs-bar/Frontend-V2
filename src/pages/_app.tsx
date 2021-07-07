@@ -15,7 +15,6 @@ function MyApp({Component, pageProps}: AppProps) {
     const getUserInfo = async () => {
       try {
         const status = await getAuthStatus();
-        console.log(status);
         setUser(status);
       } catch (err) {
         setUser(null);

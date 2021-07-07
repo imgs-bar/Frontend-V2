@@ -87,7 +87,6 @@ const Home = () => {
 
   useEffect(() => {
     const fetchStats = () => {
-      console.log(user);
       getStats()
         .then(stats => {
           setStats(stats);
