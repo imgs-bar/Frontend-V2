@@ -53,7 +53,7 @@ const Home = () => {
   const firstField = React.useRef();
   const [show, setShow] = React.useState(false);
   const [statsLoaded, setStatsLoaded] = React.useState(false);
-  const [stats, setStats] = React.useState(null);
+  const [stats, setStats] = React.useState<Stats>(null);
 
   const handleClick = () => setShow(!show);
   const router = useRouter();

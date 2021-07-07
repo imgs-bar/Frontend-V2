@@ -10,12 +10,13 @@ import {getAuthStatus} from '../api/api';
 
 function MyApp({Component, pageProps}: AppProps) {
   const [user, setUser] = useState<User>(null);
+
   useEffect(() => {
     const getUserInfo = async () => {
       try {
-        const user = await getAuthStatus();
-        console.log(user);
-        setUser(user);
+        const status = await getAuthStatus();
+        console.log(status);
+        setUser(status);
       } catch (err) {
         console.log(err);
       }
