@@ -97,7 +97,7 @@ const Home = () => {
           setStats(null);
         });
     };
-    setInterval(fetchStats, 1000);
+    setInterval(fetchStats, 10000);
   }, []);
 
   return (
