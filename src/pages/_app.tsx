@@ -20,7 +20,7 @@ function MyApp({Component, pageProps}: AppProps) {
         setUser(null);
       }
     };
-    getUserInfo();
+    if (!user) getUserInfo();
   });
 
   return (
