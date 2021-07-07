@@ -1,8 +1,8 @@
 import '../styles/globals.css';
-import {ChakraProvider} from '@chakra-ui/react';
+import {ChakraProvider, Skeleton} from '@chakra-ui/react';
 import type {AppProps} from 'next/app';
 import theme from '../styles/theme';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {User} from '../../typings';
 import {UserProvider, useUser} from '../components/user';
 import {useEffect} from 'react';
@@ -24,14 +24,18 @@ function MyApp({Component, pageProps}: AppProps) {
     if (!user) getUserInfo();
   });
 
-  return user !== undefined ? (
+  return (
     <>
       <ChakraProvider theme={theme}>
-        <UserProvider value={{user, setUser}}>
-          <Component {...pageProps} />
-        </UserProvider>
+        {user !== undefined ? (
+          <UserProvider value={{user, setUser}}>
+            <Component {...pageProps} />
+          </UserProvider>
+        ) : (
+          <Skeleton height="max-content" />
+        )}
       </ChakraProvider>
     </>
-  ) : null;
+  );
 }
 export default MyApp;
