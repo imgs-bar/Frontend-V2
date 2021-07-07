@@ -87,6 +87,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchStats = () => {
+      console.log(user);
       getStats()
         .then(stats => {
           setStats(stats);
@@ -97,6 +98,7 @@ const Home = () => {
           setStats(null);
         });
     };
+    fetchStats();
     setInterval(fetchStats, 10000);
   }, []);
 
