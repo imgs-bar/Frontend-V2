@@ -1,4 +1,5 @@
 import axios from 'axios';
+import console from 'console';
 import {User, Stats} from '../../typings';
 
 const BASE_URL = 'https://betaapi.imgs.bar';
@@ -36,5 +37,6 @@ export async function getAuthStatus(): Promise<User> {
   const data = await axios.get(`${BASE_URL}/v2/auth`, {
     withCredentials: true,
   });
+  console.log(data.data);
   return data.data.user;
 }

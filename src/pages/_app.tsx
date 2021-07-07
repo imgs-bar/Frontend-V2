@@ -18,6 +18,7 @@ function MyApp({Component, pageProps}: AppProps) {
         setUser(user);
       } catch (err) {
         setUser(null);
+        console.log(err);
       }
     };
     if (!user) getUserInfo();
