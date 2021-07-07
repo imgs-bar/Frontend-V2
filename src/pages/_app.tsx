@@ -9,12 +9,13 @@ import {useEffect} from 'react';
 import {getAuthStatus} from '../api/api';
 
 function MyApp({Component, pageProps}: AppProps) {
-  const [user, setUser] = useState<User>(undefined);
+  const [user, setUser] = useState<User>(null);
 
   useEffect(() => {
     const getUserInfo = async () => {
       try {
         const user = await getAuthStatus();
+        console.log(user);
         setUser(user);
       } catch (err) {
         setUser(null);
