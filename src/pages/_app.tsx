@@ -4,13 +4,13 @@ import type {AppProps} from 'next/app';
 import theme from '../styles/theme';
 import {useState} from 'react';
 import {User} from '../../typings';
-import {UserProvider} from '../components/user';
+import {UserProvider, useUser} from '../components/user';
 import {useEffect} from 'react';
 import {getAuthStatus} from '../api/api';
 
 function MyApp({Component, pageProps}: AppProps) {
-  const [user, setUser] = useState<User>(null);
-
+  const [user] = useState<User>(null);
+  const {setUser} = useUser();
   useEffect(() => {
     const getUserInfo = async () => {
       try {
