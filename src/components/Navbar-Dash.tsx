@@ -3,14 +3,11 @@ import {
   Button,
   Flex,
   useColorModeValue,
-  IconButton,
   Avatar,
-  WrapItem,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  RLink,
 } from '@chakra-ui/react';
 // import ThemeToggle from '../theme-toggle';
 import MobileNav from './mobile-nav';

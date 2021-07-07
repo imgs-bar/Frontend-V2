@@ -1,7 +1,7 @@
 import {Box, Heading, Text} from '@chakra-ui/react';
 import {Button} from '@chakra-ui/react';
 
-const ok = () => {
+const Error = () => {
   return (
     <Box textAlign="center" m={400} minWidth={250}>
       <Heading>404</Heading>
@@ -22,4 +22,4 @@ const ok = () => {
   );
 };
 
-export default ok;
+export default Error;

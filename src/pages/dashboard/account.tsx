@@ -5,18 +5,14 @@ import Nav from '../../components/mobile-nav';
 import {
   Flex,
   Button,
-  Box,
   Container,
   Text,
   Divider,
   Input,
-  Switch,
   Stack,
   InputGroup,
-  Tooltip,
   Avatar,
 } from '@chakra-ui/react';
-import {DownloadIcon} from '@chakra-ui/icons';
 import {Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react';
 
 const ok = () => {

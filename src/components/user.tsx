@@ -1,5 +1,6 @@
 import {useContext, createContext} from 'react';
-import {User, IUserContext} from '../../typings';
+// import {User, IUserContext} from '../../typings';
+import {IUserContext} from '../../typings';
 
 const UserContext = createContext(null);
 

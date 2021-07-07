@@ -36,7 +36,7 @@ import {
   DrawerCloseButton,
 } from '@chakra-ui/react';
 import {getStats, login} from '../api/api';
-import {Stats, User} from '../../typings';
+import {Stats} from '../../typings';
 import {useUser} from '../components/user';
 import {useRouter} from 'next/dist/client/router';
 import {NextPage} from 'next';

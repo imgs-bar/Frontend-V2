@@ -1,10 +1,7 @@
 import {Box, Heading, Text, Link, Button} from '@chakra-ui/react';
 import {
-  List,
   ListItem,
-  ListIcon,
   OrderedList,
-  UnorderedList,
 } from '@chakra-ui/react';
 
 const ok = () => {

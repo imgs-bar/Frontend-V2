@@ -5,7 +5,6 @@ import Nav from '../../components/mobile-nav';
 import {
   Flex,
   Button,
-  Box,
   VStack,
   Container,
   Heading,
@@ -14,12 +13,6 @@ import {
   Select,
   Input,
   SimpleGrid,
-  Center,
-  Checkbox,
-  CheckboxGroup,
-  Stack,
-  Switch,
-  Tooltip,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -32,7 +25,7 @@ import {
 import {DownloadIcon} from '@chakra-ui/icons';
 import {Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react';
 
-const ok = () => {
+const Settings = () => {
   const {isOpen, onOpen, onClose} = useDisclosure();
   return (
     <>
@@ -286,4 +279,4 @@ const ok = () => {
   );
 };
 
-export default ok;
+export default Settings;

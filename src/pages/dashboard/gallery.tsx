@@ -4,17 +4,14 @@ import Nav from '../../components/mobile-nav';
 
 import {
   Flex,
-  Button,
-  Box,
   VStack,
   Container,
   Heading,
   Text,
   Divider,
 } from '@chakra-ui/react';
-import {DownloadIcon} from '@chakra-ui/icons';
 
-const ok = () => {
+const Gallery = () => {
   return (
     <>
       <Flex>
@@ -66,4 +63,4 @@ const ok = () => {
   );
 };
 
-export default ok;
+export default Gallery;

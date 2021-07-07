@@ -2,11 +2,6 @@ import {
   Box,
   Flex,
   Text,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -14,7 +9,7 @@ import {NavLink} from './nav-link';
 import {HiHome} from 'react-icons/hi';
 import {AiFillPicture} from 'react-icons/ai';
 
-import {HamburgerIcon, SettingsIcon} from '@chakra-ui/icons';
+import {SettingsIcon} from '@chakra-ui/icons';
 
 const SidebarLink = ({href, children, icon}) => (
   <NavLink href={href}>
