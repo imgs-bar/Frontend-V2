@@ -5,9 +5,23 @@ import theme from '../styles/theme';
 import {useState} from 'react';
 import {User} from '../../typings';
 import {UserProvider} from '../components/user';
+import {useEffect} from 'react';
+import {getAuthStatus} from '../api/api';
 
 function MyApp({Component, pageProps}: AppProps) {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User>(undefined);
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        const user = await getAuthStatus();
+        setUser(user);
+      } catch (err) {
+        setUser(null);
+      }
+    };
+    getUserInfo();
+  });
 
   return (
     <>

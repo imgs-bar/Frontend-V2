@@ -16,10 +16,13 @@ import {
   IconButton,
   Divider,
   InputRightElement,
+  Skeleton,
+  Checkbox,
+  Stack,
 } from '@chakra-ui/react';
 import {FaDiscord} from 'react-icons/fa';
 import {Button} from '@chakra-ui/react';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Formik} from 'formik';
 import {useColorMode} from '@chakra-ui/react';
 import {useState} from 'react';
@@ -41,11 +44,7 @@ import {useUser} from '../components/user';
 import {useRouter} from 'next/dist/client/router';
 import {NextPage} from 'next';
 
-interface Props {
-  stats?: Stats;
-}
-
-const Home: NextPage<Props> = ({stats}) => {
+const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
   const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
@@ -53,14 +52,21 @@ const Home: NextPage<Props> = ({stats}) => {
   const {isOpen, onOpen, onClose} = useDisclosure();
   const firstField = React.useRef();
   const [show, setShow] = React.useState(false);
+  const [statsLoaded, setStatsLoaded] = React.useState(false);
+  const [stats, setStats] = React.useState(null);
+
   const handleClick = () => setShow(!show);
   const router = useRouter();
 
   const {user, setUser} = useUser();
 
-  const loginLocal = async (username: string, password: string) => {
+  const loginLocal = async (
+    username: string,
+    password: string,
+    rememberMe: boolean
+  ) => {
     try {
-      const user = await login(username, password);
+      const user = await login(username, password, rememberMe);
       setUser(user);
 
       router.push('/dashboard');
@@ -78,6 +84,18 @@ const Home: NextPage<Props> = ({stats}) => {
       }
     }
   };
+
+  useEffect(() => {
+    getStats()
+      .then(stats => {
+        setStats(stats);
+        setStatsLoaded(true);
+      })
+      .catch(err => {
+        setStatsLoaded(false);
+        setStats(null);
+      });
+  }, []);
 
   return (
     <>
@@ -254,9 +272,9 @@ const Home: NextPage<Props> = ({stats}) => {
 
           <DrawerBody>
             <Formik
-              initialValues={{username: '', password: ''}}
+              initialValues={{username: '', password: '', rememberMe: true}}
               onSubmit={async result =>
-                loginLocal(result.username, result.password)
+                loginLocal(result.username, result.password, result.rememberMe)
               }
             >
               {({handleSubmit, isSubmitting, handleChange}) => (
@@ -296,7 +314,16 @@ const Home: NextPage<Props> = ({stats}) => {
                       </InputRightElement>
                     </InputGroup>
                   </FormControl>
-                  <Link color="blue.300">Forgot Password?</Link>
+                  <Stack
+                    direction={{base: 'column', sm: 'row'}}
+                    align={'start'}
+                    justify={'space-between'}
+                  >
+                    <Checkbox defaultChecked name="rememberMe">
+                      Remember me
+                    </Checkbox>
+                    <Link color={'blue.300'}>Forgot password?</Link>
+                  </Stack>
                   <Center>
                     <Button
                       mb={5}
@@ -397,7 +424,9 @@ const Home: NextPage<Props> = ({stats}) => {
             </Heading>
             <Divider />
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
-              {stats ? stats.users : "Couldn't fetch statistics"}
+              <Skeleton isLoaded={statsLoaded}>
+                {stats ? stats.users : 'Loading...'}
+              </Skeleton>
             </Text>
           </Box>
         </Box>
@@ -423,24 +452,15 @@ const Home: NextPage<Props> = ({stats}) => {
             </Heading>
             <Divider />
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
-              {stats ? stats.files : "Couldn't fetch statistics"}
+              <Skeleton isLoaded={statsLoaded}>
+                {stats ? stats.files : 'Loading...'}
+              </Skeleton>
             </Text>
           </Box>
         </Box>
       </Center>
-
-      <br></br>
     </>
   );
-};
-
-Home.getInitialProps = async ({req}) => {
-  try {
-    const stats = await getStats();
-    return {stats};
-  } catch (err) {
-    return {stats: null};
-  }
 };
 
 export default Home;
