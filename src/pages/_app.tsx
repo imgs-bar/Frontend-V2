@@ -9,7 +9,7 @@ import {useEffect} from 'react';
 import {getAuthStatus} from '../api/api';
 
 function MyApp({Component, pageProps}: AppProps) {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User>(undefined);
 
   useEffect(() => {
     const getUserInfo = async () => {
@@ -18,13 +18,14 @@ function MyApp({Component, pageProps}: AppProps) {
         console.log(status);
         setUser(status);
       } catch (err) {
+        setUser(null);
         console.log(err);
       }
     };
     if (!user) getUserInfo();
   });
 
-  return (
+  return user !== undefined ? (
     <>
       <ChakraProvider theme={theme}>
         <UserProvider value={{user, setUser}}>
@@ -32,6 +33,6 @@ function MyApp({Component, pageProps}: AppProps) {
         </UserProvider>
       </ChakraProvider>
     </>
-  );
+  ) : null;
 }
 export default MyApp;
