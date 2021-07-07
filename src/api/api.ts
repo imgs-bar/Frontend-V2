@@ -36,5 +36,5 @@ export async function getAuthStatus(): Promise<User> {
   const data = await axios.get(`${BASE_URL}/v2/auth`, {
     withCredentials: true,
   });
-  return data.data;
+  return data.data.user;
 }
