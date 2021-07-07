@@ -101,6 +101,12 @@ const Home = () => {
     setInterval(fetchStats, 10000);
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  }, []);
+
   return (
     <>
       <Flex>
