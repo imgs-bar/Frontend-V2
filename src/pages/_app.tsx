@@ -9,8 +9,7 @@ import {useEffect} from 'react';
 import {getAuthStatus} from '../api/api';
 
 function MyApp({Component, pageProps}: AppProps) {
-  const [user] = useState<User>(null);
-  const {setUser} = useUser();
+  const [user, setUser] = useState<User>(null);
   useEffect(() => {
     const getUserInfo = async () => {
       try {
@@ -18,7 +17,6 @@ function MyApp({Component, pageProps}: AppProps) {
         console.log(user);
         setUser(user);
       } catch (err) {
-        setUser(null);
         console.log(err);
       }
     };
