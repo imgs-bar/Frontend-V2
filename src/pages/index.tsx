@@ -109,6 +109,9 @@ const Home = () => {
 
   return (
     <>
+      <head>
+        <title>imgs.bar beta</title>
+      </head>
       <Flex>
         <Flex pos="fixed" top="1rem" left="1rem" align="center">
           <Heading fontWeight="bold" fontSize="20" py="2">

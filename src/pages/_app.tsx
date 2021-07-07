@@ -7,6 +7,7 @@ import {User} from '../../typings';
 import {UserProvider, useUser} from '../components/user';
 import {useEffect} from 'react';
 import {getAuthStatus} from '../api/api';
+import {NextSeo} from 'next-seo';
 
 function MyApp({Component, pageProps}: AppProps) {
   const [user, setUser] = useState<User>(undefined);
@@ -26,13 +27,27 @@ function MyApp({Component, pageProps}: AppProps) {
 
   return (
     <>
+      <NextSeo
+        title="imgs.bar beta"
+        description="Beta for imgs.bar"
+        additionalMetaTags={[
+          {
+            property: 'theme-color',
+            content: '#005b96',
+          },
+        ]}
+        openGraph={{
+          title: 'imgs.bar beta.',
+          description: 'Beta site for imgs.bar, idk how u found this xD',
+        }}
+      />
       <ChakraProvider theme={theme}>
         {user !== undefined ? (
           <UserProvider value={{user, setUser}}>
             <Component {...pageProps} />
           </UserProvider>
         ) : (
-          <Skeleton height="max-content" />
+          <Skeleton height="200px" />
         )}
       </ChakraProvider>
     </>
