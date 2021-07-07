@@ -46,9 +46,7 @@ function MyApp({Component, pageProps}: AppProps) {
           <UserProvider value={{user, setUser}}>
             <Component {...pageProps} />
           </UserProvider>
-        ) : (
-          null
-        )}
+        ) : null}
       </ChakraProvider>
     </>
   );
