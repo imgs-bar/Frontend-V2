@@ -47,7 +47,7 @@ function MyApp({Component, pageProps}: AppProps) {
             <Component {...pageProps} />
           </UserProvider>
         ) : (
-          <Skeleton height="200px" />
+          </>
         )}
       </ChakraProvider>
     </>
