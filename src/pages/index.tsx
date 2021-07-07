@@ -86,15 +86,18 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getStats()
-      .then(stats => {
-        setStats(stats);
-        setStatsLoaded(true);
-      })
-      .catch(err => {
-        setStatsLoaded(false);
-        setStats(null);
-      });
+    const fetchStats = () => {
+      getStats()
+        .then(stats => {
+          setStats(stats);
+          setStatsLoaded(true);
+        })
+        .catch(err => {
+          setStatsLoaded(false);
+          setStats(null);
+        });
+    };
+    setInterval(fetchStats, 1000);
   }, []);
 
   return (
@@ -384,7 +387,7 @@ const Home = () => {
           {/* <Divider /> */}
         </Heading>
       </Center>
-      <Center>
+      <Center marginBottom={20}>
         <Box textAlign="center" maxWidth="max-content">
           <Box
             bg="gray.700"
