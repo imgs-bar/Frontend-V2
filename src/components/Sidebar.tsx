@@ -1,10 +1,4 @@
-import {
-  Box,
-  Flex,
-  Text,
-  VStack,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import {Box, Flex, Text, VStack, useColorModeValue} from '@chakra-ui/react';
 import {NavLink} from './nav-link';
 import {HiHome} from 'react-icons/hi';
 import {AiFillPicture} from 'react-icons/ai';

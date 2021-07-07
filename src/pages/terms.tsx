@@ -1,8 +1,5 @@
 import {Box, Heading, Text, Link, Button} from '@chakra-ui/react';
-import {
-  ListItem,
-  OrderedList,
-} from '@chakra-ui/react';
+import {ListItem, OrderedList} from '@chakra-ui/react';
 
 const ok = () => {
   return (

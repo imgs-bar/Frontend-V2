@@ -30,7 +30,7 @@ const Settings = () => {
   return (
     <>
       <Flex>
-      <Sidebar display={['none', null, 'flex']} w={64} />
+        <Sidebar display={['none', null, 'flex']} w={64} />
         <Navbar />
         <Nav />
       </Flex>
