@@ -49,16 +49,16 @@ const Home = () => {
   const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
   const toast = useToast();
-  const { 
+  const {
     isOpen: isOpenLogin,
-    onOpen: onOpenLogin, 
-    onClose: onCloseLogin 
-} = useDisclosure()
-const { 
-  isOpen: isOpenRegister,
-  onOpen: onOpenRegister,
-  onClose: onCloseRegister
-} = useDisclosure()
+    onOpen: onOpenLogin,
+    onClose: onCloseLogin,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenRegister,
+    onOpen: onOpenRegister,
+    onClose: onCloseRegister,
+  } = useDisclosure();
   const firstField = React.useRef();
   const [show, setShow] = React.useState(false);
   const [statsLoaded, setStatsLoaded] = React.useState(false);
@@ -140,20 +140,20 @@ const {
               onClick={onOpenLogin}
             >
               Login
-            </Button> 
+            </Button>
 
-              <Button
-                as="a"
-                colorScheme="telegram"
-                variant="solid"
-                aria-label="Register"
-                my={5}
-                ml={2}
-                w="100%"
-                onClick={onOpenRegister}
-              >
-                Register
-              </Button>
+            <Button
+              as="a"
+              colorScheme="telegram"
+              variant="solid"
+              aria-label="Register"
+              my={5}
+              ml={2}
+              w="100%"
+              onClick={onOpenRegister}
+            >
+              Register
+            </Button>
           </Flex>
 
           <IconButton
@@ -399,8 +399,6 @@ const {
         </DrawerContent>
       </Drawer>
 
-
-
       <Drawer
         isOpen={isOpenRegister}
         placement="right"
@@ -473,8 +471,7 @@ const {
                     direction={{base: 'column', sm: 'row'}}
                     align={'start'}
                     justify={'space-between'}
-                  >
-                  </Stack>
+                  ></Stack>
                   <Center>
                     <Button
                       mb={5}
@@ -487,8 +484,8 @@ const {
                       isLoading={isSubmitting}
                     >
                       ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏
-                      ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ Register ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
-                      ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
+                      ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ Register ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
+                      ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
                     </Button>
                   </Center>
                 </form>

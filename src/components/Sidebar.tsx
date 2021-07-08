@@ -61,9 +61,9 @@ export default function Sidebar(props) {
               display={{base: 'block', lg: 'none'}}
             >
               <Text fontSize="25">
-              <b>imgs.bar</b>
+                <b>imgs.bar</b>
               </Text>
-              </Box>
+            </Box>
 
             <Box
               // as={LogoOnDark}
