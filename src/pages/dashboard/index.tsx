@@ -39,7 +39,7 @@ const Dashboard = () => {
       <VStack>
         <Container
           maxW={{
-            base: '70%',
+            base: '80%',
             sm: '40%',
             md: '80%',
           }}
@@ -48,7 +48,7 @@ const Dashboard = () => {
           borderRadius="md"
           h="40rem"
           mt={{
-            base: '50',
+            base: '100',
             sm: '100',
             md: '130',
           }}
@@ -83,9 +83,9 @@ const Dashboard = () => {
               md: '20%',
             }}
             ml={{
-              base: '7',
-              sm: '0',
-              md: '300',
+              base: '8',
+              sm: '14',
+              md: '0',
             }}
             bg="gray.700"
             p={4}
@@ -132,11 +132,11 @@ const Dashboard = () => {
             mt={{
               base: '10',
               sm: '10',
-              md: '-140',
+              md: '-130',
             }}
             ml={{
-              base: '7',
-              sm: '0',
+              base: '8',
+              sm: '14',
               md: '300',
             }}
             display={{md: 'flex'}}
