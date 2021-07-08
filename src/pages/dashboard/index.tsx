@@ -1,34 +1,27 @@
-import Sidebar from './../../components/Sidebar';
-import Navbar from './../../components/Navbar-Dash';
-import Nav from './../../components/mobile-nav';
+import Sidebar from '../../components/Sidebar'
+import Navbar from '../../components/Navbar-Dash'
+import Nav from '../../components/mobile-nav'
+
+import React, {useEffect} from 'react';
 
 import {
-  Flex,
-  Heading,
-  useColorModeValue,
-  useColorMode,
-  Text,
-  Divider,
-  Button,
-  Box,
-} from '@chakra-ui/react';
-import React, {useEffect} from 'react';
-import {createBreakpoints} from '@chakra-ui/theme-tools';
-import {useUser} from '../../components/user';
+    Flex,
+    Box, 
+    VStack,
+    Container,
+    Heading,
+    Text,
+    Divider,
+}
+    from '@chakra-ui/react';
+    import { DownloadIcon } from '@chakra-ui/icons';
+
+    import {useUser} from '../../components/user';
 import {useRouter} from 'next/router';
 
 const Dashboard = () => {
-  const {colorMode, toggleColorMode} = useColorMode();
-  const color = useColorModeValue('telegram.500', 'telegram.400');
   const {user} = useUser();
   const router = useRouter();
-  const breakpoints = createBreakpoints({
-    sm: '30em',
-    md: '48em',
-    lg: '62em',
-    xl: '80em',
-    '2xl': '96em',
-  });
 
   useEffect(() => {
     if (!user) {
@@ -37,113 +30,140 @@ const Dashboard = () => {
   }, []);
 
   return user ? (
-    <>
+      <>
       <Flex>
-        <Sidebar />
-        <Nav />
-        <Navbar />
+      <Sidebar display={['none', null, 'flex']} w={64} />
+          <Navbar />
+          <Nav />
       </Flex>
 
-      {/* <Box pos="fixed" top="5rem" left="20rem" align="center"> */}
-      <Box ml={72} mt={85}>
-        <Heading fontSize={{base: '20', md: '35', sm: '15'}}>
-          Welcome, {user.username}
-        </Heading>
-      </Box>
 
-      {/* <Flex pos="fixed" top="12rem" left="17rem" align="center"> */}
-      <Box
-        flexShrink={0}
-        bg="gray.700"
-        py="20"
-        ml={80}
-        mt={63.6}
-        // w={300}
-        w={[80, 180, 300]}
-        borderRadius="xl"
-        textAlign="center"
-        shadow="dark-lg"
-      >
-        <Text fontSize={25} color="#808191" mt={-12}>
-          MOTD:
-        </Text>
-        <Divider mt="4" />
-        <Text mt={5} fontSize={22}>
-          stuff
-        </Text>
-      </Box>
+  <VStack>
+  <Container
+   maxW="80%"
+  //  w="120%"
+   bg="#212938"
+   borderRadius="md"
+   h="44rem"
+   m="130"
+   ml="400"
+   >
+      <Heading
+       mt={30}
+       ml={15}
+       display="block"
+       fontSize="lg"
+       lineHeight="normal"
+       fontWeight="semibold"
+       >
+         Welcome, Flame
+       </Heading>
+      
+      <Divider mt={10}/>
 
-      {/* <Flex pos="fixed" top="12rem" left="40rem" align="center"> */}
-      <Box
-        flexShrink={0}
-        bg="gray.700"
-        py="20"
-        ml={690}
-        mt={-218}
-        w={[80, 180, 300]}
-        shadow="dark-lg"
-        borderRadius="xl"
-        textAlign="center"
-      >
-        <Text fontSize={25} mt={-12} color="#808191">
-          Storage Used:
-        </Text>
-        <Divider mt="4" />
-        <Text mt={5} fontSize={22}>
-          100MB
-        </Text>
-      </Box>
-      {/* </Flex> */}
+      <Box 
+      w={{
+      base: '75%',
+      sm: '50%',
+      md: '15%',
+    }}  
+    h={{
+      base: '15%',
+      sm: '20%',
+      md: '20%',
+    }}  
+    bg="gray.700"
+    p={4}
+    mt={10}
+    display={{ md: "flex" }}
+    rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
+    >
+  <Box flexShrink={0}>
+    <Text
+      borderRadius="lg"
+      width={{ md: 40 }}
+    />
+  </Box>
+  <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+    <Text
+    textAlign="center"
+      mt={1}
+    ml={{
+      base: 'full',
+      sm: '-7.3rem',
+      md: '-11.5rem',
+    }}
+      display="block"
+      fontSize="lg"
+      lineHeight="normal"
+      fontWeight="semibold"
+    >
+      MOTD:
+    </Text>
+    <Text mt={2} color="gray.500">
 
-      {/* <Flex pos="fixed" top="12rem" left="63rem" align="center"> */}
-      <Box
-        flexShrink={0}
-        bg="gray.700"
-        py="20"
-        ml={1060}
-        mt={-218}
-        w={[80, 180, 300]}
-        borderRadius="xl"
-        textAlign="center"
-        shadow="dark-lg"
-      >
-        <Text fontSize={25} mt={-12} color="#808191">
-          Uploads:
-        </Text>
-        <Divider mt="4" />
-        <Text mt={5} fontSize={22}>
-          {user.uploads}
-        </Text>
-      </Box>
-      {/* </Flex> */}
+    </Text>
+  </Box>
+</Box>
 
-      {/* <Flex pos="fixed" top="12rem" left="86rem" align="center"> */}
-      <Box
-        flexShrink={0}
-        bg="gray.700"
-        py="20"
-        ml={1435}
-        mt={-218}
-        w={[80, 180, 300]}
-        borderRadius="xl"
-        textAlign="center"
-        shadow="dark-lg"
-      >
-        <Text fontSize={25} mt={-12} color="#808191">
-          Invites:
-        </Text>
-        <Divider mt="4" />
-        <Button mt={3} borderRadius="full" variant="outline">
-          Manage Invites
-        </Button>
-      </Box>
-      {/* </Flex> */}
-      {/* </Box> */}
+      <Box 
+      w={{
+      base: '75%',
+      sm: '50%',
+      md: '15%',
+    }}  
+    h={{
+      base: '15%',
+      sm: '20%',
+      md: '20%',
+    }}  
+    bg="gray.700"
+    p={4}
+    mt={{
+      base: '10',
+      sm: '10',
+      md: '-140',
+    }}
+    ml={{
+      base: '0',
+      sm: '0',
+      md: '300',
+    }}
+    display={{ md: "flex" }}
+    rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
+    >
+  <Box flexShrink={0}>
+    <Text
+      borderRadius="lg"
+      width={{ md: 40 }}
+    />
+  </Box>
+  <Box mt={{ base: 0, md: 0 }} ml={{ md: 6 }}>
+    <Text
+    textAlign="center"
+      mt={1}
+    ml={{
+      base: 'full',
+      sm: '-7.3rem',
+      md: '-11.5rem',
+    }}
+      display="block"
+      fontSize="lg"
+      lineHeight="normal"
+      fontWeight="semibold"
+    >
+      MOTD:
+    </Text>
+    <Text mt={2} color="gray.500">
 
-      <Box pos="fixed" top="35rem" left="20rem" align="center">
-        <Heading>Gallery</Heading>
-      </Box>
-    </>
+    </Text>
+  </Box>
+</Box>
+</Container>
+</VStack>
+
+
+</>
   ) : null;
 };
 export default Dashboard;
