@@ -412,82 +412,69 @@ const Home = () => {
 
           <DrawerBody>
             <Formik
-              initialValues={{username: '', password: '', rememberMe: true}}
-              onSubmit={async result =>
-                loginLocal(result.username, result.password, result.rememberMe)
-              }
+              initialValues={{email: '', password: ''}}
+              onSubmit={result => console.log(result)}
             >
               {({handleSubmit, isSubmitting, handleChange}) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>
-                  <FormControl id="username" isRequired mt={5}>
-                    <FormLabel>Email/Username:</FormLabel>
-                    <InputGroup>
-                      <InputLeftElement children={<AiOutlineUser />} />
-                      <Input
-                        name="username"
-                        required
-                        min={3}
-                        variant="filled"
-                        placeholder="email@example.com"
-                        autoComplete="username"
-                        mb={5}
-                      />
-                    </InputGroup>
+                  <FormControl id="email" isRequired>
+                    <FormLabel>Email:</FormLabel>
+                    <Input
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      variant="filled"
+                      placeholder="email@example.com"
+                      mb={5}
+                    />
+                  </FormControl>
+                  <FormControl id="username" isRequired>
+                    <FormLabel>Username:</FormLabel>
+                    <Input
+                      name="username"
+                      autoComplete="username"
+                      required
+                      variant="filled"
+                      placeholder="Example"
+                      mb={5}
+                    />
                   </FormControl>
                   <FormControl id="password" mb={5} isRequired>
                     <FormLabel>Password</FormLabel>
-                    <InputGroup>
-                      <InputLeftElement children={<AiOutlineLock />} />
-                      <Input
-                        name="password"
-                        type={show ? 'text' : 'password'}
-                        variant="filled"
-                        min={5}
-                        autoComplete="password"
-                        placeholder="**********"
-                        required
-                      />
-                      <InputRightElement width="4.5rem">
-                        <Button h="1.75rem" size="sm" onClick={handleClick}>
-                          {show ? 'Hide' : 'Show'}
-                        </Button>
-                      </InputRightElement>
-                    </InputGroup>
+                    <Input
+                      name="password"
+                      type="password"
+                      autoComplete="new-password"
+                      placeholder="**********"
+                      variant="filled"
+                      required
+                    />
                   </FormControl>
-                  <FormControl id="input" mb={5} isRequired>
+                  <FormControl id="invite" mb={5} isRequired>
                     <FormLabel>Invite</FormLabel>
-                    <InputGroup>
-                      <InputLeftElement children={<AiOutlineLock />} />
-                      <Input
-                        name="Invite"
-                        variant="filled"
-                        placeholder="flame is cool"
-                        autoComplete="off"
-                        required
-                      />
-                    </InputGroup>
+                    <Input
+                      name="invite"
+                      placeholder="flame is cool"
+                      variant="filled"
+                      autoComplete="off"
+                      required
+                    />
                   </FormControl>
-                  <Stack
-                    direction={{base: 'column', sm: 'row'}}
-                    align={'start'}
-                    justify={'space-between'}
-                  ></Stack>
-                  <Center>
-                    <Button
-                      mb={5}
-                      mt={400}
-                      colorScheme="gray"
-                      type="submit"
-                      variant="outline"
-                      w={500}
-                      isDisabled={isSubmitting}
-                      isLoading={isSubmitting}
-                    >
-                      ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏
-                      ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ Register ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
-                      ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
-                    </Button>
-                  </Center>
+                  <Button
+                    mb={5}
+                    mt={400}
+                    colorScheme="gray"
+                    type="submit"
+                    variant="outline"
+                    w={280}
+                    isDisabled={isSubmitting}
+                    isLoading={isSubmitting}
+                  >
+                    ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏ ‎‎‏‏‎
+                    ‎‏‏‎ ‎‏‏‎ Register ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
+                    ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
+                  </Button>
                 </form>
               )}
             </Formik>
