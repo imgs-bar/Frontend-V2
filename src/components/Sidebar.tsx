@@ -50,7 +50,7 @@ export default function Sidebar(props) {
   const bgColor = useColorModeValue('white', 'gray.800');
 
   return (
-    <SidebarContainer bg={bgColor}>
+    <SidebarContainer>
       <Flex w="full" align="center" h={16} p={3} as="nav">
         <Flex boxSize="full" align="center" px={3}>
           <Flex boxSize="full" align="center">
@@ -59,7 +59,11 @@ export default function Sidebar(props) {
               h={8}
               w="auto"
               display={{base: 'block', lg: 'none'}}
-            />
+            >
+              <Text fontSize="25">
+              <b>imgs.bar</b>
+              </Text>
+              </Box>
 
             <Box
               // as={LogoOnDark}

@@ -72,7 +72,7 @@ const Dashboard = () => {
        </Heading>
       
       <Divider mt={10}/>
-
+      
       <Box 
       w={{
       base: '75%',
@@ -154,11 +154,11 @@ const Dashboard = () => {
     <Text
     textAlign="center"
       mt={1}
-    ml={{
-      base: 'full',
-      sm: '-7.3rem',
-      md: '-11.5rem',
-    }}
+      ml={{
+        base: '5',
+        sm: '0',
+        md: '-11.5rem',
+      }}
       display="block"
       fontSize="lg"
       lineHeight="normal"
