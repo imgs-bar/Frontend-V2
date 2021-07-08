@@ -40,13 +40,25 @@ const Dashboard = () => {
 
   <VStack>
   <Container
-   maxW="80%"
+   maxW={{
+    base: '150%',
+    sm: '40%',
+    md: '80%',
+   }}
   //  w="120%"
    bg="#212938"
    borderRadius="md"
    h="44rem"
-   m="130"
-   ml="400"
+   mt={{
+    base: '270',
+    sm: '100',
+    md: '130',
+   }}
+   ml={{
+     base: '270',
+     sm: '284',
+     md: '350',
+   }}
    >
       <Heading
        mt={30}
@@ -84,13 +96,13 @@ const Dashboard = () => {
       width={{ md: 40 }}
     />
   </Box>
-  <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+  <Box textAlign="center" mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
     <Text
     textAlign="center"
       mt={1}
     ml={{
-      base: 'full',
-      sm: '-7.3rem',
+      base: '5',
+      sm: '0',
       md: '-11.5rem',
     }}
       display="block"
