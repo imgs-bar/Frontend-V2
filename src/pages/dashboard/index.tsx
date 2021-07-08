@@ -48,7 +48,7 @@ const Dashboard = () => {
           borderRadius="md"
           h="44rem"
           mt={{
-            base: '270',
+            base: '100',
             sm: '100',
             md: '130',
           }}
