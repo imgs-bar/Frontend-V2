@@ -49,7 +49,16 @@ const Home = () => {
   const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
   const toast = useToast();
-  const {isOpen, onOpen, onClose} = useDisclosure();
+  const { 
+    isOpen: isOpenLogin,
+    onOpen: onOpenLogin, 
+    onClose: onCloseLogin 
+} = useDisclosure()
+const { 
+  isOpen: isOpenRegister,
+  onOpen: onOpenRegister,
+  onClose: onCloseRegister
+} = useDisclosure()
   const firstField = React.useRef();
   const [show, setShow] = React.useState(false);
   const [statsLoaded, setStatsLoaded] = React.useState(false);
@@ -128,12 +137,11 @@ const Home = () => {
               aria-label="Login"
               my={5}
               w="100%"
-              onClick={onOpen}
+              onClick={onOpenLogin}
             >
               Login
-            </Button>
+            </Button> 
 
-            <NextLink href="/register" passHref>
               <Button
                 as="a"
                 colorScheme="telegram"
@@ -142,10 +150,10 @@ const Home = () => {
                 my={5}
                 ml={2}
                 w="100%"
+                onClick={onOpenRegister}
               >
                 Register
               </Button>
-            </NextLink>
           </Flex>
 
           <IconButton
@@ -254,7 +262,7 @@ const Home = () => {
           {/* <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
                 Get started
               </Button> */}
-          <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
+          <Button colorScheme="telegram" variant="solid" onClick={onOpenLogin}>
             ‏‏‎‏‏‎‏‏‎ ‎ ‎Login‏‏‎ ‎‏‏‎ ‎
           </Button>
           <br></br>
@@ -273,10 +281,10 @@ const Home = () => {
       </Box>
 
       <Drawer
-        isOpen={isOpen}
+        isOpen={isOpenLogin}
         placement="right"
         initialFocusRef={firstField}
-        onClose={onClose}
+        onClose={onCloseLogin}
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -375,6 +383,112 @@ const Home = () => {
                       }
                     >
                       Login with Discord
+                    </Button>
+                  </Center>
+                </form>
+              )}
+            </Formik>
+          </DrawerBody>
+          <DrawerFooter borderTopWidth="1px"></DrawerFooter>
+
+          {/* <DrawerFooter borderTopWidth="1px">
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </DrawerFooter> */}
+        </DrawerContent>
+      </Drawer>
+
+
+
+      <Drawer
+        isOpen={isOpenRegister}
+        placement="right"
+        initialFocusRef={firstField}
+        onClose={onCloseRegister}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader borderBottomWidth="1px">Register</DrawerHeader>
+
+          <DrawerBody>
+            <Formik
+              initialValues={{username: '', password: '', rememberMe: true}}
+              onSubmit={async result =>
+                loginLocal(result.username, result.password, result.rememberMe)
+              }
+            >
+              {({handleSubmit, isSubmitting, handleChange}) => (
+                <form onSubmit={handleSubmit} onChange={handleChange}>
+                  <FormControl id="username" isRequired mt={5}>
+                    <FormLabel>Email/Username:</FormLabel>
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineUser />} />
+                      <Input
+                        name="username"
+                        required
+                        min={3}
+                        variant="filled"
+                        placeholder="email@example.com"
+                        autoComplete="username"
+                        mb={5}
+                      />
+                    </InputGroup>
+                  </FormControl>
+                  <FormControl id="password" mb={5} isRequired>
+                    <FormLabel>Password</FormLabel>
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineLock />} />
+                      <Input
+                        name="password"
+                        type={show ? 'text' : 'password'}
+                        variant="filled"
+                        min={5}
+                        autoComplete="password"
+                        placeholder="**********"
+                        required
+                      />
+                      <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                          {show ? 'Hide' : 'Show'}
+                        </Button>
+                      </InputRightElement>
+                    </InputGroup>
+                  </FormControl>
+                  <FormControl id="input" mb={5} isRequired>
+                    <FormLabel>Invite</FormLabel>
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineLock />} />
+                      <Input
+                        name="Invite"
+                        variant="filled"
+                        placeholder="flame is cool"
+                        autoComplete="off"
+                        required
+                      />
+                    </InputGroup>
+                  </FormControl>
+                  <Stack
+                    direction={{base: 'column', sm: 'row'}}
+                    align={'start'}
+                    justify={'space-between'}
+                  >
+                  </Stack>
+                  <Center>
+                    <Button
+                      mb={5}
+                      mt={400}
+                      colorScheme="gray"
+                      type="submit"
+                      variant="outline"
+                      w={500}
+                      isDisabled={isSubmitting}
+                      isLoading={isSubmitting}
+                    >
+                      ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏
+                      ‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ Register ‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎
+                      ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎
                     </Button>
                   </Center>
                 </form>
