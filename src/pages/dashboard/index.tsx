@@ -39,21 +39,21 @@ const Dashboard = () => {
       <VStack>
         <Container
           maxW={{
-            base: '150%',
+            base: '80%',
             sm: '40%',
             md: '80%',
           }}
           //  w="120%"
           bg="#212938"
           borderRadius="md"
-          h="44rem"
+          h="40rem"
           mt={{
             base: '100',
             sm: '100',
             md: '130',
           }}
           ml={{
-            base: '270',
+            base: '50',
             sm: '284',
             md: '350',
           }}
