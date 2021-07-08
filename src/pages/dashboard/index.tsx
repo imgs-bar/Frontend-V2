@@ -53,7 +53,7 @@ const Dashboard = () => {
             md: '130',
           }}
           ml={{
-            base: '50',
+            base: '41',
             sm: '284',
             md: '350',
           }}
