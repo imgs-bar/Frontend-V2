@@ -1,48 +1,44 @@
+import {CloseIcon, HamburgerIcon, MoonIcon, SunIcon} from '@chakra-ui/icons';
 import {
   Box,
-  Heading,
-  Text,
-  useColorModeValue,
+  Button,
   Center,
-  useDisclosure,
-  FormControl,
-  FormLabel,
-  Input,
-  Link,
-  Flex,
-  useToast,
-  InputGroup,
-  InputLeftElement,
-  IconButton,
-  Divider,
-  InputRightElement,
-  Skeleton,
   Checkbox,
-  Stack,
-} from '@chakra-ui/react';
-import {FaDiscord} from 'react-icons/fa';
-import {Button} from '@chakra-ui/react';
-import React, {useEffect} from 'react';
-import {Formik} from 'formik';
-import {useColorMode} from '@chakra-ui/react';
-import {useState} from 'react';
-import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
-import {AiOutlineUser, AiOutlineLock} from 'react-icons/ai';
-import NextLink from 'next/link';
-import {
+  Divider,
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Link,
+  Skeleton,
+  Stack,
+  Text,
+  useColorMode,
+  useColorModeValue,
+  useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
-import {getStats, login} from '../api/api';
-import {Stats} from '../../typings';
-import {useUser} from '../components/user';
+import {Formik} from 'formik';
 import {useRouter} from 'next/dist/client/router';
-import {NextPage} from 'next';
+import NextLink from 'next/link';
+import React, {useEffect, useState} from 'react';
+import {AiOutlineLock, AiOutlineUser} from 'react-icons/ai';
+import {FaDiscord} from 'react-icons/fa';
+import {Stats} from '../../typings';
+import {getStats, login, register} from '../api/api';
+import {useUser} from '../components/user';
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
@@ -79,6 +75,34 @@ const Home = () => {
       setUser(user);
 
       router.push('/dashboard');
+    } catch (err) {
+      if (err.response.data.message === 'Unauthorized') {
+        toast({
+          description: 'Invalid username / password',
+          status: 'error',
+        });
+      } else {
+        toast({
+          description: err.response.data.message,
+          status: 'error',
+        });
+      }
+    }
+  };
+
+  const registerLocal = async (
+    email: string,
+    username: string,
+    password: string,
+    invite: string
+  ) => {
+    try {
+      await register(email, username, password, invite);
+
+      toast({
+        description: 'Successfully registered an account',
+        status: 'success',
+      });
     } catch (err) {
       if (err.response.data.message === 'Unauthorized') {
         toast({
@@ -412,8 +436,20 @@ const Home = () => {
 
           <DrawerBody>
             <Formik
-              initialValues={{email: '', password: ''}}
-              onSubmit={result => console.log(result)}
+              initialValues={{
+                email: '',
+                username: '',
+                password: '',
+                invite: '',
+              }}
+              onSubmit={result =>
+                registerLocal(
+                  result.email,
+                  result.username,
+                  result.password,
+                  result.invite
+                )
+              }
             >
               {({handleSubmit, isSubmitting, handleChange}) => (
                 <form onSubmit={handleSubmit} onChange={handleChange}>

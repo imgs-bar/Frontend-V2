@@ -20,6 +20,24 @@ export async function login(
   return data.data;
 }
 
+export async function register(
+  email: string,
+  username: string,
+  password: string,
+  invite: string
+): Promise<User> {
+  const data = await axios.post(
+    `${BASE_URL}/v2/auth/register`,
+    {
+      email,
+      username,
+      password,
+      invite,
+    },
+    {withCredentials: true}
+  );
+  return data.data;
+}
 export async function getStats(): Promise<Stats> {
   const data = await axios.get(`${BASE_URL}/v2/stats`);
   return data.data;
