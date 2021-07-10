@@ -30,6 +30,7 @@ import {
   useDisclosure,
   HStack,
 } from '@chakra-ui/react';
+
 import {useUser} from '../../components/user';
 import {useRouter} from 'next/router';
 
@@ -89,7 +90,7 @@ const Account = () => {
           </Center>
           <Center>
             <Text fontSize={15} color="gray.400">
-              Your status: {user.roles}
+              Your status: test
             </Text>
           </Center>
           <Center>
