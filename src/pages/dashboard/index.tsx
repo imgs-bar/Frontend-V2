@@ -180,6 +180,68 @@ const Dashboard = () => {
               </Center>
             </Box>
           </Box>
+
+          <Box
+            w={{
+              base: '75%',
+              sm: '50%',
+              md: '15%',
+            }}
+            h={{
+              base: '15%',
+              sm: '20%',
+              md: '20%',
+            }}
+            bg="gray.700"
+            p={4}
+            mt={{
+              base: '10',
+              sm: '10',
+              md: '-128',
+            }}
+            ml={{
+              base: '16',
+              sm: '14',
+              md: '600',
+            }}
+            display={{md: 'flex'}}
+            rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
+          >
+            <Box flexShrink={0}>
+              <Text borderRadius="lg" width={{md: 40}} />
+            </Box>
+            <Box mt={{base: 0, md: 0}} ml={{md: 6}}>
+              <Text
+                textAlign="center"
+                mt={1}
+                ml={{
+                  base: '0',
+                  sm: '0',
+                  md: '-11.5rem',
+                }}
+                display="block"
+                fontSize="lg"
+                lineHeight="normal"
+                fontWeight="semibold"
+              >
+                Invites:
+              </Text>
+              <Center>
+                <Text
+                  mt={2}
+                  fontSize="18"
+                  color="gray.500"
+                  ml={{
+                    base: '0',
+                    sm: '0',
+                    md: '-11.5rem',
+                  }}
+                >
+                  {user.invites}
+                </Text>
+              </Center>
+            </Box>
+          </Box>
           {/* </Stack> */}
         </Container>
       </VStack>
