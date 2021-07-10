@@ -2,7 +2,7 @@ import Sidebar from '../../components/Sidebar';
 import Navbar from '../../components/Navbar-Dash';
 import Nav from '../../components/mobile-nav';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {
   Flex,
@@ -54,6 +54,9 @@ import {Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react';
 
 import {DownloadIcon} from '@chakra-ui/icons';
 
+import {useUser} from '../../components/user';
+import {useRouter} from 'next/router';
+
 const Settings = () => {
   const [value, setValue] = React.useState(0);
   const handleChange = value => setValue(value);
@@ -64,7 +67,16 @@ const Settings = () => {
     onClose: onCloseConfigs,
   } = useDisclosure();
 
-  return (
+  const {user} = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/');
+    }
+  }, []);
+
+  return user ? (
     <>
       <Flex>
         <Sidebar display={['none', null, 'flex']} w={64} />
@@ -322,7 +334,7 @@ const Settings = () => {
         </Modal>
       </Flex>
     </>
-  );
+  ) : null;
 };
 
 export default Settings;

@@ -16,7 +16,7 @@ import {
 import {useUser} from '../../components/user';
 import {useRouter} from 'next/router';
 
-const Gallery = () => {
+const Domains = () => {
   const {user} = useUser();
   const router = useRouter();
 
@@ -44,10 +44,10 @@ const Gallery = () => {
           ml="400"
         >
           <Heading fontSize={25} mt={30} ml={15}>
-            Gallery
+            Domains
           </Heading>
           <Text fontSize={15} color="gray.400" mt={0} ml={15}>
-            View your uploads
+            Donate and view domains here
           </Text>
           <Divider mt={10} />
         </Container>
@@ -55,4 +55,4 @@ const Gallery = () => {
     </>
   ) : null;
 };
-export default Gallery;
+export default Domains;

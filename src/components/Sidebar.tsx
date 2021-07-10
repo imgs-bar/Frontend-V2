@@ -2,6 +2,7 @@ import {Box, Flex, Text, VStack, useColorModeValue} from '@chakra-ui/react';
 import {NavLink} from './nav-link';
 import {HiHome} from 'react-icons/hi';
 import {AiFillPicture} from 'react-icons/ai';
+import {IoIosBrowsers} from 'react-icons/io';
 
 import {SettingsIcon} from '@chakra-ui/icons';
 
@@ -24,6 +25,9 @@ function PageLinks() {
       </SidebarLink>
       <SidebarLink href="/dashboard/settings" icon={SettingsIcon}>
         Settings
+      </SidebarLink>
+      <SidebarLink href="/dashboard/domains" icon={IoIosBrowsers}>
+        Domains
       </SidebarLink>
       <SidebarLink href="/dashboard/gallery" icon={AiFillPicture}>
         Gallery
