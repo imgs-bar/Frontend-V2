@@ -8,9 +8,11 @@ import {
   Flex,
   Box,
   VStack,
+  Stack,
   Container,
   Heading,
   Text,
+  Center,
   Divider,
 } from '@chakra-ui/react';
 import {DownloadIcon} from '@chakra-ui/icons';
@@ -66,10 +68,11 @@ const Dashboard = () => {
             lineHeight="normal"
             fontWeight="semibold"
           >
-            Welcome, Flame
+            Welcome, {user.username}
           </Heading>
 
           <Divider mt={10} />
+          {/* <Stack direction={["column", "row"]} spacing="24px"> */}
 
           <Box
             w={{
@@ -159,11 +162,25 @@ const Dashboard = () => {
                 lineHeight="normal"
                 fontWeight="semibold"
               >
-                MOTD:
+                Uploads:
               </Text>
-              <Text mt={2} color="gray.500"></Text>
+              <Center>
+                <Text
+                  mt={2}
+                  fontSize="18"
+                  color="gray.500"
+                  ml={{
+                    base: '0',
+                    sm: '0',
+                    md: '-11.5rem',
+                  }}
+                >
+                  {user.uploads}
+                </Text>
+              </Center>
             </Box>
           </Box>
+          {/* </Stack> */}
         </Container>
       </VStack>
     </>
