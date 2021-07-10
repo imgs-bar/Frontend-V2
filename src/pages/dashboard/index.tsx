@@ -14,6 +14,7 @@ import {
   Text,
   Center,
   Divider,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import {DownloadIcon} from '@chakra-ui/icons';
 
@@ -29,6 +30,9 @@ const Dashboard = () => {
       router.push('/');
     }
   }, []);
+
+  const [isMediumScreen] = useMediaQuery('(max-width: 900px)');
+  const [isSmallScreen] = useMediaQuery('(max-width: 500px)');
 
   return user ? (
     <>
