@@ -2,17 +2,45 @@ import Sidebar from '../../components/Sidebar';
 import Navbar from '../../components/Navbar-Dash';
 import Nav from '../../components/mobile-nav';
 
+import React from 'react';
+
 import {
   Flex,
-  Button,
   VStack,
+  Stack,
+  Button,
+  Box,
   Container,
   Heading,
   Text,
   Divider,
+  Center,
   Select,
   Input,
-  SimpleGrid,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  Switch,
+  Tooltip,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverArrow,
+  PopoverCloseButton,
+  useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -20,13 +48,22 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
 } from '@chakra-ui/react';
-import {DownloadIcon} from '@chakra-ui/icons';
+
 import {Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react';
 
+import {DownloadIcon} from '@chakra-ui/icons';
+
 const Settings = () => {
-  const {isOpen, onOpen, onClose} = useDisclosure();
+  const [value, setValue] = React.useState(0);
+  const handleChange = value => setValue(value);
+
+  const {
+    isOpen: isOpenConfigs,
+    onOpen: onOpenConfigs,
+    onClose: onCloseConfigs,
+  } = useDisclosure();
+
   return (
     <>
       <Flex>
@@ -34,152 +71,185 @@ const Settings = () => {
         <Navbar />
         <Nav />
       </Flex>
-
-      {/* <Box textAlign="center" m={400} minWidth={250}>
-        <Button>
-            ok
-        </Button>
-    </Box> */}
-
       <VStack>
-        <SimpleGrid columns={2} spacing={10}>
-          <Container
-            width="100rem"
-            bg="#212938"
-            borderRadius="md"
-            h="35rem"
-            mt={100}
-          >
+        <Container
+          maxW="80%"
+          bg="#212938"
+          borderRadius="md"
+          h="52rem"
+          mt="100"
+          ml="323"
+        >
+          <Center>
             <Heading fontSize={25} mt={30} ml={15}>
-              Config
+              Settings
             </Heading>
-            <Text fontSize={15} color="gray.400" mt={0} ml={15}>
-              Download your configs
+          </Center>
+          <Center>
+            <Text mt={15} fontSize={15} color="gray.400">
+              Change your domain preferences:
             </Text>
-            <Button
-              mt={5}
-              ml={15}
-              colorScheme="gray"
-              borderRadius="lg"
-              leftIcon={<DownloadIcon />}
-              aria-label="Download a config"
-              onClick={onOpen}
-            >
-              Download
-            </Button>
-            <Divider mt={10} />
-            <Heading fontSize={25} mt={30} ml={15}>
-              Preferences
-            </Heading>
-            <Text fontSize={15} color="gray.400" mt={0} ml={15}>
-              Select your domain and settings preferences
-            </Text>
+          </Center>
+          <Center>
+            <Text fontSize={15} color="gray.400" mt={2} ml={15}></Text>
+          </Center>
+          <Divider mt={10} />
+          <Center></Center>
+          <Center>
             <Input
-              mt={5}
-              ml={15}
+              mt={8}
               variant="outline"
               placeholder="Subdomain"
               maxW={150}
             />
-            <Input
-              mt={-10}
-              ml={175}
-              variant="outline"
-              placeholder="Directory"
-              maxW={130}
-            />
             <Select
-              mt={-10}
-              ml={178}
+              mt={8}
               colorScheme="gray"
-              //   borderRadius="lg"
               variant="filled"
               aria-label="Select a domain"
-              maxW={150}
+              maxW={250}
             >
               <option value="option1">i.imgs.bar</option>
               <option value="option2">flameis.cool</option>
             </Select>
-
-            <Button
-              // mt={-69}
-              ml={266}
-              mt={5}
-              w={150}
-            >
-              Embed Profile
-            </Button>
-
-            <Button
-              // mt={-69}
-              ml={55}
-              mt={-70}
-              variant="solid"
-              // maxW={150}
-              w={150}
-            >
-              Regen Upload Key
-            </Button>
-
-            <Button
-              // mt={-69}
-              ml={165}
-              mt={5}
+            <Input
+              mt={8}
               variant="outline"
-              // maxW={150}
-              w={150}
+              placeholder="Directory"
+              maxW={130}
+            />
+          </Center>
+          <Center mt={10}>
+            <Menu>
+              <MenuButton
+                px={4}
+                py={2}
+                transition="all 0.2s"
+                borderRadius="md"
+                borderWidth="1px"
+                // _hover={{bg: 'gray.500'}}
+                _expanded={{bg: 'gray.700'}}
+                _focus={{boxShadow: 'outline'}}
+              >
+                Embed Profile
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Select a Profile</MenuItem>
+                <MenuDivider />
+                <MenuItem>New Profile</MenuItem>
+              </MenuList>
+            </Menu>
+          </Center>
+          <Divider mt={10} />
+          <Center>
+            <Heading mt={30} fontSize={25}>
+              Vanity
+            </Heading>
+          </Center>
+          <Center>
+            <Text mt={15} fontSize={15} color="gray.400">
+              Change your extra vanity preferences
+            </Text>
+          </Center>
+          <Center>
+            <Stack mt={30} align="center"></Stack>
+          </Center>
+          <Center>
+            <VStack ml={-75} spacing={6}>
+              <Popover>
+                <PopoverTrigger>
+                  <Text>Long URL</Text>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader>Long URL Length</PopoverHeader>
+                  <PopoverBody>
+                    <Flex>
+                      <NumberInput
+                        maxW="100px"
+                        mr="2rem"
+                        value={value}
+                        onChange={handleChange}
+                        max={50}
+                        min={5}
+                      >
+                        <NumberInputField />
+                        <NumberInputStepper>
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
+                      <Slider
+                        flex="1"
+                        focusThumbOnChange={false}
+                        value={value}
+                        onChange={handleChange}
+                        min={5}
+                        max={50}
+                      >
+                        <SliderTrack>
+                          <SliderFilledTrack />
+                        </SliderTrack>
+                        <SliderThumb
+                          fontSize="sm"
+                          boxSize="20px"
+                          children={value}
+                        />
+                      </Slider>
+                    </Flex>
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
+
+              <Tooltip label="emojis are in ur url" placement="left-start">
+                <Text>Emoji URL</Text>
+              </Tooltip>
+              <Tooltip
+                label="tbh i have no idea wtf this shit is ook"
+                placement="left-start"
+              >
+                <Text>File Extension</Text>
+              </Tooltip>
+            </VStack>
+          </Center>
+          <Center>
+            <VStack mt={-120} ml={105} spacing={6}>
+              <Switch size="md" />
+              <Switch size="md" />
+              <Switch size="md" />
+            </VStack>
+          </Center>
+          <Divider mt={10} />
+          <Center>
+            <Heading mt={30} fontSize={25}>
+              Config
+            </Heading>
+          </Center>
+          <Center>
+            <Text mt={15} fontSize={15} color="gray.400">
+              Download your configs
+            </Text>
+          </Center>
+          <Center>
+            <Button
+              mt={5}
+              colorScheme="gray"
+              borderRadius="lg"
+              leftIcon={<DownloadIcon />}
+              aria-label="Download a config"
+              onClick={onOpenConfigs}
             >
-              Save
+              Download
             </Button>
-            <br></br>
-            {/* <Button
-        // mt={-69}
-        ml={50}
-        mt={5}
-        variant="solid"
-        // maxW={150}
-        w={150}
-        >
-            Regen Upload Key
-        </Button> */}
-            <br></br>
-
-            {/* <Stack ml={10} align="stretch"> */}
-            {/* <Box ml={10}>
-              <Text as="sub" color="gray.400" fontSize="20">URL Settings</Text>
-              <br></br><br></br>
-          <Tooltip bg="gray.600" color="gray.200" placement="left-start" label="Fake URL allows you to use any domain/text as your URL on discord.">Fake URL</Tooltip>
-  <Switch ml={15} size="md" colorScheme="telegram" />
-  <br />
-
-  <Tooltip bg="gray.600" color="gray.200" placement="left-start" label="Long URL will make your filenames longer.">Long URL</Tooltip>
-  <Switch ml={15} size="md" colorScheme="telegram" />
-  <br />
-
-  <Tooltip bg="gray.600" color="gray.200" placement="left-start" label="Invisible File will hide the filename at the end of the link of an image.">Invisible File</Tooltip>
-  <Switch ml={15} size="md" colorScheme="telegram" />
-  </Box> */}
-
-            {/* </Stack> */}
-          </Container>
-
-          <Container
-            //    w="100rem"
-            bg="#212938"
-            borderRadius="md"
-            h="35rem"
-            mt={100}
-            //    m="130"
-            //    ml="100"
-          ></Container>
-        </SimpleGrid>
+          </Center>
+        </Container>
       </VStack>
-
       <Flex>
         <Modal
           motionPreset="slideInBottom"
-          onClose={onClose}
-          isOpen={isOpen}
+          onClose={onCloseConfigs}
+          isOpen={isOpenConfigs}
           isCentered
         >
           <ModalOverlay />
@@ -197,31 +267,11 @@ const Settings = () => {
 
                 <TabPanels>
                   <TabPanel>
-                    {/* <Container
-   bg="#374358"
-   borderRadius="md"
-   h="20rem"
-  //  mt={100}
-   > */}
-                    <Button
-                      // mt={-69}
-                      ml={100}
-                      mt={5}
-                      variant="outline"
-                      // maxW={150}
-                      w={150}
-                    >
+                    <Button ml={100} mt={5} variant="outline" w={150}>
                       ShareX
                     </Button>
 
-                    <Button
-                      // mt={-69}
-                      ml={100}
-                      mt={5}
-                      variant="outline"
-                      // maxW={150}
-                      w={150}
-                    >
+                    <Button ml={100} mt={5} variant="outline" w={150}>
                       ShareNix Raw
                     </Button>
 
@@ -230,7 +280,6 @@ const Settings = () => {
                       ml={100}
                       mt={5}
                       variant="outline"
-                      // maxW={150}
                       w={150}
                     >
                       ShareNix Inject
@@ -257,7 +306,6 @@ const Settings = () => {
                     >
                       iOS Shortcut
                     </Button>
-                    {/* </Container> */}
                   </TabPanel>
                   <TabPanel>
                     <p>two!</p>
@@ -269,9 +317,7 @@ const Settings = () => {
               </Tabs>
               <br />
             </ModalBody>
-            <ModalFooter>
-              {/* <Button onClick={onClose}>Close</Button> */}
-            </ModalFooter>
+            <ModalFooter></ModalFooter>
           </ModalContent>
         </Modal>
       </Flex>

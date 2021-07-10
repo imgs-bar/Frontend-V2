@@ -34,7 +34,12 @@ import {Formik} from 'formik';
 import {useRouter} from 'next/dist/client/router';
 import NextLink from 'next/link';
 import React, {useEffect, useState} from 'react';
-import {AiOutlineLock, AiOutlineUser} from 'react-icons/ai';
+import {
+  AiOutlineLock,
+  AiOutlineUser,
+  AiOutlineMail,
+  AiOutlineCheck,
+} from 'react-icons/ai';
 import {FaDiscord} from 'react-icons/fa';
 import {Stats} from '../../typings';
 import {getStats, login, register} from '../api/api';
@@ -455,47 +460,59 @@ const Home = () => {
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <FormControl id="email" isRequired>
                     <FormLabel>Email:</FormLabel>
-                    <Input
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      required
-                      variant="filled"
-                      placeholder="email@example.com"
-                      mb={5}
-                    />
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineMail />} />
+                      <Input
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        variant="filled"
+                        placeholder="email@example.com"
+                        mb={5}
+                      />
+                    </InputGroup>
                   </FormControl>
                   <FormControl id="username" isRequired>
                     <FormLabel>Username:</FormLabel>
-                    <Input
-                      name="username"
-                      autoComplete="username"
-                      required
-                      variant="filled"
-                      placeholder="Example"
-                      mb={5}
-                    />
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineUser />} />
+                      <Input
+                        name="username"
+                        autoComplete="username"
+                        required
+                        variant="filled"
+                        placeholder="Username"
+                        mb={5}
+                      />
+                    </InputGroup>
                   </FormControl>
                   <FormControl id="password" mb={5} isRequired>
                     <FormLabel>Password</FormLabel>
-                    <Input
-                      name="password"
-                      type="password"
-                      autoComplete="new-password"
-                      placeholder="**********"
-                      variant="filled"
-                      required
-                    />
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineLock />} />
+                      <Input
+                        name="password"
+                        type="password"
+                        autoComplete="new-password"
+                        placeholder="**********"
+                        variant="filled"
+                        required
+                      />
+                    </InputGroup>
                   </FormControl>
                   <FormControl id="invite" mb={5} isRequired>
                     <FormLabel>Invite</FormLabel>
-                    <Input
-                      name="invite"
-                      placeholder="flame is cool"
-                      variant="filled"
-                      autoComplete="off"
-                      required
-                    />
+                    <InputGroup>
+                      <InputLeftElement children={<AiOutlineCheck />} />
+                      <Input
+                        name="invite"
+                        placeholder="flame is cool"
+                        variant="filled"
+                        autoComplete="off"
+                        required
+                      />
+                    </InputGroup>
                   </FormControl>
                   <Button
                     mb={5}
