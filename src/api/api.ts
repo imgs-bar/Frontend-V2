@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {User, Stats} from '../../typings';
+import {User, Stats, setting} from '../../typings';
 
 const BASE_URL = 'https://betaapi.imgs.bar';
 
@@ -55,4 +55,24 @@ export async function getAuthStatus(): Promise<User> {
     withCredentials: true,
   });
   return data.data.user;
+}
+
+export async function getMotd(): Promise<string> {
+  const data = await axios.get(`${BASE_URL}/v2/information/motd`, {
+    withCredentials: true,
+  });
+  return data.data.motd;
+}
+
+export async function updateSettings(
+  setting: setting,
+  status: boolean
+): Promise<void> {
+  await axios.patch(
+    `${BASE_URL}/v2/settings/update/${setting}`,
+    {status},
+    {
+      withCredentials: true,
+    }
+  );
 }

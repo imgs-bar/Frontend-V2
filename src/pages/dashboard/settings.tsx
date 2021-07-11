@@ -1,65 +1,67 @@
-import Sidebar from '../../components/Sidebar';
-import Navbar from '../../components/Navbar-Dash';
-import Nav from '../../components/mobile-nav';
-
-import React, {useEffect} from 'react';
-
+import {DownloadIcon} from '@chakra-ui/icons';
 import {
-  Flex,
-  VStack,
-  Stack,
   Button,
-  Box,
-  Container,
-  Heading,
-  Text,
-  Divider,
   Center,
-  Select,
+  Container,
+  Divider,
+  Flex,
+  Heading,
   Input,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
   MenuDivider,
-  Switch,
-  Tooltip,
+  MenuItem,
+  MenuList,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
   Popover,
-  PopoverTrigger,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
   PopoverContent,
   PopoverHeader,
-  PopoverBody,
-  PopoverArrow,
-  PopoverCloseButton,
+  PopoverTrigger,
+  Select,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+  Stack,
+  Switch,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  Tooltip,
   useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
+  useToast,
+  VStack,
 } from '@chakra-ui/react';
-
-import {Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react';
-
-import {DownloadIcon} from '@chakra-ui/icons';
-
-import {useUser} from '../../components/user';
 import {useRouter} from 'next/router';
+import React, {useEffect} from 'react';
+import {setting} from '../../../typings';
+import {updateSettings} from '../../api/api';
+import Nav from '../../components/mobile-nav';
+import Navbar from '../../components/Navbar-Dash';
+import Sidebar from '../../components/Sidebar';
+import {useUser} from '../../components/user';
 
 const Settings = () => {
   const [value, setValue] = React.useState(0);
   const handleChange = value => setValue(value);
+  const toast = useToast();
 
   const {
     isOpen: isOpenConfigs,
@@ -67,6 +69,17 @@ const Settings = () => {
     onClose: onCloseConfigs,
   } = useDisclosure();
 
+  const updateSetting = async (key: setting, value: boolean) => {
+    try {
+      await updateSettings(key, value);
+      toast({description: `${key} updated`, status: 'success'});
+    } catch (err) {
+      toast({
+        description: err.response.data.message,
+        status: 'error',
+      });
+    }
+  };
   const {user} = useUser();
   const router = useRouter();
 
@@ -227,7 +240,13 @@ const Settings = () => {
           </Center>
           <Center>
             <VStack mt={-120} ml={105} spacing={6}>
-              <Switch size="md" />
+              <Switch
+                size="md"
+                id="long-url"
+                onChange={event =>
+                  updateSetting('longUrl', event.target.checked)
+                }
+              />
               <Switch size="md" />
               <Switch size="md" />
             </VStack>

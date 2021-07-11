@@ -128,3 +128,4 @@ export interface Stats {
   users: number;
   files: number;
 }
+export type setting = 'longUrl' | 'emojiUrl' | 'showExtension';

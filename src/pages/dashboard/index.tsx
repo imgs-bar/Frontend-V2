@@ -1,34 +1,37 @@
-import Sidebar from '../../components/Sidebar';
-import Navbar from '../../components/Navbar-Dash';
-import Nav from '../../components/mobile-nav';
-
-import React, {useEffect} from 'react';
-
 import {
-  Flex,
   Box,
-  VStack,
-  Stack,
+  Center,
   Container,
+  Divider,
+  Flex,
   Heading,
   Text,
-  Center,
-  Divider,
   useMediaQuery,
+  VStack,
 } from '@chakra-ui/react';
-import {DownloadIcon} from '@chakra-ui/icons';
-
-import {useUser} from '../../components/user';
 import {useRouter} from 'next/router';
+import React, {useEffect} from 'react';
+import {getMotd} from '../../api/api';
+import Nav from '../../components/mobile-nav';
+import Navbar from '../../components/Navbar-Dash';
+import Sidebar from '../../components/Sidebar';
+import {useUser} from '../../components/user';
 
 const Dashboard = () => {
   const {user} = useUser();
   const router = useRouter();
+  const [motd, setMotd] = React.useState('');
 
   useEffect(() => {
     if (!user) {
       router.push('/');
     }
+  }, []);
+
+  useEffect(() => {
+    getMotd().then(motd => {
+      setMotd(motd);
+    });
   }, []);
 
   const [isMediumScreen] = useMediaQuery('(max-width: 900px)');
@@ -119,7 +122,9 @@ const Dashboard = () => {
               >
                 MOTD:
               </Text>
-              <Text mt={2} color="gray.500"></Text>
+              <Text mt={2} color="gray.500">
+                {motd}
+              </Text>
             </Box>
           </Box>
 
