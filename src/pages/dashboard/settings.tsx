@@ -246,6 +246,7 @@ const Settings = () => {
                 onChange={event =>
                   updateSetting('longUrl', event.target.checked)
                 }
+                defaultChecked={user.settings.longUrl}
               />
               <Switch size="md" />
               <Switch size="md" />
