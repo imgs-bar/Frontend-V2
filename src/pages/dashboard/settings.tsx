@@ -248,8 +248,22 @@ const Settings = () => {
                 }
                 defaultChecked={user.settings.longUrl}
               />
-              <Switch size="md" />
-              <Switch size="md" />
+              <Switch
+                size="md"
+                id="emoji-url"
+                onChange={event =>
+                  updateSetting('emojiUrl', event.target.checked)
+                }
+                defaultChecked={user.settings.emojiUrl}
+              />
+              <Switch
+                size="md"
+                id="show-Extension"
+                onChange={event =>
+                  updateSetting('showExtension', event.target.checked)
+                }
+                defaultChecked={user.settings.showExtension}
+              />
             </VStack>
           </Center>
           <Divider mt={10} />
