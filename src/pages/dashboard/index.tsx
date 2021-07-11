@@ -122,7 +122,7 @@ const Dashboard = () => {
               >
                 MOTD:
               </Text>
-              <Text mt={2} color="gray.500">
+              <Text mt={2} ml={10} color="gray.500">
                 {motd}
               </Text>
             </Box>
