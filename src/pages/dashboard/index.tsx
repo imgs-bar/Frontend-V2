@@ -123,8 +123,8 @@ const Dashboard = () => {
                 MOTD:
               </Text>
               <Center></Center>
-              <Text mt={2} ml={-170} color="gray.500">
-                {motd}
+              <Text mt={2} ml={-178} color="gray.500">
+                Message of the day
               </Text>
             </Box>
           </Box>
