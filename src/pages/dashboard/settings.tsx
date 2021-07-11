@@ -47,6 +47,7 @@ import {
   Tooltip,
   useDisclosure,
   useToast,
+  InputGroup,
   VStack,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
@@ -123,15 +124,20 @@ const Settings = () => {
           <Center>
             <Input
               mt={8}
+              size="sm"
               variant="outline"
               placeholder="Subdomain"
+              h={35}
+              ml={1}
               maxW={150}
             />
             <Select
               mt={8}
+              size="sm"
               colorScheme="gray"
               variant="filled"
               aria-label="Select a domain"
+              h={35}
               maxW={250}
             >
               <option value="option1">i.imgs.bar</option>
@@ -139,7 +145,9 @@ const Settings = () => {
             </Select>
             <Input
               mt={8}
+              size="sm"
               variant="outline"
+              h={35}
               placeholder="Directory"
               maxW={130}
             />
@@ -150,7 +158,7 @@ const Settings = () => {
                 px={4}
                 py={2}
                 transition="all 0.2s"
-                borderRadius="md"
+                // borderRadius="md"
                 borderWidth="1px"
                 // _hover={{bg: 'gray.500'}}
                 _expanded={{bg: 'gray.700'}}
@@ -281,7 +289,8 @@ const Settings = () => {
             <Button
               mt={5}
               colorScheme="gray"
-              borderRadius="lg"
+              borderRadius="none"
+              variant="outline"
               leftIcon={<DownloadIcon />}
               aria-label="Download a config"
               onClick={onOpenConfigs}

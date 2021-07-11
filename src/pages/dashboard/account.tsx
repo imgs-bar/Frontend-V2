@@ -1,46 +1,57 @@
-import Sidebar from '../../components/Sidebar';
-import Navbar from '../../components/Navbar-Dash';
-import Nav from '../../components/mobile-nav';
-
-import React, {useEffect} from 'react';
-
+import {DownloadIcon} from '@chakra-ui/icons';
 import {
-  Flex,
-  VStack,
-  Stack,
   Button,
-  Box,
-  Container,
-  Heading,
-  Text,
-  Divider,
   Center,
-  InputGroup,
+  Container,
+  Divider,
+  Flex,
+  Heading,
   Input,
+  Select,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+  Stack,
   Switch,
+  Text,
   Tooltip,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Avatar,
   useDisclosure,
-  HStack,
+  useToast,
+  VStack,
 } from '@chakra-ui/react';
-
-import {useUser} from '../../components/user';
+import {Avatar, AvatarBadge, AvatarGroup} from '@chakra-ui/react';
 import {useRouter} from 'next/router';
+import React, {useEffect} from 'react';
+import {setting} from '../../../typings';
+import {updateSettings} from '../../api/api';
+import Nav from '../../components/mobile-nav';
+import Navbar from '../../components/Navbar-Dash';
+import Sidebar from '../../components/Sidebar';
+import {useUser} from '../../components/user';
 
 const Account = () => {
+  const [value, setValue] = React.useState(0);
+  const handleChange = value => setValue(value);
+  const toast = useToast();
+
   const {
-    isOpen: isOpenConfirm,
-    onOpen: onOpenConfirm,
-    onClose: onCloseConfirm,
+    isOpen: isOpenConfigs,
+    onOpen: onOpenConfigs,
+    onClose: onCloseConfigs,
   } = useDisclosure();
 
+  const updateSetting = async (key: setting, value: boolean) => {
+    try {
+      await updateSettings(key, value);
+      toast({description: `${key} updated`, status: 'success'});
+    } catch (err) {
+      toast({
+        description: err.response.data.message,
+        status: 'error',
+      });
+    }
+  };
   const {user} = useUser();
   const router = useRouter();
 
@@ -51,6 +62,7 @@ const Account = () => {
   }, []);
 
   return user ? (
+    // return (
     <>
       <Flex>
         <Sidebar display={['none', null, 'flex']} w={64} />
@@ -66,185 +78,96 @@ const Account = () => {
           mt="100"
           ml="323"
         >
-          <Center>
-            <Heading fontSize={25} mt={30} ml={15}>
-              Account
-            </Heading>
-          </Center>
-          <Divider mt={10} />
-          <Center></Center>
-          <Center>
-            <Avatar
-              name="Flame"
-              mt={5}
-              bg="black"
-              shadow="dark-lg"
-              size="2xl"
-              src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif"
-            />
-          </Center>
-          <Center>
-            <Text mt={5} fontSize={20}>
-              {user.username} ({user.uid})
-            </Text>
-          </Center>
-          <Center>
-            <Text fontSize={15} color="gray.400">
-              Your status: test
-            </Text>
-          </Center>
-          <Center>
-            <Stack mt={10} spacing={8}>
-              <InputGroup>
-                <Input
-                  w={400}
-                  min={3}
-                  max={14}
-                  textAlign="center"
-                  placeholder={user.username}
-                />
-                <br></br>
-              </InputGroup>
-              <InputGroup>
-                <Input
-                  w={400}
-                  textAlign="center"
-                  placeholder="Change your Password"
-                />
-                <br></br>
-              </InputGroup>
-              <InputGroup>
-                <Input
-                  textAlign="center"
-                  isDisabled
-                  w={400}
-                  placeholder="UID"
-                />
-              </InputGroup>
-            </Stack>
-          </Center>
-          <Center mt={10}>
-            <Button
-              px={4}
-              py={2}
-              transition="all 0.2s"
-              borderRadius="md"
-              borderWidth="1px"
-              onClick={onOpenConfirm}
-            >
-              Save Changes
+          <Heading fontSize={21} mt={30} ml={15}>
+            Name & Avatar
+          </Heading>
+          <Text mt={2} ml={15} fontSize={14.4} color="gray.400">
+            View your name and profile picture
+          </Text>
+          <Avatar
+            mt={25}
+            ml={15}
+            bg="none"
+            name="stuff"
+            src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif"
+          />
+          <Text mt={-12} fontSize="16" ml={89}>
+            {user.username}
+          </Text>
+          <Text mt={0} ml={89} fontSize={14.4} color="gray.400">
+            Joined July, 2021
+          </Text>
+          <Stack spacing={4} ml={15} mt={30} direction="row" align="center">
+            <Button size="sm" colorScheme="gray" borderRadius="5">
+              Change Username
             </Button>
-          </Center>
-          <Center mt={-50}>
-            <HStack mt={16} spacing="24px">
-              <Button
-                px={4}
-                w={200}
-                py={2}
-                transition="all 0.2s"
-                borderRadius="md"
-                // mt={20}
-                borderWidth="1px"
-                // onClick={}
-              >
-                File Archive
-              </Button>
-              <Button
-                px={4}
-                // mt={20}
-                py={2}
-                w={200}
-                transition="all 0.2s"
-                borderRadius="md"
-                borderWidth="1px"
-                onClick={onOpenConfirm}
-              >
-                Wipe Files
-              </Button>
-              <Button
-                px={4}
-                w={200}
-                // mt={20}
-                py={2}
-                transition="all 0.2s"
-                borderRadius="md"
-                borderWidth="1px"
-                onClick={onOpenConfirm}
-              >
-                Delete Account
-              </Button>
-              <Button
-                px={4}
-                w={200}
-                py={2}
-                transition="all 0.2s"
-                borderRadius="md"
-                borderWidth="1px"
-                onClick={onOpenConfirm}
-              >
-                Relink Discord
-              </Button>
-              <Button
-                px={4}
-                w={200}
-                py={2}
-                transition="all 0.2s"
-                borderRadius="md"
-                borderWidth="1px"
-                onClick={onOpenConfirm}
-              >
-                2FA
-              </Button>
-            </HStack>
-          </Center>
+            <Button isDisabled size="sm" colorScheme="gray" borderRadius="5">
+              Change UID
+            </Button>
+          </Stack>
           <Divider mt={10} />
-          <Center>
-            <Stack mt={30} align="center"></Stack>
-          </Center>
-          <Center>
-            <VStack ml={-75} spacing={6}>
-              <Tooltip
-                label="Toggles the visibility of your profile"
-                placement="left-start"
-              >
-                <Text>Private Profile</Text>
-              </Tooltip>
-
-              <Tooltip
-                label="tbh i have no idea wtf this shit is ook"
-                placement="left-start"
-              >
-                <Text>stuff</Text>
-              </Tooltip>
-            </VStack>
-          </Center>
-          <Center>
-            <VStack mt={-75} ml={105} spacing={6}>
-              <Switch size="md" />
-              <Switch size="md" />
-            </VStack>
-          </Center>
+          <Heading fontSize={21} mt={30} ml={15}>
+            Login Details
+          </Heading>
+          <Text mt={2} ml={15} fontSize={14.4} color="gray.400">
+            Change your email and password
+          </Text>
+          <Input
+            mt={8}
+            ml={15}
+            maxW="17.5%"
+            isDisabled
+            value={user.email}
+            placeholder=""
+            size="sm"
+          />
+          <Stack spacing={4} mt={30} direction="row" align="center">
+            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
+              Change Email
+            </Button>
+            <Button size="sm" colorScheme="gray" borderRadius="5">
+              Change Password
+            </Button>
+          </Stack>
           <Divider mt={10} />
+          <Heading fontSize={21} mt={30} ml={15}>
+            idk yet
+          </Heading>
+          <Text mt={2} ml={15} fontSize={14.4} color="gray.400">
+            idk lol idk lol lol
+          </Text>
+          <Stack spacing={4} mt={30} direction="row" align="center">
+            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
+              File Archive
+            </Button>
+            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
+              File Archive
+            </Button>
+            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
+              Relink Discord
+            </Button>
+            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
+              Wipe Files
+            </Button>
+            <Button w={100} size="sm" colorScheme="gray" borderRadius="5">
+              2FA
+            </Button>
+          </Stack>
+          <Divider mt={10} />
+          <Button
+            mt={50}
+            ml={15}
+            w={100}
+            size="sm"
+            colorScheme="telegram"
+            borderRadius="5"
+          >
+            Save Changes
+          </Button>
         </Container>
       </VStack>
-      <Flex>
-        <Modal
-          motionPreset="slideInBottom"
-          onClose={onCloseConfirm}
-          isOpen={isOpenConfirm}
-          isCentered
-        >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Confirm</ModalHeader>
-            <Divider />
-            <ModalCloseButton />
-            <ModalBody>ok</ModalBody>
-            <ModalFooter></ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Flex>
     </>
   ) : null;
 };
+
 export default Account;
