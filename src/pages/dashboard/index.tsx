@@ -124,7 +124,7 @@ const Dashboard = () => {
               </Text>
               <Center></Center>
               <Text mt={2} ml={-178} color="gray.500">
-                Message of the day
+                {motd}
               </Text>
             </Box>
           </Box>
