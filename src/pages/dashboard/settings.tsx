@@ -100,9 +100,9 @@ const Settings = () => {
       <VStack>
         <Container
           maxW={{
-            base: '80%',
+            base: '77%',
             sm: '40%',
-            md: '80%',
+            md: '77%',
           }}
           //  w="120%"
           bg="#212938"

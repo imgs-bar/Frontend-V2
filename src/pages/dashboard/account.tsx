@@ -72,9 +72,9 @@ const Account = () => {
       <VStack>
         <Container
           maxW={{
-            base: '80%',
+            base: '77%',
             sm: '40%',
-            md: '80%',
+            md: '77%',
           }}
           bg="#212938"
           borderRadius="md"
