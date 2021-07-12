@@ -519,44 +519,8 @@ const Settings = () => {
                     <div
                         className={styles.embedPreview}
                   />
-                                          {/* style={(embed.title !== '' && embed.description === '' && embed.author === '') || (embed.title === '' && embed.description !== '' && embed.author === '') || (embed.title === '' && embed.description === '' && embed.author !== '') || (embed.title === '' && embed.description === '' && embed.author === '') ? {
-                            borderLeft: `5px solid ${embed.randomColor ? `#${((1 << 24) * Math.random() | 0).toString(16)}` : embed.color}`,
-                        } : {
-                            borderLeft: `5px solid ${embed.randomColor ? `#${((1 << 24) * Math.random() | 0).toString(16)}` : embed.color}`,
-                        }}
-                    >
-                        {embed.author !== '' && <span className={styles.embedAuthor}>
-                            {embed.author === 'default' ? user.username : formatEmbedField(embed.author)}
-                        </span>}
-
-                        {embed.title !== '' && <span
-                            className={styles.embedTitle}
-                            style={!embed.author ? {
-                                marginTop: '20px',
-                            } : null}
-                        >
-                            {embed.title === 'default' ? 'ccb834e0.png' : formatEmbedField(embed.title)}
-                        </span>}
-
-                        {embed.description !== '' && <span
-                            className={styles.embedDescription}
-                            style={!embed.author && !embed.title ? {
-                                marginTop: '20px',
-                            } : null}
-                        >
-                            {embed.description === 'default'? `Uploaded at ${new Date().toLocaleString()} by ${user.username}.` : formatEmbedField(embed.description)}
-                        </span>}
-
-                        <img
-                            style={embed.title === '' || embed.description === '' || embed.author === '' ? {
-                                width: (embed.title !== '' && embed.description === '' && embed.author === '') || (embed.title === '' && embed.description !== '' && embed.author === '') || (embed.title === '' && embed.description === '' && embed.author !== '') || (embed.title === '' && embed.description === '' && embed.author === '') ? '280px' : '250px',
-                            } : null}
-                            src="https://imgur.com/yLIXHjk.png"
-                    className={styles.embedImage} */}
                     </div>
                 </div>
-                {/* </div> */}
-              {/* </div> */}
             </ModalBody>
             <ModalFooter></ModalFooter>
           </ModalContent>
