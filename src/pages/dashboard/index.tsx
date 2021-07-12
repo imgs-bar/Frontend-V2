@@ -56,8 +56,6 @@ const Dashboard = () => {
             sm: '40%',
             md: '80%',
           }}
-          //  w="120%"
-          // bg="#212938"
           bg={colorCon}
           borderRadius="md"
           h="40rem"
@@ -69,7 +67,7 @@ const Dashboard = () => {
           ml={{
             base: '30',
             sm: '234',
-            md: '350',
+            md: '325',
           }}
         >
           <Heading

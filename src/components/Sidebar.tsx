@@ -52,6 +52,7 @@ function SidebarContainer(props) {
 
 export default function Sidebar(props) {
   const bgColor = useColorModeValue('white', 'gray.800');
+  const colorBox = useColorModeValue('gray.200', '#1D2432');
 
   return (
     <SidebarContainer>
@@ -84,7 +85,7 @@ export default function Sidebar(props) {
         position="relative"
         h="calc(100vh - 4rem)"
         p={3}
-        bg="#1D2432"
+        bg={colorBox}
         overflowY="auto"
         {...props}
       >

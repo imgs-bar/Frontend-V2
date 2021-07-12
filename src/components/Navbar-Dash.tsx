@@ -8,7 +8,9 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  IconButton,
   useColorModeValue,
+  useColorMode,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import {useRouter} from 'next/router';
@@ -17,12 +19,14 @@ import {AiOutlineProfile, AiOutlineUser} from 'react-icons/ai';
 import {BiLogOut} from 'react-icons/bi';
 import {logOut} from '../api/api';
 import {TITLE} from '../utils/stuff';
-// import ThemeToggle from '../theme-toggle';
+import ThemeToggle from './theme-toggle';
 import MobileNav from './mobile-nav';
 import {useUser} from './user';
+import {MoonIcon, SunIcon, HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
 
 export default function Header() {
   const bgColor = useColorModeValue('white', 'gray.800');
+  const colorCon = useColorModeValue('gray.100', '#212938');
   const {user, setUser} = useUser();
   const router = useRouter();
   return (
@@ -36,7 +40,7 @@ export default function Header() {
         align="center"
         h={16}
         px={[4, 6, 8]}
-        bg="#212938"
+        bg={colorCon}
         zIndex="docked"
       >
         <Flex w="full" align="center" justify="center">
@@ -51,6 +55,7 @@ export default function Header() {
             <Flex>
               <Menu>
                 <MobileNav />
+                <ThemeToggle />
                 <MenuButton
                   variant="solid"
                   as={Button}
