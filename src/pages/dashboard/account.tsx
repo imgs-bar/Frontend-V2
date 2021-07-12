@@ -71,12 +71,24 @@ const Account = () => {
       </Flex>
       <VStack>
         <Container
-          maxW="80%"
+          maxW={{
+            base: '80%',
+            sm: '40%',
+            md: '80%',
+          }}
           bg="#212938"
           borderRadius="md"
-          h="52rem"
-          mt="100"
-          ml="323"
+          h="50rem"
+          mt={{
+            base: '100',
+            sm: '100',
+            md: '130',
+          }}
+          ml={{
+            base: '41',
+            sm: '284',
+            md: '350',
+          }}
         >
           <Heading fontSize={21} mt={30} ml={15}>
             Name & Avatar
