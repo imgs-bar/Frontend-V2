@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {User, Stats, setting} from '../../typings';
 
-const BASE_URL = 'https://betaapi.imgs.bar';
+export const BASE_URL = 'https://betaapi.imgs.bar/v2';
 
 export async function login(
   username: string,
@@ -9,7 +9,7 @@ export async function login(
   rememberMe: boolean
 ): Promise<User> {
   const data = await axios.post(
-    `${BASE_URL}/v2/auth/login`,
+    `${BASE_URL}/auth/login`,
     {
       username,
       password,
@@ -27,7 +27,7 @@ export async function register(
   invite: string
 ): Promise<User> {
   const data = await axios.post(
-    `${BASE_URL}/v2/auth/register`,
+    `${BASE_URL}/auth/register`,
     {
       email,
       username,
@@ -39,26 +39,26 @@ export async function register(
   return data.data;
 }
 export async function getStats(): Promise<Stats> {
-  const data = await axios.get(`${BASE_URL}/v2/stats`);
+  const data = await axios.get(`${BASE_URL}/stats`);
   return data.data;
 }
 
 export async function logOut(): Promise<Stats> {
-  const data = await axios.get(`${BASE_URL}/v2/auth/logout`, {
+  const data = await axios.get(`${BASE_URL}/auth/logout`, {
     withCredentials: true,
   });
   return data.data;
 }
 
 export async function getAuthStatus(): Promise<User> {
-  const data = await axios.get(`${BASE_URL}/v2/auth`, {
+  const data = await axios.get(`${BASE_URL}/auth`, {
     withCredentials: true,
   });
   return data.data.user;
 }
 
 export async function getMotd(): Promise<string> {
-  const data = await axios.get(`${BASE_URL}/v2/information/motd`, {
+  const data = await axios.get(`${BASE_URL}/information/motd`, {
     withCredentials: true,
   });
   return data.data.motd;
@@ -69,7 +69,7 @@ export async function updateSettings(
   status: boolean
 ): Promise<void> {
   await axios.patch(
-    `${BASE_URL}/v2/settings/update/${setting}`,
+    `${BASE_URL}/settings/update/${setting}`,
     {status},
     {
       withCredentials: true,

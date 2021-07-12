@@ -24,7 +24,7 @@ import {Avatar, AvatarBadge, AvatarGroup} from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
 import {setting} from '../../../typings';
-import {updateSettings} from '../../api/api';
+import {BASE_URL, updateSettings} from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
@@ -88,8 +88,8 @@ const Account = () => {
             mt={25}
             ml={15}
             bg="none"
-            name="stuff"
-            src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif"
+            name={user.username}
+            src={user.discord.avatar ? user.discord.avatar : null}
           />
           <Text mt={-12} fontSize="16" ml={89}>
             {user.username}
@@ -101,7 +101,12 @@ const Account = () => {
             <Button size="sm" colorScheme="gray" borderRadius="5">
               Change Username
             </Button>
-            <Button isDisabled size="sm" colorScheme="gray" borderRadius="5">
+            <Button
+              isDisabled={!user.roles.premium.status}
+              size="sm"
+              colorScheme="gray"
+              borderRadius="5"
+            >
               Change UID
             </Button>
           </Stack>
@@ -127,6 +132,16 @@ const Account = () => {
             </Button>
             <Button size="sm" colorScheme="gray" borderRadius="5">
               Change Password
+            </Button>
+            <Button
+              size="sm"
+              colorScheme="gray"
+              borderRadius="5"
+              onClick={() => {
+                location.href = `${BASE_URL}/discord/link`;
+              }}
+            >
+              Link discord
             </Button>
           </Stack>
           <Divider mt={10} />

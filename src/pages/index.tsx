@@ -42,7 +42,7 @@ import {
 } from 'react-icons/ai';
 import {FaDiscord} from 'react-icons/fa';
 import {Stats} from '../../typings';
-import {getStats, login, register} from '../api/api';
+import {BASE_URL, getStats, login, register} from '../api/api';
 import {useUser} from '../components/user';
 
 const Home = () => {
@@ -233,7 +233,7 @@ const Home = () => {
             </Flex>
 
             <Flex flexDir="column" align="center">
-              <NextLink href="/login" passHref>
+              <NextLink href="" passHref>
                 <Button
                   as="a"
                   colorScheme="telegram"
@@ -246,7 +246,7 @@ const Home = () => {
                 </Button>
               </NextLink>
 
-              <NextLink href="/register" passHref>
+              <NextLink href="" passHref>
                 <Button
                   as="a"
                   colorScheme="telegram"
@@ -400,15 +400,7 @@ const Home = () => {
                       leftIcon={<FaDiscord />}
                       mb={5}
                       onClick={() =>
-                        toast({
-                          title: 'Discord sux',
-                          description: 'I cba coding this lol',
-                          status: 'info',
-                          duration: 7000,
-                          isClosable: false,
-                          variant: 'left-accent',
-                          position: 'top',
-                        })
+                        (location.href = `${BASE_URL}/discord/login`)
                       }
                     >
                       Login with Discord
@@ -507,7 +499,7 @@ const Home = () => {
                       <InputLeftElement children={<AiOutlineCheck />} />
                       <Input
                         name="invite"
-                        placeholder="flame is cool"
+                        placeholder="Invite Code"
                         variant="filled"
                         autoComplete="off"
                         required
@@ -564,7 +556,9 @@ const Home = () => {
             </Heading>
             <Divider />
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
-              TODO
+              <Skeleton isLoaded={statsLoaded}>
+                {stats ? stats.domains : 'Loading...'}
+              </Skeleton>
             </Text>
           </Box>
         </Box>

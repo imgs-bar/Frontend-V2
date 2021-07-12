@@ -1,26 +1,30 @@
-import NextLink from 'next/link';
+import {ChevronDownIcon} from '@chakra-ui/icons';
 import {
+  Avatar,
+  AvatarBadge,
   Button,
   Flex,
-  useColorModeValue,
-  Avatar,
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
+  MenuList,
+  useColorModeValue,
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
+import {useRouter} from 'next/router';
+import React from 'react';
+import {AiOutlineProfile, AiOutlineUser} from 'react-icons/ai';
+import {BiLogOut} from 'react-icons/bi';
+import {logOut} from '../api/api';
+import {TITLE} from '../utils/stuff';
 // import ThemeToggle from '../theme-toggle';
 import MobileNav from './mobile-nav';
-import {ChevronDownIcon} from '@chakra-ui/icons';
-import {TITLE} from '../utils/stuff';
-import {BiLogOut} from 'react-icons/bi';
-import {AiOutlineUser, AiOutlineProfile} from 'react-icons/ai';
 import {useUser} from './user';
-import {logOut} from '../api/api';
 
 export default function Header() {
   const bgColor = useColorModeValue('white', 'gray.800');
-  const {setUser} = useUser();
+  const {user, setUser} = useUser();
+  const router = useRouter();
   return (
     <>
       <Flex
@@ -55,8 +59,11 @@ export default function Header() {
                   <Avatar
                     mt={0}
                     size="sm"
-                    src="https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif?size=256&f=.gif"
-                  />
+                    name={user.username}
+                    src={user.discord.avatar ? user.discord.avatar : null}
+                  >
+                    <AvatarBadge boxSize="1.25em" bg="green.500" />
+                  </Avatar>
                 </MenuButton>
                 <MenuList>
                   <MenuItem
@@ -70,6 +77,7 @@ export default function Header() {
                     onClick={async () => {
                       await logOut();
                       setUser(null);
+                      router.push('/');
                     }}
                     icon={<BiLogOut />}
                   >
