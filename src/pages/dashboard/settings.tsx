@@ -455,7 +455,6 @@ const Settings = () => {
                     variant="outline"
                     placeholder="Site Name URL"
                     h={35}
-                    // ml={1}
                     maxW={350}
                   />
                   <Input
@@ -464,7 +463,6 @@ const Settings = () => {
                     variant="outline"
                     placeholder="Site Name"
                     h={35}
-                    // ml={1}
                     maxW={350}
                   />
                   <Text mt={15} fontSize={15} color="gray.400">
@@ -476,7 +474,6 @@ const Settings = () => {
                     variant="outline"
                     placeholder="Embed Author"
                     h={35}
-                    // ml={1}
                     maxW={350}
                   />
                   <Input
@@ -485,7 +482,6 @@ const Settings = () => {
                     variant="outline"
                     placeholder="Embed Author URL"
                     h={35}
-                    // ml={1}
                     maxW={350}
                   />
                   <Text mt={15} fontSize={15} color="gray.400">
@@ -497,7 +493,6 @@ const Settings = () => {
                     variant="outline"
                     placeholder="Embed Title"
                     h={35}
-                    // ml={1}
                     maxW={350}
                   />
                   <Text mt={15} fontSize={15} color="gray.400">
@@ -509,13 +504,12 @@ const Settings = () => {
                     variant="outline"
                     placeholder="Embed Description"
                     h={35}
-                    // ml={1}
                     maxW={350}
                   />
                   <Button
                     mt={5}
                     colorScheme="gray"
-                    // borderRadius="8px"
+                    borderRadius="none"
                     variant="outline"
                     aria-label="Download a config"
                   >
