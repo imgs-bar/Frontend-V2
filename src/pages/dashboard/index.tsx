@@ -98,7 +98,7 @@ const Dashboard = () => {
             ml={{
               base: '8',
               sm: '14',
-              md: '0',
+              md: '50',
             }}
             bg={colorBox}
             p={4}
@@ -162,7 +162,7 @@ const Dashboard = () => {
             ml={{
               base: '8',
               sm: '14',
-              md: '300',
+              md: '350',
             }}
             display={{md: 'flex'}}
             rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
@@ -224,7 +224,7 @@ const Dashboard = () => {
             ml={{
               base: '8',
               sm: '14',
-              md: '600',
+              md: '650',
             }}
             display={{md: 'flex'}}
             rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
