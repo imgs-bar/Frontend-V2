@@ -25,14 +25,12 @@ import {
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
-import {setting} from '../../../typings';
-import {updateSettings} from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
 
-const Settings = () => {
+const Domains = () => {
   const [value, setValue] = React.useState(0);
   const handleChange = value => setValue(value);
   const toast = useToast();
@@ -167,4 +165,4 @@ const Settings = () => {
   ) : null;
 };
 
-export default Settings;
+export default Domains;
