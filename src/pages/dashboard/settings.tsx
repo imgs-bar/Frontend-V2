@@ -58,6 +58,7 @@ import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
+import styles from '../../styles/Settings.module.css';
 
 const Settings = () => {
   const [value, setValue] = React.useState(0);
@@ -69,11 +70,16 @@ const Settings = () => {
     onOpen: onOpenConfigs,
     onClose: onCloseConfigs,
   } = useDisclosure();
+  const {
+    isOpen: isOpenCreate,
+    onOpen: onOpenCreate,
+    onClose: onCloseCreate,
+  } = useDisclosure();
 
   const updateSetting = async (key: setting, value: boolean) => {
     try {
       await updateSettings(key, value);
-      toast({description: `${key} updated`, status: 'success'});
+      toast({ description: `${key} updated`, status: 'success' });
     } catch (err) {
       toast({
         description: err.response.data.message,
@@ -81,7 +87,7 @@ const Settings = () => {
       });
     }
   };
-  const {user} = useUser();
+  const { user } = useUser();
   const router = useRouter();
 
   useEffect(() => {
@@ -89,6 +95,41 @@ const Settings = () => {
       router.push('/');
     }
   }, []);
+
+  const saveEmbed = async () => {
+    const {embed} = user.settings.embeds.list.[0];
+
+    try {
+      const data = await user.settings.embeds.list.[0]({
+        color: embed.color,
+        siteName: embed.header.text,
+        siteNameUrl: embed.header.url,
+        title: embed.title,
+        description: embed.description,
+        author: embed.author.text,
+        authorUrl: embed.author.url,
+        randomColor: embed.color,
+      });
+
+        if (data.success)
+          toast({
+          title: "Success",
+          description: "Updated Embed Profile",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          });
+      } catch (err) {
+        if (err)
+          return toast({
+          title: "Something went wrong",
+          description: "ErrorMessagehere whatever pringles u do this shit",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+          });
+    }
+  };
 
   return user ? (
     <>
@@ -161,7 +202,7 @@ const Settings = () => {
               size="sm"
               variant="outline"
               h={35}
-              placeholder="Directory"
+              placeholder="Prefix"
               maxW={130}
             />
           </Center>
@@ -180,9 +221,9 @@ const Settings = () => {
                 Embed Profile
               </MenuButton>
               <MenuList>
-                <MenuItem>Select a Profile</MenuItem>
+                <MenuItem>Manage Profiles</MenuItem>
                 <MenuDivider />
-                <MenuItem>New Profile</MenuItem>
+                <MenuItem onClick={onOpenCreate}>New Profile</MenuItem>
               </MenuList>
             </Menu>
           </Center>
@@ -384,6 +425,143 @@ const Settings = () => {
                 </TabPanels>
               </Tabs>
               <br />
+            </ModalBody>
+            <ModalFooter></ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Flex>
+
+      <Flex>
+        <Modal
+          motionPreset="slideInBottom"
+          onClose={onCloseCreate}
+          isOpen={isOpenCreate}
+          isCentered
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Create Embed Profile</ModalHeader>
+            <Divider />
+            <ModalCloseButton />
+            <ModalBody>
+              <div className={styles.previewCon}>
+                <div className={styles.embedSettings}>
+                  <Text mt={15} fontSize={15} color="gray.400">
+                    Embed Site Name:
+                  </Text>
+                  <Input
+                    mt={3}
+                    size="sm"
+                    variant="outline"
+                    placeholder="Site Name URL"
+                    h={35}
+                    // ml={1}
+                    maxW={350}
+                  />
+                  <Input
+                    mt={3}
+                    size="sm"
+                    variant="outline"
+                    placeholder="Site Name"
+                    h={35}
+                    // ml={1}
+                    maxW={350}
+                  />
+                  <Text mt={15} fontSize={15} color="gray.400">
+                    Embed Author:
+                  </Text>
+                  <Input
+                    mt={3}
+                    size="sm"
+                    variant="outline"
+                    placeholder="Embed Author"
+                    h={35}
+                    // ml={1}
+                    maxW={350}
+                  />
+                  <Input
+                    mt={3}
+                    size="sm"
+                    variant="outline"
+                    placeholder="Embed Author URL"
+                    h={35}
+                    // ml={1}
+                    maxW={350}
+                  />
+                  <Text mt={15} fontSize={15} color="gray.400">
+                    Embed Title:
+                  </Text>
+                  <Input
+                    mt={3}
+                    size="sm"
+                    variant="outline"
+                    placeholder="Embed Title"
+                    h={35}
+                    // ml={1}
+                    maxW={350}
+                  />
+                  <Text mt={15} fontSize={15} color="gray.400">
+                    Embed Description:
+                  </Text>
+                  <Input
+                    mt={3}
+                    size="sm"
+                    variant="outline"
+                    placeholder="Embed Description"
+                    h={35}
+                    // ml={1}
+                    maxW={350}
+                  />
+                  <Button
+                    mt={5}
+                    colorScheme="gray"
+                    // borderRadius="8px"
+                    variant="outline"
+                    aria-label="Download a config"
+                  >
+                    Save Profile
+                  </Button>
+
+                    <div
+                        className={styles.embedPreview}
+                    //     style={(embed.title !== '' && embed.description === '' && embed.author === '') || (embed.title === '' && embed.description !== '' && embed.author === '') || (embed.title === '' && embed.description === '' && embed.author !== '') || (embed.title === '' && embed.description === '' && embed.author === '') ? {
+                    //         borderLeft: `5px solid ${embed.randomColor ? `#${((1 << 24) * Math.random() | 0).toString(16)}` : embed.color}`,
+                    //     } : {
+                    //         borderLeft: `5px solid ${embed.randomColor ? `#${((1 << 24) * Math.random() | 0).toString(16)}` : embed.color}`,
+                    //     }}
+                    // >
+                    //     {embed.author !== '' && <span className={styles.embedAuthor}>
+                    //         {embed.author === 'default' ? user.username : formatEmbedField(embed.author)}
+                    //     </span>}
+
+                    //     {embed.title !== '' && <span
+                    //         className={styles.embedTitle}
+                    //         style={!embed.author ? {
+                    //             marginTop: '20px',
+                    //         } : null}
+                    //     >
+                    //         {embed.title === 'default' ? 'ccb834e0.png' : formatEmbedField(embed.title)}
+                    //     </span>}
+
+                    //     {embed.description !== '' && <span
+                    //         className={styles.embedDescription}
+                    //         style={!embed.author && !embed.title ? {
+                    //             marginTop: '20px',
+                    //         } : null}
+                    //     >
+                    //         {embed.description === 'default'? `Uploaded at ${new Date().toLocaleString()} by ${user.username}.` : formatEmbedField(embed.description)}
+                    //     </span>}
+
+                    //     <img
+                    //         style={embed.title === '' || embed.description === '' || embed.author === '' ? {
+                    //             width: (embed.title !== '' && embed.description === '' && embed.author === '') || (embed.title === '' && embed.description !== '' && embed.author === '') || (embed.title === '' && embed.description === '' && embed.author !== '') || (embed.title === '' && embed.description === '' && embed.author === '') ? '280px' : '250px',
+                    //         } : null}
+                    //         src="https://imgur.com/yLIXHjk.png"
+                    //         className={styles.embedImage}
+                        />
+                </div>
+                </div>
+              {/* </div> */}
             </ModalBody>
             <ModalFooter></ModalFooter>
           </ModalContent>
