@@ -293,7 +293,7 @@ const Settings = () => {
                 <Text>Emoji URL</Text>
               </Tooltip>
               <Tooltip
-                label="tbh i have no idea wtf this shit is ook"
+                label="Removes the File Extension at the end of your file."
                 placement="left-start"
               >
                 <Text>File Extension</Text>
