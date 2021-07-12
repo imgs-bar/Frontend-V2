@@ -22,6 +22,7 @@ import {
   useDisclosure,
   useToast,
   VStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
@@ -49,6 +50,8 @@ const Domains = () => {
     }
   }, []);
 
+  const colorCon = useColorModeValue('gray.100', '#212938');
+
   return user ? (
     <>
       <Flex>
@@ -64,7 +67,7 @@ const Domains = () => {
             md: '77%',
           }}
           //  w="120%"
-          bg="#212938"
+          bg={colorCon}
           borderRadius="md"
           h="50rem"
           mt={{

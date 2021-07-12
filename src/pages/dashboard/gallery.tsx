@@ -11,6 +11,7 @@ import {
   Heading,
   Text,
   Divider,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import {useUser} from '../../components/user';
@@ -26,6 +27,8 @@ const Gallery = () => {
     }
   }, []);
 
+  const colorCon = useColorModeValue('gray.100', '#212938');
+
   return user ? (
     <>
       <Flex>
@@ -37,7 +40,7 @@ const Gallery = () => {
         <Container
           //    p={30}
           maxW="80%"
-          bg="#212938"
+          bg={colorCon}
           borderRadius="md"
           h="46rem"
           m="130"

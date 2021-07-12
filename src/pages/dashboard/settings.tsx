@@ -100,6 +100,7 @@ const Settings = () => {
 
   const colorCon = useColorModeValue('gray.100', '#212938');
   const colorBox = useColorModeValue('gray.200', 'gray.700');
+  const colorSelect = useColorModeValue('gray.200', 'gray.700');
 
   return user ? (
     <>
@@ -159,8 +160,9 @@ const Settings = () => {
             <Select
               mt={8}
               size="sm"
-              colorScheme="gray"
+              // colorScheme="gray"
               variant="filled"
+              bg={colorSelect}
               aria-label="Select a domain"
               h={35}
               maxW={250}
