@@ -47,6 +47,7 @@ import {useUser} from '../components/user';
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
+  const colorBox = useColorModeValue('gray.100', 'gray.700');
   const {colorMode, toggleColorMode} = useColorMode();
   const [display, changeDisplay] = useState('none');
   const toast = useToast();
@@ -543,7 +544,7 @@ const Home = () => {
       <Center marginBottom={20}>
         <Box textAlign="center" maxWidth="max-content">
           <Box
-            bg="gray.700"
+            bg={colorBox}
             py="10"
             mr={50}
             px={{base: '4', md: '10'}}
@@ -565,7 +566,7 @@ const Home = () => {
 
         <Box textAlign="center" maxWidth="max-content">
           <Box
-            bg="gray.700"
+            bg={colorBox}
             py="10"
             ml={50}
             w={[80, 180, 250]}
@@ -591,7 +592,7 @@ const Home = () => {
 
         <Box textAlign="center" maxWidth="max-content">
           <Box
-            bg="gray.700"
+            bg={colorBox}
             py="10"
             ml={101}
             w={[80, 180, 250]}

@@ -49,6 +49,7 @@ import {
   useToast,
   InputGroup,
   VStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
@@ -97,6 +98,9 @@ const Settings = () => {
     }
   }, []);
 
+  const colorCon = useColorModeValue('gray.100', '#212938');
+  const colorBox = useColorModeValue('gray.200', 'gray.700');
+
   return user ? (
     <>
       <Flex>
@@ -112,7 +116,8 @@ const Settings = () => {
             md: '77%',
           }}
           //  w="120%"
-          bg="#212938"
+          // bg="#212938"
+          bg={colorCon}
           borderRadius="md"
           h="50rem"
           mt={{
@@ -181,7 +186,7 @@ const Settings = () => {
                 // borderRadius="md"
                 borderWidth="1px"
                 // _hover={{bg: 'gray.500'}}
-                _expanded={{bg: 'gray.700'}}
+                _expanded={{bg: colorBox}}
                 _focus={{boxShadow: 'outline'}}
               >
                 Embed Profile

@@ -8,6 +8,7 @@ import {
   Text,
   useMediaQuery,
   VStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
@@ -37,6 +38,9 @@ const Dashboard = () => {
   const [isMediumScreen] = useMediaQuery('(max-width: 900px)');
   const [isSmallScreen] = useMediaQuery('(max-width: 500px)');
 
+  const colorBox = useColorModeValue('gray.200', 'gray.700');
+  const colorCon = useColorModeValue('gray.100', '#212938');
+
   return user ? (
     <>
       <Flex>
@@ -53,7 +57,8 @@ const Dashboard = () => {
             md: '80%',
           }}
           //  w="120%"
-          bg="#212938"
+          // bg="#212938"
+          bg={colorCon}
           borderRadius="md"
           h="40rem"
           mt={{
@@ -97,7 +102,7 @@ const Dashboard = () => {
               sm: '14',
               md: '0',
             }}
-            bg="gray.700"
+            bg={colorBox}
             p={4}
             mt={10}
             display={{md: 'flex'}}
@@ -149,7 +154,7 @@ const Dashboard = () => {
               sm: '20%',
               md: '20%',
             }}
-            bg="gray.700"
+            bg={colorBox}
             p={4}
             mt={{
               base: '10',
@@ -211,7 +216,7 @@ const Dashboard = () => {
               sm: '20%',
               md: '20%',
             }}
-            bg="gray.700"
+            bg={colorBox}
             p={4}
             mt={{
               base: '10',

@@ -19,6 +19,7 @@ import {
   useDisclosure,
   useToast,
   VStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import {Avatar, AvatarBadge, AvatarGroup} from '@chakra-ui/react';
 import {useRouter} from 'next/router';
@@ -61,6 +62,9 @@ const Account = () => {
     }
   }, []);
 
+  const colorBox = useColorModeValue('gray.200', 'gray.700');
+  const colorCon = useColorModeValue('gray.100', '#212938');
+
   return user ? (
     // return (
     <>
@@ -76,7 +80,8 @@ const Account = () => {
             sm: '40%',
             md: '77%',
           }}
-          bg="#212938"
+          // bg="#212938"
+          bg={colorBox}
           borderRadius="md"
           h="50rem"
           mt={{
