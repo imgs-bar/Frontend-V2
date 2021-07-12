@@ -58,7 +58,7 @@ import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
-import styles from '../../styles/Settings.module.css';
+// import styles from '../../styles/Settings.module.css';
 
 const Settings = () => {
   const [value, setValue] = React.useState(0);
@@ -96,40 +96,40 @@ const Settings = () => {
     }
   }, []);
 
-  const saveEmbed = async () => {
-    const {embed} = user.settings.embeds.list.[0];
+  // const saveEmbed = async () => {
+  //   const {embed} = user.settings.embeds.list.[0];
 
-    try {
-      const data = await user.settings.embeds.list.[0]({
-        color: embed.color,
-        siteName: embed.header.text,
-        siteNameUrl: embed.header.url,
-        title: embed.title,
-        description: embed.description,
-        author: embed.author.text,
-        authorUrl: embed.author.url,
-        randomColor: embed.color,
-      });
+  //   try {
+  //     const data = await user.settings.embeds.list.[0]({
+  //       color: embed.color,
+  //       siteName: embed.header.text,
+  //       siteNameUrl: embed.header.url,
+  //       title: embed.title,
+  //       description: embed.description,
+  //       author: embed.author.text,
+  //       authorUrl: embed.author.url,
+  //       randomColor: embed.color,
+  //     });
 
-        if (data.success)
-          toast({
-          title: "Success",
-          description: "Updated Embed Profile",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-          });
-      } catch (err) {
-        if (err)
-          return toast({
-          title: "Something went wrong",
-          description: "ErrorMessagehere whatever pringles u do this shit",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-          });
-    }
-  };
+  //       if (data.success)
+  //         toast({
+  //         title: "Success",
+  //         description: "Updated Embed Profile",
+  //         status: "success",
+  //         duration: 9000,
+  //         isClosable: true,
+  //         });
+  //     } catch (err) {
+  //       if (err)
+  //         return toast({
+  //         title: "Something went wrong",
+  //         description: "ErrorMessagehere whatever pringles u do this shit",
+  //         status: "error",
+  //         duration: 9000,
+  //         isClosable: true,
+  //         });
+  //   }
+  // };
 
   return user ? (
     <>
@@ -444,8 +444,8 @@ const Settings = () => {
             <Divider />
             <ModalCloseButton />
             <ModalBody>
-              <div className={styles.previewCon}>
-                <div className={styles.embedSettings}>
+              {/* <div className={styles.previewCon}>
+                <div className={styles.embedSettings}> */}
                   <Text mt={15} fontSize={15} color="gray.400">
                     Embed Site Name:
                   </Text>
@@ -517,10 +517,10 @@ const Settings = () => {
                   </Button>
 
                     <div
-                        className={styles.embedPreview}
+                        // className={styles.embedPreview}
                   />
-                    </div>
-                </div>
+                    {/* </div>
+                </div> */}
             </ModalBody>
             <ModalFooter></ModalFooter>
           </ModalContent>
