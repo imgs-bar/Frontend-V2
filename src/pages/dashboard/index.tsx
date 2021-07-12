@@ -62,8 +62,8 @@ const Dashboard = () => {
             md: '130',
           }}
           ml={{
-            base: '41',
-            sm: '284',
+            base: '30',
+            sm: '234',
             md: '350',
           }}
         >
@@ -123,7 +123,16 @@ const Dashboard = () => {
                 MOTD:
               </Text>
               <Center></Center>
-              <Text mt={2} ml={-178} color="gray.500">
+              <Text
+                mt={2}
+                fontSize="18"
+                color="gray.500"
+                ml={{
+                  base: '0',
+                  sm: '0',
+                  md: '-11.5rem',
+                }}
+              >
                 {motd}
               </Text>
             </Box>
@@ -210,7 +219,7 @@ const Dashboard = () => {
               md: '-128',
             }}
             ml={{
-              base: '16',
+              base: '8',
               sm: '14',
               md: '600',
             }}
