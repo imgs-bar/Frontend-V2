@@ -79,7 +79,7 @@ const Settings = () => {
   const updateSetting = async (key: setting, value: boolean) => {
     try {
       await updateSettings(key, value);
-      toast({ description: `${key} updated`, status: 'success' });
+      toast({description: `${key} updated`, status: 'success'});
     } catch (err) {
       toast({
         description: err.response.data.message,
@@ -87,7 +87,7 @@ const Settings = () => {
       });
     }
   };
-  const { user } = useUser();
+  const {user} = useUser();
   const router = useRouter();
 
   useEffect(() => {
@@ -446,80 +446,80 @@ const Settings = () => {
             <ModalBody>
               {/* <div className={styles.previewCon}>
                 <div className={styles.embedSettings}> */}
-                  <Text mt={15} fontSize={15} color="gray.400">
-                    Embed Site Name:
-                  </Text>
-                  <Input
-                    mt={3}
-                    size="sm"
-                    variant="outline"
-                    placeholder="Site Name URL"
-                    h={35}
-                    maxW={350}
-                  />
-                  <Input
-                    mt={3}
-                    size="sm"
-                    variant="outline"
-                    placeholder="Site Name"
-                    h={35}
-                    maxW={350}
-                  />
-                  <Text mt={15} fontSize={15} color="gray.400">
-                    Embed Author:
-                  </Text>
-                  <Input
-                    mt={3}
-                    size="sm"
-                    variant="outline"
-                    placeholder="Embed Author"
-                    h={35}
-                    maxW={350}
-                  />
-                  <Input
-                    mt={3}
-                    size="sm"
-                    variant="outline"
-                    placeholder="Embed Author URL"
-                    h={35}
-                    maxW={350}
-                  />
-                  <Text mt={15} fontSize={15} color="gray.400">
-                    Embed Title:
-                  </Text>
-                  <Input
-                    mt={3}
-                    size="sm"
-                    variant="outline"
-                    placeholder="Embed Title"
-                    h={35}
-                    maxW={350}
-                  />
-                  <Text mt={15} fontSize={15} color="gray.400">
-                    Embed Description:
-                  </Text>
-                  <Input
-                    mt={3}
-                    size="sm"
-                    variant="outline"
-                    placeholder="Embed Description"
-                    h={35}
-                    maxW={350}
-                  />
-                  <Button
-                    mt={5}
-                    colorScheme="gray"
-                    borderRadius="none"
-                    variant="outline"
-                    aria-label="Download a config"
-                  >
-                    Save Profile
-                  </Button>
+              <Text mt={15} fontSize={15} color="gray.400">
+                Embed Site Name:
+              </Text>
+              <Input
+                mt={3}
+                size="sm"
+                variant="outline"
+                placeholder="Site Name URL"
+                h={35}
+                maxW={350}
+              />
+              <Input
+                mt={3}
+                size="sm"
+                variant="outline"
+                placeholder="Site Name"
+                h={35}
+                maxW={350}
+              />
+              <Text mt={15} fontSize={15} color="gray.400">
+                Embed Author:
+              </Text>
+              <Input
+                mt={3}
+                size="sm"
+                variant="outline"
+                placeholder="Embed Author"
+                h={35}
+                maxW={350}
+              />
+              <Input
+                mt={3}
+                size="sm"
+                variant="outline"
+                placeholder="Embed Author URL"
+                h={35}
+                maxW={350}
+              />
+              <Text mt={15} fontSize={15} color="gray.400">
+                Embed Title:
+              </Text>
+              <Input
+                mt={3}
+                size="sm"
+                variant="outline"
+                placeholder="Embed Title"
+                h={35}
+                maxW={350}
+              />
+              <Text mt={15} fontSize={15} color="gray.400">
+                Embed Description:
+              </Text>
+              <Input
+                mt={3}
+                size="sm"
+                variant="outline"
+                placeholder="Embed Description"
+                h={35}
+                maxW={350}
+              />
+              <Button
+                mt={5}
+                colorScheme="gray"
+                borderRadius="none"
+                variant="outline"
+                aria-label="Download a config"
+              >
+                Save Profile
+              </Button>
 
-                    <div
-                        // className={styles.embedPreview}
-                  />
-                    {/* </div>
+              <div
+              // className={styles.embedPreview}
+              />
+              {/* </div>
                 </div> */}
             </ModalBody>
             <ModalFooter></ModalFooter>
