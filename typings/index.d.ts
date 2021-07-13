@@ -50,6 +50,11 @@ export interface User {
   invited: number;
 
   /**
+   * The users register date
+   */
+  registerDate: Date;
+
+  /**
    * The users banned status
    */
   banned: {
