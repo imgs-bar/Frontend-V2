@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {User, Stats, setting} from '../../typings';
+import {User, Stats, booleanSetting} from '../../typings';
 
 export const BASE_URL = 'https://betaapi.imgs.bar/v2';
 
@@ -65,7 +65,7 @@ export async function getMotd(): Promise<string> {
 }
 
 export async function updateSettings(
-  setting: setting,
+  setting: booleanSetting,
   status: boolean
 ): Promise<void> {
   await axios.patch(
@@ -75,4 +75,25 @@ export async function updateSettings(
       withCredentials: true,
     }
   );
+}
+
+export async function updateURLLength(length: number): Promise<void> {
+  await axios.patch(
+    `${BASE_URL}/settings/update/urlLength`,
+    {status: length},
+    {
+      withCredentials: true,
+    }
+  );
+}
+
+export async function createInvite(): Promise<string> {
+  const data = await axios.post(
+    `${BASE_URL}/invites/create`,
+    {},
+    {
+      withCredentials: true,
+    }
+  );
+  return data.data.invite;
 }

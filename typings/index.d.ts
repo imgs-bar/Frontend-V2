@@ -227,4 +227,4 @@ export interface Stats {
   files: number;
   domains: number;
 }
-export type setting = 'longUrl' | 'emojiUrl' | 'showExtension';
+export type booleanSetting = 'emojiUrl' | 'showExtension' | 'embed';
