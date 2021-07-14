@@ -264,7 +264,15 @@ const Home = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Box textAlign="center" m={350} minWidth={250}>
+      <Box
+        textAlign="center"
+        mt={{
+          base: '250',
+          sm: '300',
+          md: '350',
+        }}
+        minWidth={250}
+      >
         <Box>
           <Heading fontWeight="700" py="2">
             imgs.bar
@@ -535,89 +543,108 @@ const Home = () => {
         </DrawerContent>
       </Drawer>
 
-      <Center>
-        <Heading m={12}>
-          Statistics
-          {/* <Divider /> */}
-        </Heading>
-      </Center>
-      <Center marginBottom={20}>
-        <Box textAlign="center" maxWidth="max-content">
-          <Box
-            bg={colorBox}
-            py="10"
-            mr={50}
-            px={{base: '4', md: '10'}}
-            shadow="dark-lg"
-            w={[80, 180, 250]}
-            rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
-          >
-            <Heading fontSize={{base: '20', md: '30'}} m={3}>
+      <Stack
+        ml={{
+          base: '5rem',
+          sm: '0rem',
+          md: '22.5rem',
+        }}
+        mt={{
+          base: '30rem',
+          sm: '30rem',
+          md: '33.5rem',
+        }}
+        direction={['column', 'row']}
+        spacing={{
+          base: '9',
+          sm: '3rem',
+          md: '15rem',
+        }}
+      >
+        <Box
+          bg={colorBox}
+          borderRadius="5px"
+          w={{
+            base: '75%',
+            sm: '40rem',
+            md: '15rem',
+          }}
+          h={{
+            base: '10rem',
+            sm: '10rem',
+            md: '12rem',
+          }}
+        >
+          <Center>
+            <Heading mt={5} fontSize={{base: '20', md: '25'}}>
               Domains
             </Heading>
-            <Divider />
+          </Center>
+          <Center>
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
               <Skeleton isLoaded={statsLoaded}>
                 {stats ? stats.domains : 'Loading...'}
               </Skeleton>
             </Text>
-          </Box>
+          </Center>
         </Box>
-
-        <Box textAlign="center" maxWidth="max-content">
-          <Box
-            bg={colorBox}
-            py="10"
-            ml={50}
-            w={[80, 180, 250]}
-            px={{base: '4', md: '10'}}
-            shadow="dark-lg"
-            rounded={{sm: 'lg'}}
-          >
-            {/* <Heading>
-              Statistics
-            </Heading> */}
-
-            <Heading m={3} fontSize={{base: '20', md: '30'}}>
+        <Box
+          bg={colorBox}
+          borderRadius="5px"
+          w={{
+            base: '75%',
+            sm: '40rem',
+            md: '15rem',
+          }}
+          h={{
+            base: '10rem',
+            sm: '10rem',
+            md: '12rem',
+          }}
+        >
+          <Center>
+            <Heading mt={5} fontSize={{base: '20', md: '25'}}>
               Users
             </Heading>
-            <Divider />
+          </Center>
+          <Center>
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
               <Skeleton isLoaded={statsLoaded}>
                 {stats ? stats.users : 'Loading...'}
               </Skeleton>
             </Text>
-          </Box>
+          </Center>
         </Box>
-
-        <Box textAlign="center" maxWidth="max-content">
-          <Box
-            bg={colorBox}
-            py="10"
-            ml={101}
-            w={[80, 180, 250]}
-            px={{base: '4', md: '10'}}
-            shadow="dark-lg"
-            // mt={5}
-            // m={50}
-            rounded={{sm: 'lg'}}
-          >
-            {/* <Heading>
-              Statistics
-            </Heading> */}
-
-            <Heading m={3} fontSize={{base: '20', md: '30'}}>
+        <Box
+          bg={colorBox}
+          borderRadius="5px"
+          w={{
+            base: '75%',
+            sm: '40rem',
+            md: '15rem',
+          }}
+          h={{
+            base: '10rem',
+            sm: '10rem',
+            md: '12rem',
+          }}
+        >
+          <Center>
+            <Heading mt={5} fontSize={{base: '20', md: '25'}}>
               Files
             </Heading>
-            <Divider />
+          </Center>
+          <Center>
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
               <Skeleton isLoaded={statsLoaded}>
                 {stats ? stats.files : 'Loading...'}
               </Skeleton>
             </Text>
-          </Box>
+          </Center>
         </Box>
-      </Center>
+      </Stack>
+      <br></br>
+      <br></br>
     </>
   );
 };
