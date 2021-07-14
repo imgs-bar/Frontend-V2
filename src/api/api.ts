@@ -78,7 +78,7 @@ export async function updateSettings(
 }
 
 export async function getDomains(): Promise<void> {
-  const data = await axios.get(`${BASE_URL}/list/domains`, {
+  const data = await axios.get(`${BASE_URL}/domains/list`, {
     withCredentials: true,
   });
   return data.data;
