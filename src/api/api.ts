@@ -77,6 +77,13 @@ export async function updateSettings(
   );
 }
 
+export async function getDomains(): Promise<void> {
+  const data = await axios.get(`${BASE_URL}/list/domains`, {
+    withCredentials: true,
+  });
+  return data.data;
+}
+
 export async function updateURLLength(length: number): Promise<void> {
   await axios.patch(
     `${BASE_URL}/settings/update/urlLength`,

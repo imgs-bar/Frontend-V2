@@ -81,7 +81,7 @@ const Account = () => {
             md: '77%',
           }}
           // bg="#212938"
-          bg={colorBox}
+          bg={colorCon}
           borderRadius="md"
           h="50rem"
           mt={{
