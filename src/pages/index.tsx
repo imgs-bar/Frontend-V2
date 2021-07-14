@@ -562,6 +562,7 @@ const Home = () => {
         }}
       >
         <Box
+          shadow="dark-lg"
           bg={colorBox}
           borderRadius="5px"
           w={{
@@ -580,6 +581,7 @@ const Home = () => {
               Domains
             </Heading>
           </Center>
+          <Divider mt={5} />
           <Center>
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
               <Skeleton isLoaded={statsLoaded}>
@@ -589,6 +591,7 @@ const Home = () => {
           </Center>
         </Box>
         <Box
+          shadow="dark-lg"
           bg={colorBox}
           borderRadius="5px"
           w={{
@@ -607,6 +610,7 @@ const Home = () => {
               Users
             </Heading>
           </Center>
+          <Divider mt={5} />
           <Center>
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
               <Skeleton isLoaded={statsLoaded}>
@@ -616,6 +620,7 @@ const Home = () => {
           </Center>
         </Box>
         <Box
+          shadow="dark-lg"
           bg={colorBox}
           borderRadius="5px"
           w={{
@@ -634,6 +639,7 @@ const Home = () => {
               Files
             </Heading>
           </Center>
+          <Divider mt={5} />
           <Center>
             <Text mt={5} fontSize={{base: '15', md: '20'}}>
               <Skeleton isLoaded={statsLoaded}>
