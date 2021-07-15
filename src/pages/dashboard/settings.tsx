@@ -167,8 +167,11 @@ const Settings = () => {
               h={35}
               maxW={250}
             >
-              <option value="option1">i.imgs.bar</option>
-              <option value="option2">flameis.cool</option>
+              {user.settings.domains.map(d => (
+                <option key={d.name} value={d.name}>
+                  {d.name}
+                </option>
+              ))}
             </Select>
             <Input
               mt={8}

@@ -78,24 +78,21 @@ export async function updateSettings(
 }
 
 export async function updateEmbed(
-        header: {
-          text: string,
-          url: string,
-        },
-        author: {
-          text: string,
-          url: string,
-        },
-        title: string,
-        description: string,
-        color: string,
+  header: {
+    text: string;
+    url: string;
+  },
+  author: {
+    text: string;
+    url: string;
+  },
+  title: string,
+  description: string,
+  color: string
 ): Promise<void> {
-  await axios.patch(
-    `${BASE_URL}/update/embed`,
-    {
-      withCredentials: true,
-    }
-  );
+  await axios.patch(`${BASE_URL}/update/embed`, {
+    withCredentials: true,
+  });
 }
 
 export async function getDomains(): Promise<void> {
