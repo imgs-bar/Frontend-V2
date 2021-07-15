@@ -49,12 +49,13 @@ import {
   useToast,
   InputGroup,
   VStack,
+  Box,
   useColorModeValue,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
 import {setting} from '../../../typings';
-import {updateSettings} from '../../api/api';
+import {updateSettings, updateURLLength} from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
@@ -82,6 +83,21 @@ const Settings = () => {
     try {
       await updateSettings(key, value);
       toast({description: `${key} updated`, status: 'success'});
+    } catch (err) {
+      toast({
+        description: err.response.data.message,
+        status: 'error',
+      });
+    }
+  };
+  const updateURLLength = async (
+    key: setting,
+    value: boolean,
+    length: number
+  ) => {
+    try {
+      await updateURLLength(key, value, length);
+      toast({description: `${key} updated to ${length}`, status: 'success'});
     } catch (err) {
       toast({
         description: err.response.data.message,
@@ -219,51 +235,12 @@ const Settings = () => {
           </Center>
           <Center>
             <VStack ml={-75} spacing={6}>
-              <Popover>
-                <PopoverTrigger>
-                  <Text>Long URL</Text>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <PopoverArrow />
-                  <PopoverCloseButton />
-                  <PopoverHeader>Long URL Length</PopoverHeader>
-                  <PopoverBody>
-                    <Flex>
-                      <NumberInput
-                        maxW="100px"
-                        mr="2rem"
-                        value={value}
-                        onChange={handleChange}
-                        max={50}
-                        min={5}
-                      >
-                        <NumberInputField />
-                        <NumberInputStepper>
-                          <NumberIncrementStepper />
-                          <NumberDecrementStepper />
-                        </NumberInputStepper>
-                      </NumberInput>
-                      <Slider
-                        flex="1"
-                        focusThumbOnChange={false}
-                        value={value}
-                        onChange={handleChange}
-                        min={5}
-                        max={50}
-                      >
-                        <SliderTrack>
-                          <SliderFilledTrack />
-                        </SliderTrack>
-                        <SliderThumb
-                          fontSize="sm"
-                          boxSize="20px"
-                          children={value}
-                        />
-                      </Slider>
-                    </Flex>
-                  </PopoverBody>
-                </PopoverContent>
-              </Popover>
+              <Tooltip
+                label="change your url length lol"
+                placement="left-start"
+              >
+                <Text>URL Length</Text>
+              </Tooltip>
 
               <Tooltip label="emojis are in ur url" placement="left-start">
                 <Text>Emoji URL</Text>
@@ -277,15 +254,7 @@ const Settings = () => {
             </VStack>
           </Center>
           <Center>
-            <VStack mt={-120} ml={105} spacing={6}>
-              <Switch
-                size="md"
-                id="long-url"
-                onChange={event =>
-                  updateSetting('longUrl', event.target.checked)
-                }
-                defaultChecked={user.settings.longUrl}
-              />
+            <VStack mt={-75} ml={105} spacing={6}>
               <Switch
                 size="md"
                 id="emoji-url"
@@ -330,6 +299,46 @@ const Settings = () => {
           </Center>
         </Container>
       </VStack>
+
+      <Box w="20rem" ml={1125} mt={-345}>
+        <Flex>
+          <NumberInput
+            size="sm"
+            borderRadius="none"
+            w={70}
+            min={5}
+            // isDisabled     - maybe
+            mr="2rem"
+            max={50}
+            value={value}
+          >
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+          <Slider
+            borderRadius="none"
+            size="sm"
+            id="okay"
+            h={30}
+            w={30}
+            flex="1"
+            min={5}
+            max={50}
+            focusThumbOnChange={false}
+            value={value}
+            onChange={handleChange}
+          >
+            <SliderTrack size="sm">
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb fontSize="sm" boxSize="18px" children={value} />
+          </Slider>
+        </Flex>
+      </Box>
+
       <Flex>
         <Modal
           motionPreset="slideInBottom"
@@ -414,7 +423,6 @@ const Settings = () => {
           </ModalContent>
         </Modal>
       </Flex>
-
       <Flex>
         <Modal
           motionPreset="slideInBottom"
