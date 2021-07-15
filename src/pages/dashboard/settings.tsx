@@ -309,6 +309,7 @@ const Settings = () => {
             min={5}
             // isDisabled     - maybe
             mr="2rem"
+            onChange={handleChange}
             max={50}
             value={value}
           >
