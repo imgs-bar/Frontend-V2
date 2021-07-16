@@ -183,21 +183,11 @@ const Settings = () => {
               h={35}
               maxW={250}
             >
-<<<<<<< HEAD
-              {/* {user.settings.domains.map(d => ( */}
-              {/* <option key={d.name} value={d.name}> */}
-              <option>
-                {/* {d.name} */}
-                {domains}
-              </option>
-              {/* ))} */}
-=======
               {user.settings.domains.map(d => (
                 <option key={d.name} value={d.name}>
                   {d.name}
                 </option>
               ))}
->>>>>>> parent of 41617bc (PLESAE WORK PLSA)
             </Select>
             <Input
               mt={8}
@@ -319,7 +309,6 @@ const Settings = () => {
             min={5}
             // isDisabled     - maybe
             mr="2rem"
-            onChange={handleChange}
             max={50}
             value={value}
           >
