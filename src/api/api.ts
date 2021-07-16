@@ -99,7 +99,7 @@ export async function getDomains(): Promise<void> {
   const data = await axios.get(`${BASE_URL}/domains/list`, {
     withCredentials: true,
   });
-  return data.data.domain;
+  return data.data.domains;
 }
 
 export async function updateURLLength(length: number): Promise<void> {
