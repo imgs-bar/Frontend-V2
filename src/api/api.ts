@@ -99,11 +99,7 @@ export async function getDomains(): Promise<string> {
   const data = await axios.get(`${BASE_URL}/domains/list`, {
     withCredentials: true,
   });
-<<<<<<< HEAD
   return data.data.domains;
-=======
-  return data.data;
->>>>>>> parent of 41617bc (PLESAE WORK PLSA)
 }
 
 export async function updateURLLength(length: number): Promise<void> {
