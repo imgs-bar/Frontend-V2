@@ -55,7 +55,7 @@ import {
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
 import {setting} from '../../../typings';
-import {updateSettings, updateURLLength} from '../../api/api';
+import {getDomains, updateSettings, updateURLLength} from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
@@ -107,11 +107,16 @@ const Settings = () => {
   };
   const {user} = useUser();
   const router = useRouter();
+  const [domains] = React.useState('');
 
   useEffect(() => {
     if (!user) {
       router.push('/');
     }
+  }, []);
+
+  useEffect(() => {
+    getDomains().then(domains => {});
   }, []);
 
   const colorCon = useColorModeValue('gray.100', '#212938');
@@ -184,8 +189,10 @@ const Settings = () => {
               maxW={250}
             >
               {user.settings.domains.map(d => (
-                <option key={d.name} value={d.name}>
-                  {d.name}
+                // <option key={d.name} value={d.name}>
+                <option>
+                  {/* {d.name} */}
+                  {domains}
                 </option>
               ))}
             </Select>
