@@ -95,7 +95,7 @@ export async function updateEmbed(
   });
 }
 
-export async function getDomains(): Promise<void> {
+export async function getDomains(): Promise<string> {
   const data = await axios.get(`${BASE_URL}/domains/list`, {
     withCredentials: true,
   });
