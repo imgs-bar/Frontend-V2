@@ -190,7 +190,7 @@ const Settings = () => {
             >
               {/* {user.settings.domains.map(d => ( */}
               {/* <option key={d.name} value={d.name}> */}
-              <option key={domains} value={domains}>
+              <option>
                 {/* {d.name} */}
                 {domains}
               </option>
