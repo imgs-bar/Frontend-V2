@@ -188,13 +188,13 @@ const Settings = () => {
               h={35}
               maxW={250}
             >
-              {user.settings.domains.map(d => (
-                // <option key={d.name} value={d.name}>
-                <option>
-                  {/* {d.name} */}
-                  {domains}
-                </option>
-              ))}
+              {/* {user.settings.domains.map(d => ( */}
+              {/* <option key={d.name} value={d.name}> */}
+              <option>
+                {/* {d.name} */}
+                {domains}
+              </option>
+              {/* ))} */}
             </Select>
             <Input
               mt={8}
