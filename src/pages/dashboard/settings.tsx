@@ -310,7 +310,7 @@ const Settings = () => {
             // isDisabled     - maybe
             mr="2rem"
             max={50}
-            value={value}
+            value={user.settings.urlLength}
           >
             <NumberInputField />
             <NumberInputStepper>
