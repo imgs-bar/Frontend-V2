@@ -112,6 +112,7 @@ const Account = () => {
             {user.username}
           </Text>
           <Text mt={0} ml={89} fontSize={14.4} color="gray.400">
+            Joined ‎
             {new Date(user.registerDate).toLocaleString('en-us', {
               month: 'long',
             })}
