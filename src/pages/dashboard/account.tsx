@@ -114,11 +114,9 @@ const Account = () => {
           <Text mt={0} ml={89} fontSize={14.4} color="gray.400">
             {new Date(user.registerDate).toLocaleString('en-us', {
               month: 'long',
-              // year: 'numeric',
             })}
-            ,
+            ,‎
             {new Date(user.registerDate).toLocaleString('en-us', {
-              // month: 'long',
               year: 'numeric',
             })}
           </Text>
