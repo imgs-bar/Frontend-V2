@@ -106,7 +106,7 @@ const Settings = () => {
     }
   };
   // const {user} = useUser();
-  let {user, setUser} = useUser();
+  const {user, setUser} = useUser();
   const router = useRouter();
 
   useEffect(() => {

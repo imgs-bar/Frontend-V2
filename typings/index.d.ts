@@ -151,8 +151,8 @@ export interface User {
    * The users settings
    */
   settings: {
-     //Length of users filenames
-     urlLength: number;
+    //Length of users filenames
+    urlLength: number;
 
     //If the user's upload URLS should consist of emojis
     emojiUrl: boolean;

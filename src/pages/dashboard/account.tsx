@@ -67,7 +67,6 @@ const Account = () => {
   const colorSelect = useColorModeValue('gray.200', 'gray.600');
 
   return user ? (
-    // return (
     <>
       <Flex>
         <Sidebar display={['none', null, 'flex']} w={64} />
