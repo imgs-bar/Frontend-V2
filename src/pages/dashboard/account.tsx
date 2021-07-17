@@ -64,6 +64,7 @@ const Account = () => {
 
   const colorBox = useColorModeValue('gray.200', 'gray.700');
   const colorCon = useColorModeValue('gray.100', '#212938');
+  const colorSelect = useColorModeValue('gray.200', 'gray');
 
   return user ? (
     // return (
@@ -80,7 +81,6 @@ const Account = () => {
             sm: '40%',
             md: '77%',
           }}
-          // bg="#212938"
           bg={colorCon}
           borderRadius="md"
           h="50rem"
@@ -159,16 +159,16 @@ const Account = () => {
             </Button>
             <Button
               size="sm"
-              colorScheme="gray"
+              bg={colorSelect}
               borderRadius="5"
               onClick={() => {
                 location.href = `${BASE_URL}/discord/link`;
               }}
             >
-              Link discord
+              Link Discord
             </Button>
           </Stack>
-          <Divider mt={10} />
+          {/* <Divider mt={10} />
           <Heading fontSize={21} mt={30} ml={15}>
             idk yet
           </Heading>
@@ -179,30 +179,8 @@ const Account = () => {
             <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
               File Archive
             </Button>
-            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
-              File Archive
-            </Button>
-            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
-              Relink Discord
-            </Button>
-            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
-              Wipe Files
-            </Button>
-            <Button w={100} size="sm" colorScheme="gray" borderRadius="5">
-              2FA
-            </Button>
-          </Stack>
-          <Divider mt={10} />
-          <Button
-            mt={50}
-            ml={15}
-            w={100}
-            size="sm"
-            colorScheme="telegram"
-            borderRadius="5"
-          >
-            Save Changes
-          </Button>
+          </Stack> */}
+          {/* <Divider mt={10} /> */}
         </Container>
       </VStack>
     </>
