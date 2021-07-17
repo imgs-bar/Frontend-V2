@@ -23,6 +23,8 @@ const Dashboard = () => {
   const router = useRouter();
   const [motd, setMotd] = React.useState('');
 
+  // const month = user.registerDate.toLocaleString('default', {month: 'long'});
+
   useEffect(() => {
     if (!user) {
       router.push('/');
@@ -40,6 +42,8 @@ const Dashboard = () => {
 
   const colorBox = useColorModeValue('gray.200', 'gray.700');
   const colorCon = useColorModeValue('gray.100', '#212938');
+
+  const options = {month: 'long'};
 
   return user ? (
     <>
@@ -78,7 +82,11 @@ const Dashboard = () => {
             lineHeight="normal"
             fontWeight="semibold"
           >
-            Welcome, {user.username}
+            {/* Welcome, {user.username} */}
+            {new Date(user.registerDate).toLocaleString('en-us', {
+              month: 'long',
+              year: 'numeric',
+            })}
           </Heading>
 
           <Divider mt={10} />

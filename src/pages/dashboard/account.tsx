@@ -112,7 +112,15 @@ const Account = () => {
             {user.username}
           </Text>
           <Text mt={0} ml={89} fontSize={14.4} color="gray.400">
-            Joined {user.registerDate}
+            {new Date(user.registerDate).toLocaleString('en-us', {
+              month: 'long',
+              // year: 'numeric',
+            })}
+            ,
+            {new Date(user.registerDate).toLocaleString('en-us', {
+              // month: 'long',
+              year: 'numeric',
+            })}
           </Text>
           <Stack spacing={4} ml={15} mt={30} direction="row" align="center">
             <Button size="sm" colorScheme="gray" borderRadius="5">
