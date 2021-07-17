@@ -115,7 +115,7 @@ const Account = () => {
             {new Date(user.registerDate).toLocaleString('en-us', {
               month: 'long',
             })}
-            ,‎
+            ,‎‏‏‎ ‎
             {new Date(user.registerDate).toLocaleString('en-us', {
               year: 'numeric',
             })}
