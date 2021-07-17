@@ -328,7 +328,7 @@ const Settings = () => {
             min={5}
             max={50}
             focusThumbOnChange={false}
-            value={value}
+            value={user.settings.urlLength}
             onChange={handleChange}
           >
             <SliderTrack size="sm">
