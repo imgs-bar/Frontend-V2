@@ -55,7 +55,7 @@ import {
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
 import {setting} from '../../../typings';
-import {updateSettings, updateURLLength} from '../../api/api';
+import {updateSettings, updateURLLength, updateEmbed} from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
@@ -105,7 +105,8 @@ const Settings = () => {
       });
     }
   };
-  const {user} = useUser();
+  // const {user} = useUser();
+  let {user, setUser} = useUser();
   const router = useRouter();
 
   useEffect(() => {
@@ -176,7 +177,6 @@ const Settings = () => {
             <Select
               mt={8}
               size="sm"
-              // colorScheme="gray"
               variant="filled"
               bg={colorSelect}
               aria-label="Select a domain"
@@ -372,32 +372,6 @@ const Settings = () => {
                     >
                       ShareX
                     </Button>
-
-                    <Button ml={100} mt={5} variant="outline" w={150}>
-                      ShareNix Raw
-                    </Button>
-
-                    <Button
-                      // mt={-69}
-                      ml={100}
-                      mt={5}
-                      variant="outline"
-                      w={150}
-                    >
-                      ShareNix Inject
-                    </Button>
-
-                    <Button
-                      // mt={-69}
-                      ml={100}
-                      mt={5}
-                      variant="outline"
-                      // maxW={150}
-                      w={150}
-                    >
-                      KShare
-                    </Button>
-
                     <Button
                       // mt={-69}
                       ml={100}
@@ -448,6 +422,19 @@ const Settings = () => {
                 placeholder="Site Name URL"
                 h={35}
                 maxW={350}
+                // onChange={val => {
+                //   // user = Object.assign({}, user);
+                //   user.settings.embeds.list[0].header.text = val;
+
+                //   setUser(user);
+                // }}
+                value={
+                  user.settings.embeds.list[0].header.url &&
+                  user.settings.embeds.list[0].header.url !== '' &&
+                  user.settings.embeds.list[0].header.url !== 'default'
+                    ? user.settings.embeds.list[0].header.url
+                    : ''
+                }
               />
               <Input
                 mt={3}
@@ -456,6 +443,13 @@ const Settings = () => {
                 placeholder="Site Name"
                 h={35}
                 maxW={350}
+                value={
+                  user.settings.embeds.list[0].header.text &&
+                  user.settings.embeds.list[0].header.text !== '' &&
+                  user.settings.embeds.list[0].header.text !== 'default'
+                    ? user.settings.embeds.list[0].header.text
+                    : ''
+                }
               />
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Author:
@@ -464,17 +458,31 @@ const Settings = () => {
                 mt={3}
                 size="sm"
                 variant="outline"
-                placeholder="Embed Author"
+                placeholder="Embed Author URL"
                 h={35}
                 maxW={350}
+                value={
+                  user.settings.embeds.list[0].author.url &&
+                  user.settings.embeds.list[0].author.url !== '' &&
+                  user.settings.embeds.list[0].author.url !== 'default'
+                    ? user.settings.embeds.list[0].author.url
+                    : ''
+                }
               />
               <Input
                 mt={3}
                 size="sm"
                 variant="outline"
-                placeholder="Embed Author URL"
+                placeholder="Embed Author Text"
                 h={35}
                 maxW={350}
+                value={
+                  user.settings.embeds.list[0].author.text &&
+                  user.settings.embeds.list[0].author.text !== '' &&
+                  user.settings.embeds.list[0].author.text !== 'default'
+                    ? user.settings.embeds.list[0].author.text
+                    : ''
+                }
               />
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Title:
@@ -486,6 +494,19 @@ const Settings = () => {
                 placeholder="Embed Title"
                 h={35}
                 maxW={350}
+                // onChange={val => {
+                //   user = Object.assign({}, user);
+                //   user.settings.embeds.list[0].title = val;
+
+                //   setUser(user);
+                // }}
+                value={
+                  user.settings.embeds.list[0].title &&
+                  user.settings.embeds.list[0].title !== '' &&
+                  user.settings.embeds.list[0].title !== 'default'
+                    ? user.settings.embeds.list[0].title
+                    : ''
+                }
               />
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Description:
@@ -497,6 +518,13 @@ const Settings = () => {
                 placeholder="Embed Description"
                 h={35}
                 maxW={350}
+                value={
+                  user.settings.embeds.list[0].description &&
+                  user.settings.embeds.list[0].description !== '' &&
+                  user.settings.embeds.list[0].description !== 'default'
+                    ? user.settings.embeds.list[0].description
+                    : ''
+                }
               />
               <Button
                 mt={5}
@@ -505,7 +533,7 @@ const Settings = () => {
                 variant="outline"
                 aria-label="Download a config"
               >
-                Save Profile
+                Create Profile
               </Button>
 
               <div
