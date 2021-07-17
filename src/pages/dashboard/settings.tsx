@@ -169,7 +169,7 @@ const Settings = () => {
               mt={8}
               size="sm"
               variant="outline"
-              placeholder="Subdomain"
+              placeholder={user.settings.domains[0].subDomain}
               h={35}
               ml={1}
               maxW={150}
@@ -194,7 +194,7 @@ const Settings = () => {
               size="sm"
               variant="outline"
               h={35}
-              placeholder="Prefix"
+              placeholder={user.settings.domains[0].fileNamePrefix}
               maxW={130}
             />
           </Center>
