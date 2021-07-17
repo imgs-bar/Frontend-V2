@@ -64,7 +64,7 @@ const Account = () => {
 
   const colorBox = useColorModeValue('gray.200', 'gray.700');
   const colorCon = useColorModeValue('gray.100', '#212938');
-  const colorSelect = useColorModeValue('gray.200', 'gray');
+  const colorSelect = useColorModeValue('gray.200', 'gray.700');
 
   return user ? (
     // return (
