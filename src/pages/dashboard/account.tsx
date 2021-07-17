@@ -127,7 +127,7 @@ const Account = () => {
             <Button
               isDisabled={!user.roles.premium.status}
               size="sm"
-              colorScheme="gray"
+              bg={colorSelect}
               borderRadius="5"
             >
               Change UID
