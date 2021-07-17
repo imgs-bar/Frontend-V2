@@ -64,7 +64,7 @@ const Account = () => {
 
   const colorBox = useColorModeValue('gray.200', 'gray.700');
   const colorCon = useColorModeValue('gray.100', '#212938');
-  const colorSelect = useColorModeValue('gray.200', 'gray.600');
+  const colorSelect = useColorModeValue('gray.200', '#323A48');
 
   return user ? (
     <>
@@ -121,7 +121,7 @@ const Account = () => {
             })}
           </Text>
           <Stack spacing={4} ml={15} mt={30} direction="row" align="center">
-            <Button size="sm" colorScheme="gray" borderRadius="5">
+            <Button size="sm" bg={colorSelect} borderRadius="5">
               Change Username
             </Button>
             <Button
@@ -150,10 +150,10 @@ const Account = () => {
             size="sm"
           />
           <Stack spacing={4} mt={30} direction="row" align="center">
-            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
+            <Button size="sm" ml={15} bg={colorSelect} borderRadius="5">
               Change Email
             </Button>
-            <Button size="sm" colorScheme="gray" borderRadius="5">
+            <Button size="sm" bg={colorSelect} borderRadius="5">
               Change Password
             </Button>
             <Button
