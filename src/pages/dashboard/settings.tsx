@@ -539,9 +539,11 @@ const Settings = () => {
                 }}
                 pt="400"
                 pb="8"
-                borderLeftWidth="2px"
+                borderLeftWidth="4px"
+                borderRadius="4px"
                 borderColor={useColorModeValue('gray.300', 'gray.500')}
-                borderLeftColor={useColorModeValue('blue.500', 'blue.300')}
+                // borderLeftColor={useColorModeValue('blue.500', 'blue.300')}
+                borderLeftColor={user.settings.embeds.list[0].color}
                 borderBottomRadius={{
                   base: 'none',
                   sm: 'base',
