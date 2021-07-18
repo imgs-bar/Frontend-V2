@@ -90,9 +90,13 @@ export async function updateEmbed(
   description: string,
   color: string
 ): Promise<void> {
-  await axios.patch(`${BASE_URL}/update/embed`, {
-    withCredentials: true,
-  });
+  await axios.patch(
+    `${BASE_URL}/update/embed`,
+    {title},
+    {
+      withCredentials: true,
+    }
+  );
 }
 
 export async function getDomains(): Promise<string> {

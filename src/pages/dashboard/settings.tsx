@@ -55,7 +55,12 @@ import {
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
 import {setting} from '../../../typings';
-import {updateSettings, updateURLLength, updateEmbed} from '../../api/api';
+import {
+  updateSettings,
+  updateURLLength,
+  updateEmbed,
+  createInvite,
+} from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
@@ -209,7 +214,7 @@ const Settings = () => {
               size="sm"
               variant="outline"
               h={35}
-              placeholder={user.settings.domains[0].fileNamePrefix}
+              value={user.settings.domains[0].fileNamePrefix}
               maxW={130}
             />
           </Center>
@@ -219,9 +224,7 @@ const Settings = () => {
                 px={4}
                 py={2}
                 transition="all 0.2s"
-                // borderRadius="md"
                 borderWidth="1px"
-                // _hover={{bg: 'gray.500'}}
                 _expanded={{bg: colorBox}}
                 _focus={{boxShadow: 'outline'}}
               >
@@ -366,14 +369,7 @@ const Settings = () => {
                     >
                       ShareX
                     </Button>
-                    <Button
-                      // mt={-69}
-                      ml={100}
-                      mt={5}
-                      variant="outline"
-                      // maxW={150}
-                      w={150}
-                    >
+                    <Button ml={100} mt={5} variant="outline" w={150}>
                       iOS Shortcut
                     </Button>
                   </TabPanel>
@@ -416,27 +412,13 @@ const Settings = () => {
                 placeholder="Site Name URL"
                 h={35}
                 maxW={350}
-                // onChange={val => {
-                //   // user = Object.assign({}, user);
-                //   user.settings.embeds.list[0].header.text = val;
-
-                //   setUser(user);
-                // }}
-                // value={
-                //   user.settings.embeds.list[0].header.url &&
-                //   user.settings.embeds.list[0].header.url !== '' &&
-                //   user.settings.embeds.list[0].header.url !== 'default'
-                //     ? user.settings.embeds.list[0].header.url
-                //     : ''
-                // }
-                placeholder={
-                  user.settings.embeds.list[0].title
-                  // user.settings.embeds.list[0].title !== '' &&
-                  // user.settings.embeds.list[0].title !== 'default'
-                  //   ? user.settings.embeds.list[0].title
-                  //   : ''
+                value={
+                  user.settings.embeds.list[0].header.url &&
+                  user.settings.embeds.list[0].header.url !== '' &&
+                  user.settings.embeds.list[0].header.url !== 'default'
+                    ? user.settings.embeds.list[0].header.url
+                    : ''
                 }
-                // onChange={e => updateEmbed(e.target.value)}
               />
               <Input
                 mt={3}
@@ -496,12 +478,6 @@ const Settings = () => {
                 placeholder="Embed Title"
                 h={35}
                 maxW={350}
-                // onChange={val => {
-                //   user = Object.assign({}, user);
-                //   user.settings.embeds.list[0].title = val;
-
-                //   setUser(user);
-                // }}
                 value={
                   user.settings.embeds.list[0].title &&
                   user.settings.embeds.list[0].title !== '' &&
@@ -534,22 +510,14 @@ const Settings = () => {
                 borderRadius="none"
                 variant="outline"
                 aria-label="Download a config"
-                // onClick={updateEmbed}
               >
                 Create Profile
               </Button>
-
-              <div
-              // className={styles.embedPreview}
-              />
-              {/* </div>
-                </div> */}
             </ModalBody>
             <ModalFooter></ModalFooter>
           </ModalContent>
         </Modal>
       </Flex>
-      {/* {user.settings.embeds.list[0].name} */}
       <Flex>
         <Modal
           motionPreset="slideInBottom"
@@ -568,8 +536,6 @@ const Settings = () => {
               </Text>
               <Input
                 mt={8}
-                // ml={15}
-                // maxW="50rem"
                 h="2.4rem"
                 isDisabled
                 value={user.settings.embeds.list[0].name}
@@ -577,7 +543,6 @@ const Settings = () => {
                 size="sm"
               />
             </ModalBody>
-            <ModalFooter></ModalFooter>
           </ModalContent>
         </Modal>
       </Flex>
