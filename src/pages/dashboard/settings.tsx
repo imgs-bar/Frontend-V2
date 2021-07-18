@@ -269,7 +269,24 @@ const Settings = () => {
             </VStack>
           </Center>
           <Center>
-            <VStack mt={-75} ml={105} spacing={6}>
+            <VStack mt={-128} ml={105} spacing={6}>
+              <NumberInput
+                w={100}
+                size="sm"
+                ml={16}
+                min={5}
+                max={50}
+                keepWithinRange={false}
+                clampValueOnBlur={false}
+              >
+                <NumberInputField
+                  onChange={e => updateSetting('urlLength', e.target.value)}
+                />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
               <Switch
                 size="md"
                 id="emoji-url"
