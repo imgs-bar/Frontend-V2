@@ -151,6 +151,7 @@ const Home = () => {
       <head>
         <title>imgs.bar beta</title>
       </head>
+
       <Flex>
         <Flex pos="fixed" top="1rem" left="1rem" align="center">
           <Heading fontWeight="bold" fontSize="20" py="2">
@@ -166,13 +167,14 @@ const Home = () => {
               variant="solid"
               aria-label="Login"
               my={5}
-              w="100%"
               onClick={onOpenLogin}
+              w="100%"
             >
               Login
             </Button>
 
             <Button
+              onClick={onOpenRegister}
               as="a"
               colorScheme="telegram"
               variant="solid"
@@ -180,7 +182,6 @@ const Home = () => {
               my={5}
               ml={2}
               w="100%"
-              onClick={onOpenRegister}
             >
               Register
             </Button>
@@ -222,48 +223,19 @@ const Home = () => {
           >
             <Flex justify="flex-end">
               <IconButton
-                mt={4}
-                mr={8}
+                mt={2}
+                mr={2}
                 aria-label="Close Menu"
                 size="md"
-                variant="solid"
                 borderRadius="md"
                 icon={<CloseIcon />}
                 onClick={() => changeDisplay('none')}
               />
             </Flex>
-
-            <Flex flexDir="column" align="center">
-              <NextLink href="" passHref>
-                <Button
-                  as="a"
-                  colorScheme="telegram"
-                  variant="outline"
-                  aria-label="Login"
-                  my={5}
-                  w="100%"
-                >
-                  Login
-                </Button>
-              </NextLink>
-
-              <NextLink href="" passHref>
-                <Button
-                  as="a"
-                  colorScheme="telegram"
-                  variant="solid"
-                  aria-label="Register"
-                  my={5}
-                  ml={2}
-                  w="100%"
-                >
-                  Register
-                </Button>
-              </NextLink>
-            </Flex>
           </Flex>
         </Flex>
       </Flex>
+
       <Box
         textAlign="center"
         mt={{
@@ -295,11 +267,6 @@ const Home = () => {
             with 100+ domains and an amazing community.{' '}
           </Text>
           <br />
-          {/* <Center> */}
-          {/* <HStack direction="column"> */}
-          {/* <Button colorScheme="telegram" variant="solid" onClick={onOpen}>
-                Get started
-              </Button> */}
           <Button colorScheme="telegram" variant="solid" onClick={onOpenLogin}>
             ‏‏‎‏‏‎‏‏‎ ‎ ‎Login‏‏‎ ‎‏‏‎ ‎
           </Button>
@@ -313,8 +280,6 @@ const Home = () => {
           >
             Discord
           </Button>
-          {/* </HStack> */}
-          {/* </Center> */}
         </Box>
       </Box>
 
@@ -405,7 +370,6 @@ const Home = () => {
                       bg="#5865F2"
                       _hover={{background: '#7289DA'}}
                       isDisabled={isSubmitting}
-                      // isLoading={isSubmitting}
                       leftIcon={<FaDiscord />}
                       mb={5}
                       onClick={() =>
@@ -420,12 +384,6 @@ const Home = () => {
             </Formik>
           </DrawerBody>
           <DrawerFooter borderTopWidth="1px"></DrawerFooter>
-
-          {/* <DrawerFooter borderTopWidth="1px">
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </DrawerFooter> */}
         </DrawerContent>
       </Drawer>
 
@@ -534,12 +492,6 @@ const Home = () => {
             </Formik>
           </DrawerBody>
           <DrawerFooter borderTopWidth="1px"></DrawerFooter>
-
-          {/* <DrawerFooter borderTopWidth="1px">
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </DrawerFooter> */}
         </DrawerContent>
       </Drawer>
 
