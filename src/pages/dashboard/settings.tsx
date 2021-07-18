@@ -84,6 +84,18 @@ const Settings = () => {
     onClose: onCloseManage,
   } = useDisclosure();
 
+  const saveEmbed = async (title: string) => {
+    try {
+      await saveEmbed(title);
+      toast({description: `${title} updated`, status: 'success'});
+    } catch (err) {
+      // toast({
+      //   description: err,
+      //   status: 'error',
+      // });
+    }
+  };
+
   const updateSetting = async (key: setting, value: boolean) => {
     try {
       await updateSettings(key, value);
@@ -138,8 +150,6 @@ const Settings = () => {
             sm: '40%',
             md: '77%',
           }}
-          //  w="120%"
-          // bg="#212938"
           bg={colorCon}
           borderRadius="md"
           h="50rem"
@@ -305,7 +315,7 @@ const Settings = () => {
         </Container>
       </VStack>
 
-      <Box w="20rem" ml={1125} mt={-345}>
+      {/* <Box w="20rem" ml={1125} mt={-345}>
         <Flex>
           <NumberInput
             size="sm"
@@ -342,7 +352,7 @@ const Settings = () => {
             <SliderThumb fontSize="sm" boxSize="18px" children={value} />
           </Slider>
         </Flex>
-      </Box>
+      </Box> */}
 
       <Flex>
         <Modal
@@ -433,13 +443,22 @@ const Settings = () => {
 
                 //   setUser(user);
                 // }}
-                value={
-                  user.settings.embeds.list[0].header.url &&
-                  user.settings.embeds.list[0].header.url !== '' &&
-                  user.settings.embeds.list[0].header.url !== 'default'
-                    ? user.settings.embeds.list[0].header.url
-                    : ''
+                // value={
+                //   user.settings.embeds.list[0].header.url &&
+                //   user.settings.embeds.list[0].header.url !== '' &&
+                //   user.settings.embeds.list[0].header.url !== 'default'
+                //     ? user.settings.embeds.list[0].header.url
+                //     : ''
+                // }
+                placeholder={
+                  user.settings.embeds.list[0].title
+                  // user.settings.embeds.list[0].title !== '' &&
+                  // user.settings.embeds.list[0].title !== 'default'
+                  //   ? user.settings.embeds.list[0].title
+                  //   : ''
                 }
+                // onChange={e => updateEmbed(e.target.value)}
+                onChange={e => updateSetting('urlLength', e.target.value)}
               />
               <Input
                 mt={3}
@@ -537,6 +556,7 @@ const Settings = () => {
                 borderRadius="none"
                 variant="outline"
                 aria-label="Download a config"
+                // onClick={updateEmbed}
               >
                 Create Profile
               </Button>
