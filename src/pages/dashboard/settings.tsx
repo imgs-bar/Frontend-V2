@@ -58,7 +58,7 @@ import {
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
-import {setting} from '../../../typings';
+import {setting, User} from '../../../typings';
 import {
   updateSettings,
   updateURLLength,
@@ -232,7 +232,6 @@ const Settings = () => {
                 py={2}
                 bg={button}
                 borderRadius="4px"
-                // borderWidth="1px"
                 _expanded={{bg: colorBox}}
                 _focus={{boxShadow: 'outline'}}
               >
@@ -519,9 +518,11 @@ const Settings = () => {
               <Button
                 mt={5}
                 colorScheme="gray"
-                borderRadius="none"
-                variant="outline"
+                px={4}
+                py={2}
+                borderRadius="4px"
                 aria-label="Download a config"
+                // _focus="boxShadow: 'none'"
               >
                 Create Profile
               </Button>
