@@ -586,6 +586,7 @@ const Settings = () => {
                 <br></br>
                 <br />
                 <Image
+                  mt={5}
                   height="13rem"
                   src="https://cdn.imgs.bar/imgs-beta/29de67ce-2077-4efa-8a2b-9411f6568481.png"
                 ></Image>
