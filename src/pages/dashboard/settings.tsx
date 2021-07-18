@@ -51,6 +51,8 @@ import {
   VStack,
   Box,
   useColorModeValue,
+  InputLeftAddon,
+  InputRightAddon,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
@@ -139,6 +141,7 @@ const Settings = () => {
 
   const colorCon = useColorModeValue('gray.100', '#212938');
   const colorBox = useColorModeValue('gray.200', 'gray.700');
+  const button = useColorModeValue('gray.200', '#323A48');
   const colorSelect = useColorModeValue('gray.200', 'gray.700');
 
   return user ? (
@@ -197,7 +200,6 @@ const Settings = () => {
             <Select
               mt={8}
               size="sm"
-              variant="filled"
               bg={colorSelect}
               aria-label="Select a domain"
               h={35}
@@ -209,22 +211,26 @@ const Settings = () => {
                 </option>
               ))}
             </Select>
-            <Input
-              mt={8}
-              size="sm"
-              variant="outline"
-              h={35}
-              value={user.settings.domains[0].fileNamePrefix}
-              maxW={130}
-            />
+            <Center>
+              <InputGroup mt={31} ml={-1} size="sm">
+                <InputLeftAddon h={35} children="/" />
+                <Input
+                  placeholder={user.settings.domains[0].fileNamePrefix}
+                  w={125}
+                  h={35}
+                  placeholder="File Prefix"
+                />
+              </InputGroup>
+            </Center>
           </Center>
           <Center mt={10}>
             <Menu>
               <MenuButton
                 px={4}
                 py={2}
-                transition="all 0.2s"
-                borderWidth="1px"
+                bg={button}
+                borderRadius="4px"
+                // borderWidth="1px"
                 _expanded={{bg: colorBox}}
                 _focus={{boxShadow: 'outline'}}
               >
@@ -324,9 +330,8 @@ const Settings = () => {
           <Center>
             <Button
               mt={5}
-              colorScheme="gray"
-              borderRadius="none"
-              variant="outline"
+              bg={button}
+              borderRadius="4px"
               leftIcon={<DownloadIcon />}
               aria-label="Download a config"
               onClick={onOpenConfigs}

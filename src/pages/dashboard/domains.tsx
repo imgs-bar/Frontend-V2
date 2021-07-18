@@ -23,6 +23,8 @@ import {
   useToast,
   VStack,
   useColorModeValue,
+  InputGroup,
+  InputLeftAddon,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
@@ -141,14 +143,11 @@ const Domains = () => {
                 <Text mt={30} fontSize={15} color="gray.400">
                   Domain:
                 </Text>
-                <Input
-                  mt={3}
-                  size="sm"
-                  variant="outline"
-                  placeholder="Domain"
-                  h={35}
-                  maxW={350}
-                />
+                <InputGroup mt={5} size="sm">
+                  <InputLeftAddon children="https://" />
+                  <Input placeholder="Domain" />
+                  {/* <InputRightAddon children=".com" /> */}
+                </InputGroup>
                 <Button
                   mt={5}
                   colorScheme="gray"
