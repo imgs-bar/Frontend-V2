@@ -218,7 +218,7 @@ const Settings = () => {
                   placeholder={user.settings.domains[0].fileNamePrefix}
                   w={125}
                   h={35}
-                  placeholder="File Prefix"
+                  // placeholder="File Prefix"
                 />
               </InputGroup>
             </Center>
