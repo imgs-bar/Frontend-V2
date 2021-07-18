@@ -50,9 +50,11 @@ import {
   InputGroup,
   VStack,
   Box,
+  Link,
   useColorModeValue,
   InputLeftAddon,
   InputRightAddon,
+  Image,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
@@ -398,6 +400,7 @@ const Settings = () => {
           onClose={onCloseCreate}
           isOpen={isOpenCreate}
           isCentered
+          size="3xl"
         >
           <ModalOverlay />
           <ModalContent>
@@ -407,6 +410,7 @@ const Settings = () => {
             <ModalBody>
               {/* <div className={styles.previewCon}>
                 <div className={styles.embedSettings}> */}
+
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Site Name:
               </Text>
@@ -425,6 +429,7 @@ const Settings = () => {
                     : ''
                 }
               />
+              <br />
               <Input
                 mt={3}
                 size="sm"
@@ -458,6 +463,7 @@ const Settings = () => {
                     : ''
                 }
               />
+              <br />
               <Input
                 mt={3}
                 size="sm"
@@ -509,6 +515,7 @@ const Settings = () => {
                     : ''
                 }
               />
+              <br></br>
               <Button
                 mt={5}
                 colorScheme="gray"
@@ -519,7 +526,68 @@ const Settings = () => {
                 Create Profile
               </Button>
             </ModalBody>
-            <ModalFooter></ModalFooter>
+            <ModalFooter>
+              <Box
+                bg={useColorModeValue('white', '#2F3136')}
+                shadow="base"
+                maxW="2xl"
+                mx="auto"
+                px={{
+                  base: 4,
+                  md: 8,
+                }}
+                pt="400"
+                pb="8"
+                borderLeftWidth="2px"
+                borderColor={useColorModeValue('gray.300', 'gray.500')}
+                borderLeftColor={useColorModeValue('blue.500', 'blue.300')}
+                borderBottomRadius={{
+                  base: 'none',
+                  sm: 'base',
+                }}
+                w={500}
+                mt={-530}
+                ml={380}
+              >
+                <Text mt={-380}></Text>
+                <Link
+                  mt={-380}
+                  color="gray.400"
+                  href={user.settings.embeds.list[0].header.url}
+                >
+                  {user.settings.embeds.list[0].header.text}
+                </Link>
+                <br></br>
+                <br />
+                <Link
+                  fontWeight="600"
+                  mt={-380}
+                  href={user.settings.embeds.list[0].author.url}
+                >
+                  {user.settings.embeds.list[0].author.text}
+                </Link>
+                <br></br>
+                <br />
+                <Link
+                  color="blue.400"
+                  mt={-380}
+                  href={user.settings.embeds.list[0].title}
+                >
+                  {user.settings.embeds.list[0].title}
+                </Link>
+                <br></br>
+                <br />
+                <Link mt={-380} href={user.settings.embeds.list[0].description}>
+                  {user.settings.embeds.list[0].description}
+                </Link>
+                <br></br>
+                <br />
+                <Image
+                  height="13rem"
+                  src="https://cdn.imgs.bar/imgs-beta/29de67ce-2077-4efa-8a2b-9411f6568481.png"
+                ></Image>
+              </Box>
+            </ModalFooter>
           </ModalContent>
         </Modal>
       </Flex>
