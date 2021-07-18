@@ -280,6 +280,8 @@ const Settings = () => {
                 clampValueOnBlur={false}
               >
                 <NumberInputField
+                  min={5}
+                  max={50}
                   onChange={e => updateSetting('urlLength', e.target.value)}
                 />
                 <NumberInputStepper>
@@ -331,46 +333,6 @@ const Settings = () => {
           </Center>
         </Container>
       </VStack>
-
-      {/* <Box w="20rem" ml={1125} mt={-345}>
-        <Flex>
-          <NumberInput
-            size="sm"
-            borderRadius="none"
-            w={70}
-            min={5}
-            // isDisabled     - maybe
-            mr="2rem"
-            max={50}
-            value={user.settings.urlLength}
-          >
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-          <Slider
-            borderRadius="none"
-            size="sm"
-            id="okay"
-            h={30}
-            w={30}
-            flex="1"
-            min={5}
-            max={50}
-            focusThumbOnChange={false}
-            value={user.settings.urlLength}
-            onChange={handleChange}
-          >
-            <SliderTrack size="sm">
-              <SliderFilledTrack />
-            </SliderTrack>
-            <SliderThumb fontSize="sm" boxSize="18px" children={value} />
-          </Slider>
-        </Flex>
-      </Box> */}
-
       <Flex>
         <Modal
           motionPreset="slideInBottom"
@@ -475,7 +437,6 @@ const Settings = () => {
                   //   : ''
                 }
                 // onChange={e => updateEmbed(e.target.value)}
-                onChange={e => updateSetting('urlLength', e.target.value)}
               />
               <Input
                 mt={3}
