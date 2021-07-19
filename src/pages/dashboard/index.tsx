@@ -91,7 +91,7 @@ const Dashboard = () => {
 
           <Divider mt={10} />
 
-          <Box ml={-500} as="section" p="10">
+          <Box as="section" p="10">
             <Box maxW="5xl" mx="auto" px={{base: '6', md: '8'}}>
               <SimpleGrid columns={{base: 1, md: 3}} spacing="6">
                 <Stat>
