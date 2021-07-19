@@ -5,39 +5,19 @@ import {TableContent} from '../../components/Table/TableContent';
 import {TablePagination} from '../../components/Table/TablePagination';
 
 const Admin = () => {
-  // const {user} = useUser();
-  // const router = useRouter();
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     // add roles later since i cba to make it work now
-  //     router.push('/');
-  //   }
-  // }, []);
-
-  // return user ? (
   return (
-    <>
-      {/* <Flex>
-        <Sidebar display={['none', null, 'flex']} w={64} />
-        <Navbar />
-        <Nav />
-      </Flex> */}
-
-      <Box as="section" py="95">
-        <Box maxW={{base: 'xl', md: '7xl'}} mx="auto" px={{base: '6', md: '8'}}>
-          <Box overflowX="auto">
-            <Heading size="lg" mb="6">
-              Admin Panel
-            </Heading>
-            <TableActions />
-            <TableContent />
-            <TablePagination />
-          </Box>
+    <Box as="section" py="12">
+      <Box maxW={{base: 'xl', md: '7xl'}} mx="auto" px={{base: '6', md: '8'}}>
+        <Box overflowX="auto">
+          <Heading size="lg" mb="6">
+            Admin Panel
+          </Heading>
+          <TableActions />
+          <TableContent />
+          <TablePagination />
         </Box>
       </Box>
-    </>
-    // ) : null;
+    </Box>
   );
 };
 export default Admin;
