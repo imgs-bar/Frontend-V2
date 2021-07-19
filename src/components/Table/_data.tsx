@@ -36,7 +36,7 @@ const badgeEnum: Record<string, string> = {
 
 export const columns = [
   {
-    Header: 'Users',
+    Header: 'User',
     accessor: 'user',
     Cell: function userCell(data: any) {
       return <User data={data} />;
