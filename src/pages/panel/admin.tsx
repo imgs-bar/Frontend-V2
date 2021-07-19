@@ -26,7 +26,7 @@ const Admin = () => {
     <>
       <Flex>
         <Sidebar display={['none', null, 'flex']} w={64} />
-        <Navbar />
+        {/* <Navbar /> */}
         <Nav />
       </Flex>
 
