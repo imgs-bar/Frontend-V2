@@ -10,7 +10,7 @@ export const data = [
     user: {
       avatar:
         'https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif',
-      username: 'Flame (2)',
+      username: 'Flame',
       email: 'f7nl4y@gmail.com',
       uid: '2',
     },
