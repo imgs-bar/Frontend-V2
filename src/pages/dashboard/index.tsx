@@ -96,7 +96,7 @@ const Dashboard = () => {
               <SimpleGrid columns={{base: 1, md: 3}} spacing="6">
                 <Stat>
                   <StatLabel>MOTD</StatLabel>
-                  <StatNumber>{motd}</StatNumber>
+                  <StatNumber fontSize="20">{motd}</StatNumber>
                 </Stat>
                 <Stat>
                   <StatLabel>Uploads</StatLabel>
