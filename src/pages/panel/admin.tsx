@@ -14,15 +14,15 @@ const Admin = () => {
   const {user} = useUser();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!user) {
-      // add roles later since i cba to make it work now
-      router.push('/');
-    }
-  }, []);
+  //   useEffect(() => {
+  //     if (!user) {
+  //       // add roles later since i cba to make it work now
+  //       router.push('/');
+  //     }
+  //   }, []);
 
-  return user ? (
-    //   return (
+  //   return user ? (
+  return (
     <>
       <Flex>
         <Sidebar display={['none', null, 'flex']} w={64} />
@@ -43,8 +43,8 @@ const Admin = () => {
         </Box>
       </Box>
     </>
-  ) : null;
-  //   );
+    //   ) : null;
+  );
 };
 
 export default Admin;
