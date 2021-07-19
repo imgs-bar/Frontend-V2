@@ -7,6 +7,7 @@ import {
   Heading,
   Text,
   useMediaQuery,
+  Skeleton,
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -17,6 +18,12 @@ import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
+
+import {Stat} from '../../components/Stats/Stat';
+import {StatLabel} from '../../components/Stats/StatLabel';
+import {StatNumber} from '../../components/Stats/StatNumber';
+
+import {SimpleGrid, useColorModeValue as mode} from '@chakra-ui/react';
 
 const Dashboard = () => {
   const {user} = useUser();
@@ -40,6 +47,7 @@ const Dashboard = () => {
 
   const colorBox = useColorModeValue('gray.200', 'gray.700');
   const colorCon = useColorModeValue('gray.100', '#212938');
+  const [statsLoaded, setStatsLoaded] = React.useState(false);
 
   return user ? (
     <>
@@ -82,189 +90,25 @@ const Dashboard = () => {
           </Heading>
 
           <Divider mt={10} />
-          {/* <Stack direction={["column", "row"]} spacing="24px"> */}
 
-          <Box
-            w={{
-              base: '75%',
-              sm: '50%',
-              md: '15%',
-            }}
-            h={{
-              base: '15%',
-              sm: '20%',
-              md: '20%',
-            }}
-            ml={{
-              base: '8',
-              sm: '14',
-              md: '50',
-            }}
-            bg={colorBox}
-            p={4}
-            mt={10}
-            display={{md: 'flex'}}
-            rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
-          >
-            <Box flexShrink={0}>
-              <Text borderRadius="lg" width={{md: 40}} />
-            </Box>
-            <Box textAlign="center" mt={{base: 4, md: 0}} ml={{md: 6}}>
-              <Text
-                textAlign="center"
-                mt={1}
-                ml={{
-                  base: '0',
-                  sm: '0',
-                  md: '-11.5rem',
-                }}
-                display="block"
-                fontSize="lg"
-                lineHeight="normal"
-                fontWeight="semibold"
-              >
-                MOTD:
-              </Text>
-              <Center></Center>
-              <Text
-                mt={2}
-                fontSize="18"
-                color="gray.500"
-                ml={{
-                  base: '0',
-                  sm: '0',
-                  md: '-11.5rem',
-                }}
-              >
-                {motd}
-              </Text>
+          <Box ml={-500} as="section" p="10">
+            <Box maxW="5xl" mx="auto" px={{base: '6', md: '8'}}>
+              <SimpleGrid columns={{base: 1, md: 3}} spacing="6">
+                <Stat>
+                  <StatLabel>MOTD</StatLabel>
+                  <StatNumber>{motd}</StatNumber>
+                </Stat>
+                <Stat>
+                  <StatLabel>Uploads</StatLabel>
+                  <StatNumber>{user.uploads}</StatNumber>
+                </Stat>
+                <Stat>
+                  <StatLabel>Invites</StatLabel>
+                  <StatNumber>{user.invites}</StatNumber>
+                </Stat>
+              </SimpleGrid>
             </Box>
           </Box>
-
-          <Box
-            w={{
-              base: '75%',
-              sm: '50%',
-              md: '15%',
-            }}
-            h={{
-              base: '15%',
-              sm: '20%',
-              md: '20%',
-            }}
-            bg={colorBox}
-            p={4}
-            mt={{
-              base: '10',
-              sm: '10',
-              md: '-128',
-            }}
-            ml={{
-              base: '8',
-              sm: '14',
-              md: '350',
-            }}
-            display={{md: 'flex'}}
-            rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
-          >
-            <Box flexShrink={0}>
-              <Text borderRadius="lg" width={{md: 40}} />
-            </Box>
-            <Box mt={{base: 0, md: 0}} ml={{md: 6}}>
-              <Text
-                textAlign="center"
-                mt={1}
-                ml={{
-                  base: '0',
-                  sm: '0',
-                  md: '-11.5rem',
-                }}
-                display="block"
-                fontSize="lg"
-                lineHeight="normal"
-                fontWeight="semibold"
-              >
-                Uploads:
-              </Text>
-              <Center>
-                <Text
-                  mt={2}
-                  fontSize="18"
-                  color="gray.500"
-                  ml={{
-                    base: '0',
-                    sm: '0',
-                    md: '-11.5rem',
-                  }}
-                >
-                  {user.uploads}
-                </Text>
-              </Center>
-            </Box>
-          </Box>
-
-          <Box
-            w={{
-              base: '75%',
-              sm: '50%',
-              md: '15%',
-            }}
-            h={{
-              base: '15%',
-              sm: '20%',
-              md: '20%',
-            }}
-            bg={colorBox}
-            p={4}
-            mt={{
-              base: '10',
-              sm: '10',
-              md: '-128',
-            }}
-            ml={{
-              base: '8',
-              sm: '14',
-              md: '650',
-            }}
-            display={{md: 'flex'}}
-            rounded={{sm: 'lg', md: 'md', lg: 'lg'}}
-          >
-            <Box flexShrink={0}>
-              <Text borderRadius="lg" width={{md: 40}} />
-            </Box>
-            <Box mt={{base: 0, md: 0}} ml={{md: 6}}>
-              <Text
-                textAlign="center"
-                mt={1}
-                ml={{
-                  base: '0',
-                  sm: '0',
-                  md: '-11.5rem',
-                }}
-                display="block"
-                fontSize="lg"
-                lineHeight="normal"
-                fontWeight="semibold"
-              >
-                Invites:
-              </Text>
-              <Center>
-                <Text
-                  mt={2}
-                  fontSize="18"
-                  color="gray.500"
-                  ml={{
-                    base: '0',
-                    sm: '0',
-                    md: '-11.5rem',
-                  }}
-                >
-                  {user.invites}
-                </Text>
-              </Center>
-            </Box>
-          </Box>
-          {/* </Stack> */}
         </Container>
       </VStack>
     </>
