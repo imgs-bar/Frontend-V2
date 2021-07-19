@@ -1,5 +1,9 @@
-import { StatLabel as ChakraStatLabel, StatLabelProps, useColorModeValue } from '@chakra-ui/react'
-import * as React from 'react'
+import {
+  StatLabel as ChakraStatLabel,
+  StatLabelProps,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import * as React from 'react';
 
 export const StatLabel = (props: StatLabelProps) => (
   <ChakraStatLabel
@@ -8,4 +12,4 @@ export const StatLabel = (props: StatLabelProps) => (
     color={useColorModeValue('gray.500', 'gray.400')}
     {...props}
   />
-)
+);

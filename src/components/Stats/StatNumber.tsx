@@ -2,8 +2,8 @@ import {
   StatNumber as ChakraStatNumber,
   StatNumberProps,
   useColorModeValue,
-} from '@chakra-ui/react'
-import * as React from 'react'
+} from '@chakra-ui/react';
+import * as React from 'react';
 
 export const StatNumber = (props: StatNumberProps) => (
   <ChakraStatNumber
@@ -12,4 +12,4 @@ export const StatNumber = (props: StatNumberProps) => (
     color={useColorModeValue('gray.900', 'white')}
     {...props}
   />
-)
+);
