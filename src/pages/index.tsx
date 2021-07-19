@@ -44,6 +44,11 @@ import {FaDiscord} from 'react-icons/fa';
 import {Stats} from '../../typings';
 import {BASE_URL, getStats, login, register} from '../api/api';
 import {useUser} from '../components/user';
+import {Stat} from '../components/Stats/Stat';
+import {StatLabel} from '../components/Stats/StatLabel';
+import {StatNumber} from '../components/Stats/StatNumber';
+
+import {SimpleGrid, useColorModeValue as mode} from '@chakra-ui/react';
 
 const Home = () => {
   const color = useColorModeValue('telegram.500', 'telegram.400');
@@ -495,114 +500,37 @@ const Home = () => {
         </DrawerContent>
       </Drawer>
 
-      <Stack
-        ml={{
-          base: '5rem',
-          sm: '0rem',
-          md: '22.5rem',
-        }}
-        mt={{
-          base: '30rem',
-          sm: '30rem',
-          md: '33.5rem',
-        }}
-        direction={['column', 'row']}
-        spacing={{
-          base: '9',
-          sm: '3rem',
-          md: '15rem',
-        }}
-      >
-        <Box
-          shadow="dark-lg"
-          bg={colorBox}
-          borderRadius="5px"
-          w={{
-            base: '75%',
-            sm: '40rem',
-            md: '15rem',
-          }}
-          h={{
-            base: '10rem',
-            sm: '10rem',
-            md: '12rem',
-          }}
-        >
-          <Center>
-            <Heading mt={5} fontSize={{base: '20', md: '25'}}>
-              Domains
-            </Heading>
-          </Center>
-          <Divider mt={5} />
-          <Center>
-            <Text mt={5} fontSize={{base: '15', md: '20'}}>
-              <Skeleton isLoaded={statsLoaded}>
-                {stats ? stats.domains : 'Loading...'}
-              </Skeleton>
-            </Text>
-          </Center>
+      <Box mt={400} as="section" bg={mode('gray.50', 'gray.800')} p="10">
+        <Box maxW="5xl" mx="auto" px={{base: '6', md: '8'}}>
+          <SimpleGrid columns={{base: 1, md: 3}} spacing="6">
+            {/* {data.map(({label, value}) => ( */}
+            <Stat>
+              <StatLabel>Domains</StatLabel>
+              <StatNumber>
+                <Skeleton isLoaded={statsLoaded}>
+                  {stats ? stats.domains : 'Loading...'}
+                </Skeleton>
+              </StatNumber>
+            </Stat>
+            <Stat>
+              <StatLabel>Users</StatLabel>
+              <StatNumber>
+                <Skeleton isLoaded={statsLoaded}>
+                  {stats ? stats.users : 'Loading...'}
+                </Skeleton>
+              </StatNumber>
+            </Stat>
+            <Stat>
+              <StatLabel>Files</StatLabel>
+              <StatNumber>
+                <Skeleton isLoaded={statsLoaded}>
+                  {stats ? stats.files : 'Loading...'}
+                </Skeleton>
+              </StatNumber>
+            </Stat>
+          </SimpleGrid>
         </Box>
-        <Box
-          shadow="dark-lg"
-          bg={colorBox}
-          borderRadius="5px"
-          w={{
-            base: '75%',
-            sm: '40rem',
-            md: '15rem',
-          }}
-          h={{
-            base: '10rem',
-            sm: '10rem',
-            md: '12rem',
-          }}
-        >
-          <Center>
-            <Heading mt={5} fontSize={{base: '20', md: '25'}}>
-              Users
-            </Heading>
-          </Center>
-          <Divider mt={5} />
-          <Center>
-            <Text mt={5} fontSize={{base: '15', md: '20'}}>
-              <Skeleton isLoaded={statsLoaded}>
-                {stats ? stats.users : 'Loading...'}
-              </Skeleton>
-            </Text>
-          </Center>
-        </Box>
-        <Box
-          shadow="dark-lg"
-          bg={colorBox}
-          borderRadius="5px"
-          w={{
-            base: '75%',
-            sm: '40rem',
-            md: '15rem',
-          }}
-          h={{
-            base: '10rem',
-            sm: '10rem',
-            md: '12rem',
-          }}
-        >
-          <Center>
-            <Heading mt={5} fontSize={{base: '20', md: '25'}}>
-              Files
-            </Heading>
-          </Center>
-          <Divider mt={5} />
-          <Center>
-            <Text mt={5} fontSize={{base: '15', md: '20'}}>
-              <Skeleton isLoaded={statsLoaded}>
-                {stats ? stats.files : 'Loading...'}
-              </Skeleton>
-            </Text>
-          </Center>
-        </Box>
-      </Stack>
-      <br></br>
-      <br></br>
+      </Box>
     </>
   );
 };
