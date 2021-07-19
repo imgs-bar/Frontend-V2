@@ -47,6 +47,7 @@ import {useUser} from '../components/user';
 import {Stat} from '../components/Stats/Stat';
 import {StatLabel} from '../components/Stats/StatLabel';
 import {StatNumber} from '../components/Stats/StatNumber';
+import {Footer} from '../components/Footer/bottom';
 
 import {SimpleGrid, useColorModeValue as mode} from '@chakra-ui/react';
 
@@ -530,6 +531,9 @@ const Home = () => {
           </SimpleGrid>
         </Box>
       </Box>
+      <Footer />
+      <br></br>
+      <br></br>
     </>
   );
 };
