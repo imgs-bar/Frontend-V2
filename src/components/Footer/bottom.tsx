@@ -1,4 +1,4 @@
-import {Text, TextProps, Center} from '@chakra-ui/layout';
+import {Text, TextProps, Center} from '@chakra-ui/react';
 import * as React from 'react';
 
 export const Footer = (props: TextProps) => (
