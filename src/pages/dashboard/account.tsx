@@ -11,6 +11,7 @@ import {
   StackDivider,
   Flex,
   Input,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import React, {useEffect} from 'react';
 import {Card} from '../../components/Cards/CardAccount';
@@ -34,6 +35,7 @@ const Account = () => {
     }
   }, []);
 
+  const colorButton = useColorModeValue('gray.200', '#323A48');
   return user ? (
     <>
       <Flex>
@@ -72,6 +74,7 @@ const Account = () => {
             >
               <HStack spacing="4">
                 <Avatar
+                  bg="none"
                   src={user.discord.avatar ? user.discord.avatar : null}
                   name={user.username}
                 />
@@ -90,8 +93,14 @@ const Account = () => {
                 </Box>
               </HStack>
               <HStack mt="5">
-                <Button size="sm">Change Username</Button>
-                <Button isDisabled={!user.roles.premium.status} size="sm">
+                <Button size="sm" bg={colorButton}>
+                  Change Username
+                </Button>
+                <Button
+                  bg={colorButton}
+                  isDisabled={!user.roles.premium.status}
+                  size="sm"
+                >
                   Change UID
                 </Button>
               </HStack>
@@ -103,9 +112,14 @@ const Account = () => {
             >
               <Input maxW="17.5%" isDisabled value={user.email} size="sm" />
               <HStack mt="5">
-                <Button size="sm">Change email</Button>
-                <Button size="sm">Change password</Button>
+                <Button bg={colorButton} size="sm">
+                  Change email
+                </Button>
+                <Button bg={colorButton} size="sm">
+                  Change password
+                </Button>
                 <Button
+                  bg={colorButton}
                   size="sm"
                   onClick={() => {
                     location.href = `${BASE_URL}/discord/link`;
