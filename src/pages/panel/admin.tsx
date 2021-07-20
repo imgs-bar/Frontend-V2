@@ -1,4 +1,4 @@
-import { Box, Heading, Flex } from '@chakra-ui/react';#
+import {Box, Heading, Flex} from '@chakra-ui/react';
 import React, {useEffect} from 'react';
 import {TableActions} from '../../components/Table/TableActions';
 import {TableContent} from '../../components/Table/TableContent';
@@ -14,7 +14,7 @@ const Admin = () => {
   const {user} = useUser();
   const router = useRouter();
 
-    useEffect(() => {
+  useEffect(() => {
     if (!user.roles.admin) {
       router.push('/');
     }
@@ -70,6 +70,6 @@ const Admin = () => {
         </Box>
       </Card>
     </>
-    ) : null;
+  ) : null;
 };
 export default Admin;
