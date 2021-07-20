@@ -5,18 +5,6 @@ import {User} from './User';
 export const data = [
   {
     role: 'Owner',
-    status: 'true',
-    uploads: '126',
-    user: {
-      avatar:
-        'https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif',
-      username: 'Flame (2)',
-      email: 'f7nl4y@gmail.com',
-      uid: '2',
-    },
-  },
-  {
-    role: 'Owner',
     status: 'false',
     uploads: '851',
     user: {
@@ -25,6 +13,18 @@ export const data = [
       username: 'Pringles',
       email: 'pringlepot123@gmail.com',
       uid: '1',
+    },
+  },
+  {
+    role: 'Owner',
+    status: 'true',
+    uploads: '126',
+    user: {
+      avatar:
+        'https://cdn.discordapp.com/avatars/417330353917657100/a_09774470b970a3290ccf1d5043d33cd1.gif',
+      username: 'Flame',
+      email: 'f7nl4y@gmail.com',
+      uid: '2',
     },
   },
 ];
