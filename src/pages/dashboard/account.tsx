@@ -14,7 +14,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import React, {useEffect} from 'react';
-import {Card} from '../../components/Cards/CardAccount';
+import {Card} from '../../components/Cards/CardBack';
 import {FieldGroup} from '../../components/Fields/FieldGroup';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';

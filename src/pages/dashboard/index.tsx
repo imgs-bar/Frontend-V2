@@ -9,6 +9,8 @@ import {
   useMediaQuery,
   Skeleton,
   VStack,
+  Stack,
+  StackDivider,
   useColorModeValue,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
@@ -19,6 +21,8 @@ import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
 
+import {Card} from '../../components/Cards/CardBack';
+import {FieldGroup} from '../../components/Fields/FieldGroup';
 import {Stat} from '../../components/Stats/Stat';
 import {StatLabel} from '../../components/Stats/StatLabel';
 import {StatNumber} from '../../components/Stats/StatNumber';
@@ -57,60 +61,61 @@ const Dashboard = () => {
         <Nav />
       </Flex>
 
-      <VStack>
-        <Container
-          maxW={{
-            base: '80%',
-            sm: '40%',
-            md: '80%',
+      <Stack as="section" spacing="6">
+        <Card
+          h={{
+            base: '43.5rem',
+            sm: '44rem',
+            md: '50rem', // 55 for full
           }}
-          bg={colorCon}
-          borderRadius="md"
-          h="40rem"
+          maxW={{
+            base: '90%',
+            sm: '93%',
+            md: '84.5%',
+          }}
           mt={{
-            base: '100',
-            sm: '100',
-            md: '130',
+            base: '50',
+            sm: '43.5',
+            md: '105',
           }}
           ml={{
-            base: '30',
-            sm: '234',
-            md: '325',
+            base: '5',
+            sm: '5',
+            md: '280',
           }}
         >
-          <Heading
-            mt={30}
-            ml={15}
-            display="block"
-            fontSize="lg"
-            lineHeight="normal"
-            fontWeight="semibold"
-          >
-            Welcome, {user.username}
-          </Heading>
-
-          <Divider mt={10} />
-
-          <Box as="section" p="10">
-            <Box maxW="5xl" mx="auto" px={{base: '6', md: '8'}}>
-              <SimpleGrid columns={{base: 1, md: 3}} spacing="6">
-                <Stat>
-                  <StatLabel>MOTD</StatLabel>
-                  <StatNumber fontSize="20">{motd}</StatNumber>
-                </Stat>
-                <Stat>
-                  <StatLabel>Uploads</StatLabel>
-                  <StatNumber>{user.uploads}</StatNumber>
-                </Stat>
-                <Stat>
-                  <StatLabel>Invites</StatLabel>
-                  <StatNumber>{user.invites}</StatNumber>
-                </Stat>
-              </SimpleGrid>
+          <Stack spacing="6">
+            <Heading
+              mt={3}
+              display="block"
+              fontSize="lg"
+              lineHeight="normal"
+              fontWeight="semibold"
+            >
+              Welcome, {user.username}
+            </Heading>
+            <Divider mt={5} />
+            <Box as="section" p="10">
+              <Box maxW="5xl" mx="auto" px={{base: '6', md: '8'}}>
+                <SimpleGrid columns={{base: 1, md: 3}} spacing="6">
+                  <Stat>
+                    <StatLabel>MOTD</StatLabel>
+                    <StatNumber fontSize="20">{motd}</StatNumber>
+                  </Stat>
+                  <Stat>
+                    <StatLabel>Uploads</StatLabel>
+                    <StatNumber>{user.uploads}</StatNumber>
+                  </Stat>
+                  <Stat>
+                    <StatLabel>Invites</StatLabel>
+                    <StatNumber>{user.invites}</StatNumber>
+                  </Stat>
+                </SimpleGrid>
+              </Box>
             </Box>
-          </Box>
-        </Container>
-      </VStack>
+          </Stack>
+        </Card>
+      </Stack>
     </>
   ) : null;
 };

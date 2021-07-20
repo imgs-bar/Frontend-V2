@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {TableActions} from '../../components/Table/TableActions';
 import {TableContent} from '../../components/Table/TableContent';
 import {TablePagination} from '../../components/Table/TablePagination';
-import {Card} from '../../components/Cards/CardAccount';
+import {Card} from '../../components/Cards/CardBack';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
