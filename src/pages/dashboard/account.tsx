@@ -1,58 +1,30 @@
-import {DownloadIcon} from '@chakra-ui/icons';
 import {
+  HStack,
+  Avatar,
+  Box,
   Button,
-  Center,
-  Container,
-  Divider,
-  Flex,
-  Heading,
-  Input,
-  Select,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-  Stack,
+  FormControl,
+  FormLabel,
   Switch,
   Text,
-  Tooltip,
-  useDisclosure,
-  useToast,
-  VStack,
-  useColorModeValue,
+  Stack,
+  StackDivider,
+  Flex,
+  Input,
 } from '@chakra-ui/react';
-import {Avatar, AvatarBadge, AvatarGroup} from '@chakra-ui/react';
-import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
-import {setting} from '../../../typings';
-import {BASE_URL, updateSettings} from '../../api/api';
+import {Card} from '../../components/Cards/CardAccount';
+import {FieldGroup} from '../../components/Fields/FieldGroup';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
+
+import {BASE_URL, updateSettings} from '../../api/api';
+
 import {useUser} from '../../components/user';
+import {useRouter} from 'next/router';
 
 const Account = () => {
-  const [value, setValue] = React.useState(0);
-  const handleChange = value => setValue(value);
-  const toast = useToast();
-
-  const {
-    isOpen: isOpenConfigs,
-    onOpen: onOpenConfigs,
-    onClose: onCloseConfigs,
-  } = useDisclosure();
-
-  const updateSetting = async (key: setting, value: boolean) => {
-    try {
-      await updateSettings(key, value);
-      toast({description: `${key} updated`, status: 'success'});
-    } catch (err) {
-      toast({
-        description: err.response.data.message,
-        status: 'error',
-      });
-    }
-  };
   const {user} = useUser();
   const router = useRouter();
 
@@ -62,10 +34,6 @@ const Account = () => {
     }
   }, []);
 
-  const colorBox = useColorModeValue('gray.200', 'gray.700');
-  const colorCon = useColorModeValue('gray.100', '#212938');
-  const colorSelect = useColorModeValue('gray.200', '#323A48');
-
   return user ? (
     <>
       <Flex>
@@ -73,117 +41,112 @@ const Account = () => {
         <Navbar />
         <Nav />
       </Flex>
-      <VStack>
-        <Container
-          maxW={{
-            base: '77%',
-            sm: '40%',
-            md: '77%',
+
+      <Stack as="section" spacing="6">
+        <Card
+          h={{
+            base: '43.5rem',
+            sm: '44rem',
+            md: '50rem', // 55 for full
           }}
-          bg={colorCon}
-          borderRadius="md"
-          h="50rem"
+          maxW={{
+            base: '90%',
+            sm: '93%',
+            md: '84.5%',
+          }}
           mt={{
-            base: '100',
-            sm: '100',
-            md: '130',
+            base: '50',
+            sm: '43.5',
+            md: '20',
           }}
           ml={{
-            base: '30',
-            sm: '234',
-            md: '350',
+            base: '5',
+            sm: '5',
+            md: '280',
           }}
         >
-          <Heading fontSize={21} mt={30} ml={15}>
-            Name & Avatar
-          </Heading>
-          <Text mt={2} ml={15} fontSize={14.4} color="gray.400">
-            View your name and profile picture
-          </Text>
-          <Avatar
-            mt={25}
-            ml={15}
-            bg="none"
-            name={user.username}
-            src={user.discord.avatar ? user.discord.avatar : null}
-          />
-          <Text mt={-12} fontSize="16" ml={89}>
-            {user.username}
-          </Text>
-          <Text mt={0} ml={89} fontSize={14.4} color="gray.400">
-            Joined ‎
-            {new Date(user.registerDate).toLocaleString('en-us', {
-              month: 'long',
-            })}
-            ,‎‏‏‎ ‎
-            {new Date(user.registerDate).toLocaleString('en-us', {
-              year: 'numeric',
-            })}
-          </Text>
-          <Stack spacing={4} ml={15} mt={30} direction="row" align="center">
-            <Button size="sm" bg={colorSelect} borderRadius="5">
-              Change Username
-            </Button>
-            <Button
-              isDisabled={!user.roles.premium.status}
-              size="sm"
-              bg={colorSelect}
-              borderRadius="5"
+          <Stack divider={<StackDivider />} spacing="6">
+            <FieldGroup
+              title="Name &amp; Avatar"
+              description="Change your username and view your avatar"
             >
-              Change UID
-            </Button>
-          </Stack>
-          <Divider mt={10} />
-          <Heading fontSize={21} mt={30} ml={15}>
-            Login Details
-          </Heading>
-          <Text mt={2} ml={15} fontSize={14.4} color="gray.400">
-            Change your email and password
-          </Text>
-          <Input
-            mt={8}
-            ml={15}
-            maxW="17.5%"
-            isDisabled
-            value={user.email}
-            placeholder=""
-            size="sm"
-          />
-          <Stack spacing={4} mt={30} direction="row" align="center">
-            <Button size="sm" ml={15} bg={colorSelect} borderRadius="5">
-              Change Email
-            </Button>
-            <Button size="sm" bg={colorSelect} borderRadius="5">
-              Change Password
-            </Button>
-            <Button
-              size="sm"
-              bg={colorSelect}
-              borderRadius="5"
-              onClick={() => {
-                location.href = `${BASE_URL}/discord/link`;
-              }}
+              <HStack spacing="4">
+                <Avatar
+                  src={user.discord.avatar ? user.discord.avatar : null}
+                  name={user.username}
+                />
+                <Box>
+                  <Text>{user.username}</Text>
+                  <Text color="gray.500" fontSize="sm">
+                    Joined ‎
+                    {new Date(user.registerDate).toLocaleString('en-us', {
+                      month: 'long',
+                    })}
+                    ,‎‏‏‎ ‎
+                    {new Date(user.registerDate).toLocaleString('en-us', {
+                      year: 'numeric',
+                    })}
+                  </Text>
+                </Box>
+              </HStack>
+              <HStack mt="5">
+                <Button size="sm">Change Username</Button>
+                <Button isDisabled={!user.roles.premium.status} size="sm">
+                  Change UID
+                </Button>
+              </HStack>
+            </FieldGroup>
+
+            <FieldGroup
+              title="Login Details"
+              description="Change your email and password"
             >
-              Link Discord
-            </Button>
+              <Input maxW="17.5%" isDisabled value={user.email} size="sm" />
+              <HStack mt="5">
+                <Button size="sm">Change email</Button>
+                <Button size="sm">Change password</Button>
+                <Button
+                  size="sm"
+                  onClick={() => {
+                    location.href = `${BASE_URL}/discord/link`;
+                  }}
+                >
+                  Link Discord
+                </Button>
+              </HStack>
+            </FieldGroup>
+
+            <FieldGroup
+              title="Preferences"
+              description="Manage your preferences"
+            >
+              <Stack spacing="3">
+                <FormControl display="flex" alignItems="center">
+                  <FormLabel
+                    htmlFor="email-marketing"
+                    flex="1"
+                    fontSize="sm"
+                    mb="0"
+                  >
+                    Private Profile
+                  </FormLabel>
+                  <Switch id="email-marketing" />
+                </FormControl>
+                <FormControl display="flex" alignItems="center">
+                  <FormLabel htmlFor="email-news" flex="1" fontSize="sm" mb="0">
+                    Something for later
+                  </FormLabel>
+                  <Switch id="email-news" />
+                </FormControl>
+              </Stack>
+              {/* <Button mt="5" size="sm">
+                Save Changes
+              </Button> */}
+            </FieldGroup>
           </Stack>
-          {/* <Divider mt={10} />
-          <Heading fontSize={21} mt={30} ml={15}>
-            idk yet
-          </Heading>
-          <Text mt={2} ml={15} fontSize={14.4} color="gray.400">
-            idk lol idk lol lol
-          </Text>
-          <Stack spacing={4} mt={30} direction="row" align="center">
-            <Button size="sm" ml={15} colorScheme="gray" borderRadius="5">
-              File Archive
-            </Button>
-          </Stack> */}
-          {/* <Divider mt={10} /> */}
-        </Container>
-      </VStack>
+        </Card>
+      </Stack>
     </>
   ) : null;
 };
-
 export default Account;

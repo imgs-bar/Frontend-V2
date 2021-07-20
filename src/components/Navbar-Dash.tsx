@@ -64,8 +64,8 @@ export default function Header() {
                   <Avatar
                     mt={0}
                     size="sm"
-                    name={user.username}
-                    src={user.discord.avatar ? user.discord.avatar : null}
+                    // name={user.username}
+                    // src={user.discord.avatar ? user.discord.avatar : null}
                   >
                     <AvatarBadge boxSize="1.25em" bg="green.500" />
                   </Avatar>
