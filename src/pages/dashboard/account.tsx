@@ -110,7 +110,7 @@ const Account = () => {
               title="Login Details"
               description="Change your email and password"
             >
-              <Input maxW="17.5%" isDisabled value={user.email} size="sm" />
+              <Input isDisabled value={user.email} size="sm" />
               <HStack mt="5">
                 <Button bg={colorButton} size="sm">
                   Change email

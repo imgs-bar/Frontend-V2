@@ -357,7 +357,11 @@ const Home = () => {
                   <Center>
                     <Button
                       mb={5}
-                      mt={450}
+                      mt={{
+                        base: '300',
+                        sm: '300',
+                        md: '300',
+                      }}
                       colorScheme="gray"
                       type="submit"
                       variant="outline"

@@ -1,4 +1,4 @@
-import {DownloadIcon} from '@chakra-ui/icons';
+import {DownloadIcon, ChevronDownIcon} from '@chakra-ui/icons';
 import {
   Button,
   Center,
@@ -9,6 +9,8 @@ import {
   Input,
   Menu,
   MenuButton,
+  FormControl,
+  FormLabel,
   MenuDivider,
   MenuItem,
   MenuList,
@@ -70,6 +72,8 @@ import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
 // import styles from '../../styles/Settings.module.css';
+
+import {Card} from '../../components/Cards/CardBack';
 
 const Settings = () => {
   const baseUrl = 'https://betaapi.imgs.bar/v2';
@@ -153,88 +157,75 @@ const Settings = () => {
         <Navbar />
         <Nav />
       </Flex>
-      <VStack>
-        <Container
-          maxW={{
-            base: '77%',
-            sm: '40%',
-            md: '77%',
-          }}
-          bg={colorCon}
-          borderRadius="md"
-          h="50rem"
-          mt={{
-            base: '100',
-            sm: '100',
-            md: '130',
-          }}
-          ml={{
-            base: '30',
-            sm: '234',
-            md: '350',
-          }}
-        >
-          <Center>
-            <Heading fontSize={25} mt={30} ml={15}>
+      <Card
+        h={{
+          base: '50rem',
+          sm: '52rem',
+          md: '50rem', // 55 for full
+        }}
+        maxW={{
+          base: '90%',
+          sm: '93%',
+          md: '84.5%',
+        }}
+        mt={{
+          base: '50',
+          sm: '43.5',
+          md: '105',
+        }}
+        ml={{
+          base: '5',
+          sm: '5',
+          md: '280',
+        }}
+      >
+        <Stack spacing="10">
+          <Box align="center">
+            <Heading fontSize={25} fontWeight="bold" py="2">
               Settings
             </Heading>
-          </Center>
-          <Center>
-            <Text mt={15} fontSize={15} color="gray.400">
-              Change your domain preferences:
+            <Text fontSize={15} color="gray.400">
+              Change your domain preferences
             </Text>
-          </Center>
-          <Center>
-            <Text fontSize={15} color="gray.400" mt={2} ml={15}></Text>
-          </Center>
-          <Divider mt={10} />
-          <Center></Center>
-          <Center>
-            <Input
-              mt={8}
-              size="sm"
-              variant="outline"
-              placeholder={user.settings.domains[0].subDomain}
-              h={35}
-              ml={1}
-              maxW={150}
-            />
-            <Select
-              mt={8}
-              size="sm"
-              bg={colorSelect}
-              aria-label="Select a domain"
-              h={35}
-              maxW={250}
-            >
-              {user.settings.domains.map(d => (
-                <option key={d.name} value={d.name}>
-                  {d.name}
-                </option>
-              ))}
-            </Select>
+            <Divider mt={10} />
             <Center>
-              <InputGroup mt={31} ml={-1} size="sm">
-                <InputLeftAddon h={35} children="/" />
-                <Input
-                  placeholder={user.settings.domains[0].fileNamePrefix}
-                  w={125}
-                  h={35}
-                  // placeholder="File Prefix"
-                />
-              </InputGroup>
-            </Center>
-          </Center>
-          <Center mt={10}>
-            <Menu>
-              <MenuButton
-                px={4}
-                py={2}
-                bg={button}
-                borderRadius="4px"
-                _expanded={{bg: colorBox}}
-                _focus={{boxShadow: 'outline'}}
+              <Input
+                mt={8}
+                size="sm"
+                variant="outline"
+                placeholder={user.settings.domains[0].subDomain}
+                h={35}
+                ml={1}
+                maxW={150}
+              />
+              <Select
+                mt={8}
+                size="sm"
+                bg={colorSelect}
+                aria-label="Select a domain"
+                h={35}
+                maxW={250}
               >
+                {user.settings.domains.map(d => (
+                  <option key={d.name} value={d.name}>
+                    {d.name}
+                  </option>
+                ))}
+              </Select>
+              <Center>
+                <InputGroup mt={31} ml={-1} size="sm">
+                  <InputLeftAddon h={35} children="/" />
+                  <Input
+                    placeholder={user.settings.domains[0].fileNamePrefix}
+                    w={125}
+                    h={35}
+                    // placeholder="File Prefix"
+                  />
+                </InputGroup>
+              </Center>
+            </Center>
+            <Menu>
+              <MenuButton mt={30} as={Button} rightIcon={<ChevronDownIcon />}>
                 Embed Profile
               </MenuButton>
               <MenuList>
@@ -243,92 +234,80 @@ const Settings = () => {
                 <MenuItem onClick={onOpenCreate}>New Profile</MenuItem>
               </MenuList>
             </Menu>
-          </Center>
-          <Divider mt={10} />
-          <Center>
+            <Divider mt={10} />
             <Heading mt={30} fontSize={25}>
               Vanity
             </Heading>
-          </Center>
-          <Center>
-            <Text mt={15} fontSize={15} color="gray.400">
+            <Text mt={2} fontSize={15} color="gray.400">
               Change your extra vanity preferences
             </Text>
-          </Center>
-          <Center>
-            <Stack mt={30} align="center"></Stack>
-          </Center>
-          <Center>
-            <VStack ml={-75} spacing={6}>
-              <Tooltip
-                label="change your url length lol"
-                placement="left-start"
-              >
-                <Text>URL Length</Text>
-              </Tooltip>
 
-              <Tooltip label="emojis are in ur url" placement="left-start">
-                <Text>Emoji URL</Text>
-              </Tooltip>
-              <Tooltip
-                label="Removes the File Extension at the end of your file."
-                placement="left-start"
-              >
-                <Text>File Extension</Text>
-              </Tooltip>
-            </VStack>
-          </Center>
-          <Center>
-            <VStack mt={-128} ml={105} spacing={6}>
-              <NumberInput
-                w={100}
-                size="sm"
-                ml={16}
-                min={5}
-                max={50}
-                keepWithinRange={false}
-                clampValueOnBlur={false}
-              >
-                <NumberInputField
+            <Center>
+              <VStack mt={8} ml={-75} spacing={6}>
+                <Tooltip
+                  label="change your url length lol"
+                  placement="left-start"
+                >
+                  <Text>URL Length</Text>
+                </Tooltip>
+
+                <Tooltip label="emojis are in ur url" placement="left-start">
+                  <Text>Emoji URL</Text>
+                </Tooltip>
+                <Tooltip
+                  label="Removes the File Extension at the end of your file."
+                  placement="left-start"
+                >
+                  <Text>File Extension</Text>
+                </Tooltip>
+              </VStack>
+            </Center>
+            <Center>
+              <VStack mt={-128} ml={105} spacing={6}>
+                <NumberInput
+                  w={100}
+                  size="sm"
+                  ml={16}
                   min={5}
                   max={50}
-                  onChange={e => updateSetting('urlLength', e.target.value)}
+                  keepWithinRange={false}
+                  clampValueOnBlur={false}
+                >
+                  <NumberInputField
+                    min={5}
+                    max={50}
+                    onChange={e => updateSetting('urlLength', e.target.value)}
+                  />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+                <Switch
+                  size="md"
+                  id="emoji-url"
+                  onChange={event =>
+                    updateSetting('emojiUrl', event.target.checked)
+                  }
+                  defaultChecked={user.settings.emojiUrl}
                 />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-              <Switch
-                size="md"
-                id="emoji-url"
-                onChange={event =>
-                  updateSetting('emojiUrl', event.target.checked)
-                }
-                defaultChecked={user.settings.emojiUrl}
-              />
-              <Switch
-                size="md"
-                id="show-Extension"
-                onChange={event =>
-                  updateSetting('showExtension', event.target.checked)
-                }
-                defaultChecked={user.settings.showExtension}
-              />
-            </VStack>
-          </Center>
-          <Divider mt={10} />
-          <Center>
-            <Heading mt={30} fontSize={25}>
+                <Switch
+                  size="md"
+                  id="show-Extension"
+                  onChange={event =>
+                    updateSetting('showExtension', event.target.checked)
+                  }
+                  defaultChecked={user.settings.showExtension}
+                />
+              </VStack>
+            </Center>
+            <Divider mt={10} />
+            <Heading mt={4} fontSize={25} fontWeight="bold" py="2">
               Config
             </Heading>
-          </Center>
-          <Center>
-            <Text mt={15} fontSize={15} color="gray.400">
+            <Text fontSize={15} color="gray.400">
               Download your configs
             </Text>
-          </Center>
-          <Center>
             <Button
               mt={5}
               bg={button}
@@ -339,9 +318,12 @@ const Settings = () => {
             >
               Download
             </Button>
-          </Center>
-        </Container>
-      </VStack>
+          </Box>
+        </Stack>
+      </Card>
+
+      {/* modals and shit below */}
+
       <Flex>
         <Modal
           motionPreset="slideInBottom"
@@ -355,50 +337,35 @@ const Settings = () => {
             <Divider />
             <ModalCloseButton />
             <ModalBody>
-              <Tabs isFitted>
-                <TabList>
-                  <Tab>Image</Tab>
-                  <Tab>Shortener</Tab>
-                  <Tab>Pastes</Tab>
-                </TabList>
-
-                <TabPanels>
-                  <TabPanel>
-                    <Button
-                      onClick={() =>
-                        (location.href = `${baseUrl}/config/files?key=${user.key}`)
-                      }
-                      ml={100}
-                      mt={5}
-                      variant="outline"
-                      w={150}
-                    >
-                      ShareX
-                    </Button>
-                    <Button ml={100} mt={5} variant="outline" w={150}>
-                      iOS Shortcut
-                    </Button>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>two!</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>three!</p>
-                  </TabPanel>
-                </TabPanels>
-              </Tabs>
-              <br />
+              <Center>
+                <Stack spacing="5">
+                  <Button
+                    onClick={() =>
+                      (location.href = `${baseUrl}/config/files?key=${user.key}`)
+                    }
+                    mt={5}
+                    variant="outline"
+                    w={150}
+                  >
+                    ShareX
+                  </Button>
+                  <Button mt={5} variant="outline" w={150}>
+                    iOS Shortcut
+                  </Button>
+                </Stack>
+              </Center>
             </ModalBody>
-            <ModalFooter></ModalFooter>
           </ModalContent>
         </Modal>
       </Flex>
+
       <Flex>
         <Modal
           motionPreset="slideInBottom"
           onClose={onCloseCreate}
           isOpen={isOpenCreate}
           isCentered
+          scrollBehavior="inside"
           size="3xl"
         >
           <ModalOverlay />
@@ -407,9 +374,6 @@ const Settings = () => {
             <Divider />
             <ModalCloseButton />
             <ModalBody>
-              {/* <div className={styles.previewCon}>
-                <div className={styles.embedSettings}> */}
-
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Site Name:
               </Text>
@@ -420,13 +384,9 @@ const Settings = () => {
                 placeholder="Site Name URL"
                 h={35}
                 maxW={350}
-                value={
-                  user.settings.embeds.list[0].header.url &&
-                  user.settings.embeds.list[0].header.url !== '' &&
-                  user.settings.embeds.list[0].header.url !== 'default'
-                    ? user.settings.embeds.list[0].header.url
-                    : ''
-                }
+                // value={
+                //   have fun pringles
+                // }
               />
               <br />
               <Input
@@ -436,13 +396,9 @@ const Settings = () => {
                 placeholder="Site Name"
                 h={35}
                 maxW={350}
-                value={
-                  user.settings.embeds.list[0].header.text &&
-                  user.settings.embeds.list[0].header.text !== '' &&
-                  user.settings.embeds.list[0].header.text !== 'default'
-                    ? user.settings.embeds.list[0].header.text
-                    : ''
-                }
+                // value={
+                //   have fun pringles
+                // }
               />
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Author:
@@ -454,13 +410,9 @@ const Settings = () => {
                 placeholder="Embed Author URL"
                 h={35}
                 maxW={350}
-                value={
-                  user.settings.embeds.list[0].author.url &&
-                  user.settings.embeds.list[0].author.url !== '' &&
-                  user.settings.embeds.list[0].author.url !== 'default'
-                    ? user.settings.embeds.list[0].author.url
-                    : ''
-                }
+                // value={
+                //   have fun pringles
+                // }
               />
               <br />
               <Input
@@ -470,13 +422,9 @@ const Settings = () => {
                 placeholder="Embed Author Text"
                 h={35}
                 maxW={350}
-                value={
-                  user.settings.embeds.list[0].author.text &&
-                  user.settings.embeds.list[0].author.text !== '' &&
-                  user.settings.embeds.list[0].author.text !== 'default'
-                    ? user.settings.embeds.list[0].author.text
-                    : ''
-                }
+                // value={
+                //   have fun pringles
+                // }
               />
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Title:
@@ -488,13 +436,9 @@ const Settings = () => {
                 placeholder="Embed Title"
                 h={35}
                 maxW={350}
-                value={
-                  user.settings.embeds.list[0].title &&
-                  user.settings.embeds.list[0].title !== '' &&
-                  user.settings.embeds.list[0].title !== 'default'
-                    ? user.settings.embeds.list[0].title
-                    : ''
-                }
+                // value={
+                //   have fun pringles
+                // }
               />
               <Text mt={15} fontSize={15} color="gray.400">
                 Embed Description:
@@ -506,13 +450,9 @@ const Settings = () => {
                 placeholder="Embed Description"
                 h={35}
                 maxW={350}
-                value={
-                  user.settings.embeds.list[0].description &&
-                  user.settings.embeds.list[0].description !== '' &&
-                  user.settings.embeds.list[0].description !== 'default'
-                    ? user.settings.embeds.list[0].description
-                    : ''
-                }
+                // value={
+                //   have fun pringles
+                // }
               />
               <br></br>
               <Button
@@ -522,79 +462,75 @@ const Settings = () => {
                 py={2}
                 borderRadius="4px"
                 aria-label="Download a config"
-                // _focus="boxShadow: 'none'"
               >
                 Create Profile
               </Button>
+
+              <Flex>
+                <Box
+                  bg={useColorModeValue('white', '#2F3136')}
+                  shadow="base"
+                  borderLeftWidth="4px"
+                  borderRadius="4px"
+                  borderColor={useColorModeValue('gray.300', 'gray.500')}
+                  borderLeftColor={user.settings.embeds.list[0].color}
+                  mt={{
+                    base: '10',
+                    sm: '10',
+                    md: '-480',
+                  }}
+                  ml={{
+                    base: '0',
+                    sm: '0',
+                    md: '400',
+                  }}
+                >
+                  <Stack ml={5} mt={5} spacing="3">
+                    <Link
+                      color="gray.400"
+                      href={user.settings.embeds.list[0].header.url}
+                    >
+                      {user.settings.embeds.list[0].header.text}
+                    </Link>
+                    <Link
+                      fontWeight="600"
+                      mt={-380}
+                      href={user.settings.embeds.list[0].author.url}
+                    >
+                      {user.settings.embeds.list[0].author.text}
+                    </Link>
+                    <Link
+                      color="blue.500"
+                      mt={-380}
+                      href={user.settings.embeds.list[0].title}
+                    >
+                      {user.settings.embeds.list[0].title}
+                    </Link>
+                    <Link
+                      mt={-380}
+                      href={user.settings.embeds.list[0].description}
+                    >
+                      {user.settings.embeds.list[0].description}
+                    </Link>
+                    <div>
+                      <Image
+                        mt={70}
+                        height={{
+                          base: '15rem',
+                          sm: '15rem',
+                          md: '15rem',
+                        }}
+                        src="https://cdn.imgs.bar/imgs-beta/29de67ce-2077-4efa-8a2b-9411f6568481.png"
+                      />
+                    </div>
+                  </Stack>
+                </Box>
+              </Flex>
             </ModalBody>
-            <ModalFooter>
-              <Box
-                bg={useColorModeValue('white', '#2F3136')}
-                shadow="base"
-                maxW="2xl"
-                mx="auto"
-                px={{
-                  base: 4,
-                  md: 8,
-                }}
-                pt="400"
-                pb="8"
-                borderLeftWidth="4px"
-                borderRadius="4px"
-                borderColor={useColorModeValue('gray.300', 'gray.500')}
-                // borderLeftColor={useColorModeValue('blue.500', 'blue.300')}
-                borderLeftColor={user.settings.embeds.list[0].color}
-                borderBottomRadius={{
-                  base: 'none',
-                  sm: 'base',
-                }}
-                w={500}
-                mt={-530}
-                ml={380}
-              >
-                <Text mt={-380}></Text>
-                <Link
-                  mt={-380}
-                  color="gray.400"
-                  href={user.settings.embeds.list[0].header.url}
-                >
-                  {user.settings.embeds.list[0].header.text}
-                </Link>
-                <br></br>
-                <br />
-                <Link
-                  fontWeight="600"
-                  mt={-380}
-                  href={user.settings.embeds.list[0].author.url}
-                >
-                  {user.settings.embeds.list[0].author.text}
-                </Link>
-                <br></br>
-                <br />
-                <Link
-                  color="blue.400"
-                  mt={-380}
-                  href={user.settings.embeds.list[0].title}
-                >
-                  {user.settings.embeds.list[0].title}
-                </Link>
-                <br></br>
-                <br />
-                <Link mt={-380} href={user.settings.embeds.list[0].description}>
-                  {user.settings.embeds.list[0].description}
-                </Link>
-                <br></br>
-                <br />
-                <Image
-                  mt={5}
-                  height="13rem"
-                  src="https://cdn.imgs.bar/imgs-beta/29de67ce-2077-4efa-8a2b-9411f6568481.png"
-                ></Image>
-              </Box>
-            </ModalFooter>
           </ModalContent>
         </Modal>
       </Flex>
+
       <Flex>
         <Modal
           motionPreset="slideInBottom"
