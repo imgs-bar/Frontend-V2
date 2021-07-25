@@ -71,7 +71,6 @@ import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
-// import styles from '../../styles/Settings.module.css';
 
 import {Card} from '../../components/Cards/CardBack';
 
@@ -97,18 +96,6 @@ const Settings = () => {
     onClose: onCloseManage,
   } = useDisclosure();
 
-  const saveEmbed = async (title: string) => {
-    try {
-      await saveEmbed(title);
-      toast({description: `${title} updated`, status: 'success'});
-    } catch (err) {
-      // toast({
-      //   description: err,
-      //   status: 'error',
-      // });
-    }
-  };
-
   const updateSetting = async (key: setting, value: boolean) => {
     try {
       await updateSettings(key, value);
@@ -120,23 +107,7 @@ const Settings = () => {
       });
     }
   };
-  const updateURLLength = async (
-    key: setting,
-    value: boolean,
-    length: number
-  ) => {
-    try {
-      await updateURLLength(key, value, length);
-      toast({description: `${key} updated to ${length}`, status: 'success'});
-    } catch (err) {
-      toast({
-        description: err.response.data.message,
-        status: 'error',
-      });
-    }
-  };
-  // const {user} = useUser();
-  const {user, setUser} = useUser();
+  const {user} = useUser();
   const router = useRouter();
 
   useEffect(() => {

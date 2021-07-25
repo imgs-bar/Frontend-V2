@@ -4,7 +4,6 @@ import {
   Button,
   Center,
   Checkbox,
-  Divider,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -282,7 +281,7 @@ const Home = () => {
             colorScheme="telegram"
             leftIcon={<FaDiscord />}
             variant="outline"
-            onClick={() => (window.location.href = 'https://discord.gg/img')}
+            onClick={() => (window.location.href = 'https://discord.gg/imgs')}
           >
             Discord
           </Button>
@@ -535,7 +534,6 @@ const Home = () => {
           </SimpleGrid>
         </Box>
       </Box>
-      {/* <Footer /> */}
       <br></br>
       <br></br>
     </>
