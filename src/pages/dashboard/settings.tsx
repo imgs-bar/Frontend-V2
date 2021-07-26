@@ -60,7 +60,7 @@ import {
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
-import {setting, User} from '../../../typings';
+import {booleanSetting, User} from '../../../typings';
 import {
   updateSettings,
   updateURLLength,
@@ -95,10 +95,12 @@ const Settings = () => {
     onOpen: onOpenManage,
     onClose: onCloseManage,
   } = useDisclosure();
+  const {user} = useUser();
 
-  const updateSetting = async (key: setting, value: boolean) => {
+  const updateSetting = async (key: booleanSetting, value: boolean) => {
     try {
       await updateSettings(key, value);
+      user.settings[key] = value;
       toast({description: `${key} updated`, status: 'success'});
     } catch (err) {
       toast({
@@ -107,7 +109,7 @@ const Settings = () => {
       });
     }
   };
-  const {user} = useUser();
+
   const router = useRouter();
 
   useEffect(() => {
@@ -247,7 +249,8 @@ const Settings = () => {
                   <NumberInputField
                     min={5}
                     max={50}
-                    onChange={e => updateSetting('urlLength', e.target.value)}
+                    value={user.settings.urlLength}
+                    onChange={e => updateURLLength(parseInt(e.target.value))}
                   />
                   <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -260,7 +263,7 @@ const Settings = () => {
                   onChange={event =>
                     updateSetting('emojiUrl', event.target.checked)
                   }
-                  defaultChecked={user.settings.emojiUrl}
+                  checked={user.settings.emojiUrl}
                 />
                 <Switch
                   size="md"
@@ -268,7 +271,7 @@ const Settings = () => {
                   onChange={event =>
                     updateSetting('showExtension', event.target.checked)
                   }
-                  defaultChecked={user.settings.showExtension}
+                  checked={user.settings.showExtension}
                 />
               </VStack>
             </Center>
