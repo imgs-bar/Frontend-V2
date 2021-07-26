@@ -126,3 +126,4 @@ export async function createInvite(): Promise<string> {
   );
   return data.data.invite;
 }
+
