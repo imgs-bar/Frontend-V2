@@ -500,7 +500,11 @@ const Settings = () => {
               </Text>
               <Stack mt={5} spacing="5">
                 {user.settings.embeds.list.map(d => (
-                  <Button size="md" borderRadius="none"></Button>
+                  <Button
+                    variant="outline"
+                    size="md"
+                    borderRadius="none"
+                  ></Button>
                 ))}
               </Stack>
             </ModalBody>
