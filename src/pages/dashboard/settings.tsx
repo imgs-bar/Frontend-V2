@@ -498,14 +498,11 @@ const Settings = () => {
               <Text mt={2} fontSize={14.4} color="gray.400">
                 Change your Embed profiles preferences
               </Text>
-              <Input
-                mt={8}
-                h="2.4rem"
-                isDisabled
-                value={user.settings.embeds.list[0].name}
-                placeholder=""
-                size="sm"
-              />
+              <Stack mt={5} spacing="5">
+                {user.settings.embeds.list.map(d => (
+                  <Button size="md" borderRadius="none"></Button>
+                ))}
+              </Stack>
             </ModalBody>
           </ModalContent>
         </Modal>
