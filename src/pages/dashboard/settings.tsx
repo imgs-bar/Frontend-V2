@@ -2,15 +2,12 @@ import {DownloadIcon, ChevronDownIcon} from '@chakra-ui/icons';
 import {
   Button,
   Center,
-  Container,
   Divider,
   Flex,
   Heading,
   Input,
   Menu,
   MenuButton,
-  FormControl,
-  FormLabel,
   MenuDivider,
   MenuItem,
   MenuList,
@@ -18,7 +15,6 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
   NumberDecrementStepper,
@@ -26,25 +22,9 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTrigger,
   Select,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
   Stack,
   Switch,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
   Text,
   Tooltip,
   useDisclosure,
@@ -55,7 +35,6 @@ import {
   Link,
   useColorModeValue,
   InputLeftAddon,
-  InputRightAddon,
   Image,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
@@ -118,8 +97,6 @@ const Settings = () => {
     }
   }, []);
 
-  const colorCon = useColorModeValue('gray.100', '#212938');
-  const colorBox = useColorModeValue('gray.200', 'gray.700');
   const button = useColorModeValue('gray.200', '#323A48');
   const colorSelect = useColorModeValue('gray.200', 'gray.700');
 
