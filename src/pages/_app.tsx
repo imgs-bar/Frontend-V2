@@ -46,7 +46,7 @@ function MyApp({Component, pageProps}: AppProps) {
           <UserProvider value={{user, setUser}}>
             <Component {...pageProps} />
           </UserProvider>
-        ) : <div>Loading...</div>}
+       ) : null}
       </ChakraProvider>
     </>
   );
