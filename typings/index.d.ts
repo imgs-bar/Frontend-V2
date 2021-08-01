@@ -228,3 +228,8 @@ export interface Stats {
   domains: number;
 }
 export type booleanSetting = 'emojiUrl' | 'showExtension' | 'embed';
+
+export interface Domain {
+  _id: string;
+  domain: string;  
+}

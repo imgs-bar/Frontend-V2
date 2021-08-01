@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {User, Stats, booleanSetting} from '../../typings';
+import {User, Stats, booleanSetting, Domain} from '../../typings';
 
 export const BASE_URL = 'https://betaapi.imgs.bar/v2';
 
@@ -99,7 +99,7 @@ export async function updateEmbed(
   );
 }
 
-export async function getDomains(): Promise<string> {
+export async function getDomains(): Promise<Domain[]> {
   const data = await axios.get(`${BASE_URL}/domains/list`, {
     withCredentials: true,
   });

@@ -39,12 +39,13 @@ import {
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
-import {booleanSetting, User} from '../../../typings';
+import {booleanSetting, Domain, User} from '../../../typings';
 import {
   updateSettings,
   updateURLLength,
   updateEmbed,
   createInvite,
+  getDomains,
 } from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
@@ -58,7 +59,7 @@ const Settings = () => {
   const [value, setValue] = React.useState(0);
   const handleChange = value => setValue(value);
   const toast = useToast();
-
+  const [domains, setDomains] = useState<Domain[]>([]);
   const {
     isOpen: isOpenConfigs,
     onOpen: onOpenConfigs,
@@ -97,6 +98,17 @@ const Settings = () => {
     }
   }, []);
 
+  useEffect(() => {
+      getDomains()
+        .then(domains => {
+          setDomains(domains);
+        })
+        .catch(err => {
+          setDomains(null);
+        });
+    
+    return
+  }, []);
   const button = useColorModeValue('gray.200', '#323A48');
   const colorSelect = useColorModeValue('gray.200', 'gray.700');
 
@@ -156,7 +168,7 @@ const Settings = () => {
                 h={35}
                 maxW={250}
               >
-                {user.settings.domains.map(d => (
+                {domains.map(d => (
                   <option key={d.name} value={d.name}>
                     {d.name}
                   </option>

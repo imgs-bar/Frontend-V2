@@ -142,7 +142,8 @@ const Home = () => {
         });
     };
     fetchStats();
-    setInterval(fetchStats, 10000);
+    const interval = setInterval(fetchStats, 10000);
+    return interval
   }, []);
 
   useEffect(() => {
