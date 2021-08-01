@@ -59,7 +59,7 @@ const Settings = () => {
   const [value, setValue] = React.useState(0);
   const handleChange = value => setValue(value);
   const toast = useToast();
-  const [domains, setDomains] = useState<Domain[]>([]);
+  const [domains, setDomains] = React.useState<Domain[]>([]);
   const {
     isOpen: isOpenConfigs,
     onOpen: onOpenConfigs,
@@ -99,15 +99,15 @@ const Settings = () => {
   }, []);
 
   useEffect(() => {
-      getDomains()
-        .then(domains => {
-          setDomains(domains);
-        })
-        .catch(err => {
-          setDomains(null);
-        });
-    
-    return
+    getDomains()
+      .then(domains => {
+        setDomains(domains);
+      })
+      .catch(err => {
+        setDomains(null);
+      });
+
+    return;
   }, []);
   const button = useColorModeValue('gray.200', '#323A48');
   const colorSelect = useColorModeValue('gray.200', 'gray.700');
@@ -169,8 +169,8 @@ const Settings = () => {
                 maxW={250}
               >
                 {domains.map(d => (
-                  <option key={d.name} value={d.name}>
-                    {d.name}
+                  <option key={d.domain} value={d.domain}>
+                    {d.domain}
                   </option>
                 ))}
               </Select>
