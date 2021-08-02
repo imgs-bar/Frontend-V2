@@ -151,11 +151,11 @@ export interface User {
    * The users settings
    */
   settings: {
-    //If the user's upload URLS should be longer.
-    longUrl: boolean;
+    //Length of users uploads
+    urlLength: number;
 
-    //If the user's upload URLS should consist of emojis
-    emojiUrl: boolean;
+    //The type of url the user has set
+    urlType: 'normal' | 'emoji' | 'invisible';
 
     //If the user's upload URLS should show the file extension
     showExtension: boolean;
@@ -166,34 +166,7 @@ export interface User {
       enabled: boolean;
 
       //The list of embed "profiles"
-      list: {
-        //The embed's ID
-        _id: string;
-
-        //The name of the embed profile
-        name: string;
-
-        //The embed "site url" also known as provider
-        header: {
-          text: string;
-          url: string;
-        };
-
-        //The embed author.
-        author: {
-          text: string;
-          url: string;
-        };
-
-        //The embed title
-        title: string;
-
-        //The embed description
-        description: string;
-
-        //Embed color, set it to "random" for random
-        color: string;
-      }[];
+      list: EmbedInterface[];
     };
 
     //The user's domains
@@ -227,9 +200,11 @@ export interface Stats {
   files: number;
   domains: number;
 }
-export type booleanSetting = 'emojiUrl' | 'showExtension' | 'embed';
+export type booleanSetting = 'showExtension' | 'embed';
 
 export interface Domain {
   _id: string;
   domain: string;
 }
+
+export type urlType = 'normal' | 'emoji' | 'invisible';

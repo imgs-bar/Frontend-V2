@@ -36,16 +36,21 @@ import {
   useColorModeValue,
   InputLeftAddon,
   Image,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
-import {booleanSetting, Domain, User} from '../../../typings';
+import {booleanSetting, Domain, urlType, User} from '../../../typings';
 import {
   updateSettings,
   updateURLLength,
   updateEmbed,
   createInvite,
   getDomains,
+  updateUrlType,
 } from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
@@ -57,7 +62,6 @@ import {Card} from '../../components/Cards/CardBack';
 const Settings = () => {
   const baseUrl = 'https://betaapi.imgs.bar/v2';
   const [value, setValue] = React.useState(0);
-  const handleChange = value => setValue(value);
   const toast = useToast();
   const [domains, setDomains] = React.useState<Domain[]>([]);
   const {
@@ -76,6 +80,12 @@ const Settings = () => {
     onClose: onCloseManage,
   } = useDisclosure();
   const {user} = useUser();
+
+  const handleUrlLengthChange = value => {
+    user.settings.urlLength = value;
+    updateURLLength(value);
+    setValue(value);
+  };
 
   const updateSetting = async (key: booleanSetting, value: boolean) => {
     try {
@@ -226,34 +236,48 @@ const Settings = () => {
             </Center>
             <Center>
               <VStack mt={-128} ml={105} spacing={6}>
-                <NumberInput
-                  w={100}
-                  size="sm"
-                  ml={16}
-                  min={5}
-                  max={50}
-                  keepWithinRange={false}
-                  clampValueOnBlur={false}
-                >
-                  <NumberInputField
+                <Flex>
+                  <NumberInput
+                    w={100}
+                    size="sm"
+                    ml={16}
                     min={5}
                     max={50}
-                    value={user.settings.urlLength}
-                    onChange={e => updateURLLength(parseInt(e.target.value))}
-                  />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-                <Switch
-                  size="md"
-                  id="emoji-url"
-                  onChange={event =>
-                    updateSetting('emojiUrl', event.target.checked)
-                  }
-                  checked={user.settings.emojiUrl}
-                />
+                    defaultValue={user.settings.urlLength}
+                    value={value}
+                    onChange={handleUrlLengthChange}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                  <Slider
+                    flex="1"
+                    focusThumbOnChange={false}
+                    value={value}
+                    onChange={handleUrlLengthChange}
+                  >
+                    <SliderTrack>
+                      <SliderFilledTrack />
+                    </SliderTrack>
+                    <SliderThumb
+                      fontSize="sm"
+                      boxSize="32px"
+                      children={value}
+                    />
+                  </Slider>
+                </Flex>
+                <Select
+                  id="urlType"
+                  onChange={e => updateUrlType(e.target.value as urlType)}
+                  defaultValue={user.settings.urlType}
+                >
+                  <option value="normal">Normal</option>
+                  <option value="emoji">Emoji URL</option>
+                  <option value="invisible">Invisible URL</option>
+                </Select>
                 <Switch
                   size="md"
                   id="show-Extension"

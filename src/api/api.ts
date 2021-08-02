@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {User, Stats, booleanSetting, Domain} from '../../typings';
+import {User, Stats, booleanSetting, Domain, urlType} from '../../typings';
 
 export const BASE_URL = 'https://betaapi.imgs.bar/v2';
 
@@ -125,4 +125,14 @@ export async function createInvite(): Promise<string> {
     }
   );
   return data.data.invite;
+}
+
+export async function updateUrlType(type: urlType): Promise<void> {
+  await axios.patch(
+    `${BASE_URL}/settings/update/urlType`,
+    {type},
+    {
+      withCredentials: true,
+    }
+  );
 }
