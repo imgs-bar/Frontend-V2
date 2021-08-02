@@ -1,11 +1,16 @@
-import {DownloadIcon, ChevronDownIcon} from '@chakra-ui/icons';
+import {ChevronDownIcon, DownloadIcon} from '@chakra-ui/icons';
 import {
+  Box,
   Button,
   Center,
   Divider,
   Flex,
   Heading,
+  Image,
   Input,
+  InputGroup,
+  InputLeftAddon,
+  Link,
   Menu,
   MenuButton,
   MenuDivider,
@@ -27,44 +32,33 @@ import {
   Switch,
   Text,
   Tooltip,
+  useColorModeValue,
   useDisclosure,
   useToast,
-  InputGroup,
   VStack,
-  Box,
-  Link,
-  useColorModeValue,
-  InputLeftAddon,
-  Image,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
 } from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 import React, {useEffect} from 'react';
-import {booleanSetting, Domain, urlType, User} from '../../../typings';
+import {booleanSetting, Domain, urlType} from '../../../typings';
 import {
+  getDomains,
+  monkeyUpdateDomain,
   updateSettings,
   updateURLLength,
-  updateEmbed,
-  createInvite,
-  getDomains,
   updateUrlType,
-  monkeyUpdateDomain,
 } from '../../api/api';
+import {Card} from '../../components/Cards/CardBack';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
 import Sidebar from '../../components/Sidebar';
 import {useUser} from '../../components/user';
-
-import {Card} from '../../components/Cards/CardBack';
 
 const Settings = () => {
   const baseUrl = 'https://betaapi.imgs.bar/v2';
   const [value, setValue] = React.useState(0);
   const toast = useToast();
   const [domains, setDomains] = React.useState<Domain[]>([]);
+  const [submitting, setSubmitting] = React.useState(false);
   const {
     isOpen: isOpenConfigs,
     onOpen: onOpenConfigs,
@@ -82,11 +76,14 @@ const Settings = () => {
   } = useDisclosure();
   const {user} = useUser();
 
-  const handleUrlLengthChange = value => {
+  const handleUrlLengthChange = async value => {
     user.settings.urlLength = value;
+    if (submitting) return;
     setValue(value);
     try {
-      updateURLLength(value);
+      setSubmitting(true);
+      await updateURLLength(value);
+      setSubmitting(false);
       toast({description: `URL length updated`, status: 'success'});
     } catch (e) {
       toast({
@@ -97,8 +94,14 @@ const Settings = () => {
   };
 
   const updateSetting = async (key: booleanSetting, value: boolean) => {
+    if (submitting) return;
+
     try {
+      setSubmitting(true);
+
       await updateSettings(key, value);
+
+      setSubmitting(false);
       user.settings[key] = value;
       toast({description: `${key} updated`, status: 'success'});
     } catch (err) {
@@ -189,11 +192,16 @@ const Settings = () => {
                 defaultValue={user.settings.domains[0].name}
                 maxW={250}
                 onChange={e => {
+                  if (submitting) return;
+
                   try {
+                    setSubmitting(true);
                     monkeyUpdateDomain(
                       e.target.value,
                       user.settings.domains[0].fileNamePrefix
                     );
+                    setSubmitting(false);
+
                     toast({
                       description: 'Domain updated',
                       status: 'success',
@@ -220,11 +228,16 @@ const Settings = () => {
                     w={125}
                     h={35}
                     onChange={e => {
+                      if (submitting) return;
+
                       try {
+                        setSubmitting(true);
                         monkeyUpdateDomain(
                           user.settings.domains[0].name,
                           e.target.value
                         );
+                        setSubmitting(false);
+
                         toast({
                           description: 'File prefix updated',
                           status: 'success',
@@ -300,8 +313,11 @@ const Settings = () => {
                 <Select
                   id="urlType"
                   onChange={e => {
+                    if (submitting) return;
                     try {
+                      setSubmitting(true);
                       updateUrlType(e.target.value as urlType);
+                      setSubmitting(false);
                       toast({
                         description: `URL type updated`,
                         status: 'success',
