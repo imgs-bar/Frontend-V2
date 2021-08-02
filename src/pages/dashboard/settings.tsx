@@ -232,7 +232,7 @@ const Settings = () => {
                 </Tooltip>
 
                 <Tooltip label="emojis are in ur url" placement="left-start">
-                  <Text>Emoji URL</Text>
+                  <Text>URL Type</Text>
                 </Tooltip>
                 <Tooltip
                   label="Removes the File Extension at the end of your file."
