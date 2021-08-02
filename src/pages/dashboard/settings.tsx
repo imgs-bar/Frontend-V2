@@ -280,8 +280,8 @@ const Settings = () => {
                   defaultValue={user.settings.urlType}
                 >
                   <option value="normal">Normal</option>
-                  <option value="emoji">Emoji Url</option>
-                  <option value="invisible">Invisible Url</option>
+                  <option value="emoji">Emoji URL</option>
+                  <option value="invisible">Invisible URL</option>
                 </Select>
                 <Switch
                   size="md"
