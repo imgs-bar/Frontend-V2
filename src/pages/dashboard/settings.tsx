@@ -83,8 +83,16 @@ const Settings = () => {
 
   const handleUrlLengthChange = value => {
     user.settings.urlLength = value;
-    updateURLLength(value);
     setValue(value);
+    try {
+      updateURLLength(value);
+      toast({description: `URL length updated`, status: 'success'});
+    } catch (e) {
+      toast({
+        description: e.response.data.message,
+        status: 'error',
+      });
+    }
   };
 
   const updateSetting = async (key: booleanSetting, value: boolean) => {
@@ -236,42 +244,39 @@ const Settings = () => {
             </Center>
             <Center>
               <VStack mt={-128} ml={105} spacing={6}>
-                <Flex>
-                  <NumberInput
-                    w={100}
-                    size="sm"
-                    ml={16}
-                    min={5}
-                    max={50}
-                    defaultValue={user.settings.urlLength}
-                    value={value}
-                    onChange={handleUrlLengthChange}
-                  >
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                  <Slider
-                    flex="1"
-                    focusThumbOnChange={false}
-                    value={value}
-                    onChange={handleUrlLengthChange}
-                  >
-                    <SliderTrack>
-                      <SliderFilledTrack />
-                    </SliderTrack>
-                    <SliderThumb
-                      fontSize="sm"
-                      boxSize="32px"
-                      children={value}
-                    />
-                  </Slider>
-                </Flex>
+                <NumberInput
+                  w={100}
+                  size="sm"
+                  ml={16}
+                  min={0}
+                  max={50}
+                  defaultValue={user.settings.urlLength}
+                  value={value}
+                  onChange={handleUrlLengthChange}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+
                 <Select
                   id="urlType"
-                  onChange={e => updateUrlType(e.target.value as urlType)}
+                  onChange={e => {
+                    try {
+                      updateUrlType(e.target.value as urlType);
+                      toast({
+                        description: `URL type updated`,
+                        status: 'success',
+                      });
+                    } catch (e) {
+                      toast({
+                        description: e.response.data.message,
+                        status: 'error',
+                      });
+                    }
+                  }}
                   defaultValue={user.settings.urlType}
                 >
                   <option value="normal">Normal</option>
