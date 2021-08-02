@@ -51,6 +51,7 @@ import {
   createInvite,
   getDomains,
   updateUrlType,
+  monkeyUpdateDomain,
 } from '../../api/api';
 import Nav from '../../components/mobile-nav';
 import Navbar from '../../components/Navbar-Dash';
@@ -174,6 +175,7 @@ const Settings = () => {
                 size="sm"
                 variant="outline"
                 placeholder={user.settings.domains[0].subDomain}
+                isDisabled
                 h={35}
                 ml={1}
                 maxW={150}
@@ -184,7 +186,25 @@ const Settings = () => {
                 bg={colorSelect}
                 aria-label="Select a domain"
                 h={35}
+                defaultValue={user.settings.domains[0].name}
                 maxW={250}
+                onChange={e => {
+                  try {
+                    monkeyUpdateDomain(
+                      e.target.value,
+                      user.settings.domains[0].fileNamePrefix
+                    );
+                    toast({
+                      description: 'Domain updated',
+                      status: 'success',
+                    });
+                  } catch (e) {
+                    toast({
+                      description: e.response.data.message,
+                      status: 'error',
+                    });
+                  }
+                }}
               >
                 {domains.map(d => (
                   <option key={d.domain} value={d.domain}>
@@ -196,10 +216,26 @@ const Settings = () => {
                 <InputGroup mt={31} ml={-1} size="sm">
                   <InputLeftAddon h={35} children="/" />
                   <Input
-                    placeholder={user.settings.domains[0].fileNamePrefix}
+                    defaultValue={user.settings.domains[0].fileNamePrefix}
                     w={125}
                     h={35}
-                    // placeholder="File Prefix"
+                    onChange={e => {
+                      try {
+                        monkeyUpdateDomain(
+                          user.settings.domains[0].name,
+                          e.target.value
+                        );
+                        toast({
+                          description: 'File prefix updated',
+                          status: 'success',
+                        });
+                      } catch (e) {
+                        toast({
+                          description: e.response.data.message,
+                          status: 'error',
+                        });
+                      }
+                    }}
                   />
                 </InputGroup>
               </Center>

@@ -136,3 +136,16 @@ export async function updateUrlType(type: urlType): Promise<void> {
     }
   );
 }
+
+export async function monkeyUpdateDomain(
+  domain: string,
+  fileNamePrefix: string
+): Promise<void> {
+  await axios.patch(
+    `${BASE_URL}/settings/beta/domain`,
+    {domain, fileNamePrefix},
+    {
+      withCredentials: true,
+    }
+  );
+}
