@@ -207,4 +207,16 @@ export interface Domain {
   domain: string;
 }
 
+export interface Image {
+  _id: string;
+  uploader: {
+    name: string;
+  }
+  uploadedAt: Date;
+  fileName: string;
+  size: number;
+  mimeType: string;
+}
+
+
 export type urlType = 'normal' | 'emoji' | 'invisible';

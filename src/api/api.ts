@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {User, Stats, booleanSetting, Domain, urlType} from '../../typings';
+import {User, Stats, booleanSetting, Domain, urlType, Image} from '../../typings';
 
 export const BASE_URL = 'https://betaapi.imgs.bar/v2';
 
@@ -77,33 +77,18 @@ export async function updateSettings(
   );
 }
 
-export async function updateEmbed(
-  header: {
-    text: string;
-    url: string;
-  },
-  author: {
-    text: string;
-    url: string;
-  },
-  title: string,
-  description: string,
-  color: string
-): Promise<void> {
-  await axios.patch(
-    `${BASE_URL}/update/embed`,
-    {title},
-    {
-      withCredentials: true,
-    }
-  );
-}
-
 export async function getDomains(): Promise<Domain[]> {
   const data = await axios.get(`${BASE_URL}/domains/list`, {
     withCredentials: true,
   });
   return data.data.domains;
+}
+
+export async function getImages(): Promise<Image[]> {
+  const data = await axios.get(`${BASE_URL}/information/images`, {
+    withCredentials: true,
+  });
+  return data.data.images;
 }
 
 export async function updateURLLength(length: number): Promise<void> {
