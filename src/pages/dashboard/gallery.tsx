@@ -1,18 +1,24 @@
 import Sidebar from '../../components/Sidebar';
 import Navbar from '../../components/Navbar-Dash';
 import Nav from '../../components/mobile-nav';
+import {Card} from '../../components/Cards/CardBack';
 
 import React, {useEffect} from 'react';
 
 import {
   Flex,
   VStack,
+  Stack,
   Container,
   Heading,
+  Box,
   Text,
   Divider,
   useColorModeValue,
 } from '@chakra-ui/react';
+
+import {Images} from '../../../typings';
+import {getImages} from '../../api/api';
 
 import {useUser} from '../../components/user';
 import {useRouter} from 'next/router';
@@ -36,25 +42,40 @@ const Gallery = () => {
         <Navbar />
         <Nav />
       </Flex>
-      <VStack>
-        <Container
-          //    p={30}
-          maxW="80%"
-          bg={colorCon}
-          borderRadius="md"
-          h="46rem"
-          m="130"
-          ml="400"
-        >
-          <Heading fontSize={25} mt={30} ml={15}>
-            Gallery
-          </Heading>
-          <Text fontSize={15} color="gray.400" mt={0} ml={15}>
-            View your uploads
-          </Text>
-          <Divider mt={10} />
-        </Container>
-      </VStack>
+      <Card
+        h={{
+          base: '50rem',
+          sm: '52rem',
+          md: '50rem', // 55 for full
+        }}
+        maxW={{
+          base: '90%',
+          sm: '93%',
+          md: '84.5%',
+        }}
+        mt={{
+          base: '50',
+          sm: '43.5',
+          md: '105',
+        }}
+        ml={{
+          base: '5',
+          sm: '5',
+          md: '280',
+        }}
+      >
+        <Stack spacing="10">
+          <Box>
+            <Heading fontSize={25} fontWeight="bold" py="2">
+              Gallery
+            </Heading>
+            <Text fontSize={15} color="gray.400">
+              View your files
+            </Text>
+            <Divider mt={5} />
+          </Box>
+        </Stack>
+      </Card>
     </>
   ) : null;
 };

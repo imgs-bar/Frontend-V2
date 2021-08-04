@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {User, Stats, booleanSetting, Domain, urlType, Image} from '../../typings';
+import {User, Stats, booleanSetting, Domain, urlType, Images} from '../../typings';
 
 export const BASE_URL = 'https://betaapi.imgs.bar/v2';
 
@@ -84,7 +84,7 @@ export async function getDomains(): Promise<Domain[]> {
   return data.data.domains;
 }
 
-export async function getImages(): Promise<Image[]> {
+export async function getImages(): Promise<Images[]> {
   const data = await axios.get(`${BASE_URL}/information/images`, {
     withCredentials: true,
   });

@@ -207,7 +207,7 @@ export interface Domain {
   domain: string;
 }
 
-export interface Image {
+export interface Images {
   _id: string;
   uploader: {
     name: string;
